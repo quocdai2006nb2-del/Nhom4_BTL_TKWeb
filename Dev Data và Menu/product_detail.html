@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FINFood - Chi tiết món ăn</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f5f2;
+            color: #333;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background-color: white;
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #d35400;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 30px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #d35400;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #777;
+            font-size: 16px;
+        }
+
+        /* ================= CATEGORY ================= */
+
+        .category-title {
+            font-size: 30px;
+            color: #d35400;
+            margin: 50px 0 25px 0;
+            border-left: 6px solid #d35400;
+            padding-left: 15px;
+        }
+
+        /* ================= PRODUCT ================= */
+
+        .product {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 45px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .product-content {
+            display: grid;
+            grid-template-columns: 45% 55%;
+            gap: 40px;
+        }
+
+        /* ================= IMAGE ================= */
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            background-color: #eee;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ================= INFO ================= */
+
+        .category {
+            display: inline-block;
+            background-color: #fff0e5;
+            color: #d35400;
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .product-info h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            color: #f39c12;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #d35400;
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* ================= TOPPING ================= */
+
+        .topping-box {
+            margin-top: 20px;
+        }
+
+        .topping-box h3 {
+            margin-bottom: 15px;
+        }
+
+        .topping {
+            display: block;
+            margin: 12px 0;
+        }
+
+        .topping input {
+            margin-right: 8px;
+        }
+
+        /* ================= QUANTITY ================= */
+
+        .quantity {
+            margin-top: 20px;
+        }
+
+        .quantity input {
+            width: 70px;
+            padding: 9px;
+            margin-left: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .buy-button {
+            margin-top: 25px;
+            background-color: #d35400;
+            color: white;
+            border: none;
+            padding: 13px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .buy-button:hover {
+            background-color: #a84300;
+        }
+
+        /* ================= NUTRITION ================= */
+
+        .nutrition {
+            margin-top: 30px;
+        }
+
+        .nutrition h3 {
+            margin-bottom: 15px;
+            font-size: 21px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f5f5f5;
+        }
+
+        /* ================= BACK ================= */
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            color: #d35400;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media screen and (max-width: 768px) {
+
+            header {
+                height: auto;
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 10px;
+            }
+
+            .product-content {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 280px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        FINFood
+    </div>
+
+    <nav>
+
+        <a href="products.html">
+            Thực đơn
+        </a>
+
+        <a href="../index.html">
+            Trang chủ
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+
+    <!-- TIÊU ĐỀ -->
+
+    <div class="title">
+
+        <h1>
+            Chi tiết món ăn
+        </h1>
+
+        <p>
+            Khám phá món ăn ngon cùng FINFood
+        </p>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!--                    1. CƠM TẤM                     -->
+    <!-- ================================================= -->
+
+    <h2 class="category-title">
+        1. Cơm
+    </h2>
+
+
+    <section class="product" id="com-tam">
+
+        <div class="product-content">
+
+
+            <!-- ẢNH -->
+
+            <div class="product-image">
+
+                <img
+                    src="../assets/images/com-tam.jpg"
+                    alt="Cơm Tấm Sườn Bì Chả"
+                >
+
+            </div>
+
+
+            <!-- THÔNG TIN -->
+
+            <div class="product-info">
+
+                <span class="category">
+                    Cơm
+                </span>
+
+
+                <h2>
+                    Cơm Tấm Sườn Bì Chả
+                </h2>
+
+
+                <div class="rating">
+                    ★★★★★ 4.9/5
+                </div>
+
+
+                <div class="price">
+                    30.000đ
+                </div>
+
+
+                <p class="description">
+
+                    Cơm tấm mềm thơm kết hợp cùng
+                    sườn nướng đậm đà, bì và chả trứng.
+                    Món ăn truyền thống phù hợp cho
+                    bữa trưa và bữa tối.
+
+                </p>
+
+
+                <!-- TOPPING -->
+
+                <div class="topping-box">
+
+                    <h3>
+                        Chọn topping
+                    </h3>
+
+                    <label class="topping">
+
+                        <input type="checkbox">
+
+                        Trứng ốp la +5.000đ
+
+                    </label>
+
+
+                    <label class="topping">
+
+                        <input type="checkbox">
+
+                        Thêm sườn +10.000đ
+
+                    </label>
+
+
+                    <label class="topping">
+
+                        <input type="checkbox">
+
+                        Thêm chả +7.000đ
+
+                    </label>
+
+                </div>
+
+
+                <!-- SỐ LƯỢNG -->
+
+                <div class="quantity">
+
+                    <label>
+                        Số lượng:
+                    </label>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <button class="buy-button">
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DINH DƯỠNG -->
+
+        <div class="nutrition">
+
+            <h3>
+                Thành phần dinh dưỡng
+            </h3>
+
+
+            <table>
+
+                <tr>
+
+                    <th>
+                        Thành phần
+                    </th>
+
+                    <th>
+                        Giá trị
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Calories
+                    </td>
+
+                    <td>
+                        650 kcal
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Protein
+                    </td>
+
+                    <td>
+                        32 g
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Carbohydrate
+                    </td>
+
+                    <td>
+                        72 g
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Chất béo
+                    </td>
+
+                    <td>
+                        22 g
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <a
+            href="products.html"
+            class="back"
+        >
+            ← Quay lại thực đơn
+        </a>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!--                    2. CƠM GÀ                      -->
+    <!-- ================================================= -->
+
+    <section class="product" id="com-ga">
+
+        <div class="product-content">
+
+
+            <div class="product-image">
+
+                <img
+                    src="../assets/images/com-ga.jpg"
+                    alt="Cơm Gà Xối Mỡ"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="category">
+                    Cơm
+                </span>
+
+
+                <h2>
+                    Cơm Gà Xối Mỡ
+                </h2>
+
+
+                <div class="rating">
+                    ★★★★★ 4.8/5
+                </div>
+
+
+                <div class="price">
+                    35.000đ
+                </div>
+
+
+                <p class="description">
+
+                    Cơm gà xối mỡ với lớp da vàng giòn,
+                    thịt gà mềm thơm ăn cùng cơm nóng
+                    và nước sốt đậm đà.
+
+                </p>
+
+
+                <div class="topping-box">
+
+                    <h3>
+                        Chọn topping
+                    </h3>
+
+
+                    <label class="topping">
+
+                        <input type="checkbox">
+
+                        Trứng ốp la +5.000đ
+
+                    </label>
+
+
+                    <label class="topping">
+
+                        <input type="checkbox">
+
+                        Thêm thịt gà +10.000đ
+
+                    </label>
+
+
+                    <label class="topping">
+
+                        <input type="checkbox">
+
+                        Thêm rau +3.000đ
+
+                    </label>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <label>
+                        Số lượng:
+                    </label>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <button class="buy-button">
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nutrition">
+
+            <h3>
+                Thành phần dinh dưỡng
+            </h3>
+
+
+            <table>
+
+                <tr>
+                    <th>Thành phần</th>
+                    <th>Giá trị</th>
+                </tr>
+
+                <tr>
+                    <td>Calories</td>
+                    <td>620 kcal</td>
+                </tr>
+
+                <tr>
+                    <td>Protein</td>
+                    <td>35 g</td>
+                </tr>
+
+                <tr>
+                    <td>Carbohydrate</td>
+                    <td>68 g</td>
+                </tr>
+
+                <tr>
+                    <td>Chất béo</td>
+                    <td>20 g</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <a href="products.html" class="back">
+            ← Quay lại thực đơn
+        </a>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!--                    3. CƠM RANG                    -->
+    <!-- ================================================= -->
+
+    <section class="product" id="com-rang">
+
+        <div class="product-content">
+
+            <div class="product-image">
+
+                <img
+                    src="../assets/images/com-rang.jpg"
+                    alt="Cơm Rang Dưa Bò"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="category">
+                    Cơm
+                </span>
+
+                <h2>
+                    Cơm Rang Dưa Bò
+                </h2>
+
+                <div class="rating">
+                    ★★★★★ 4.7/5
+                </div>
+
+                <div class="price">
+                    28.000đ
+                </div>
+
+                <p class="description">
+
+                    Cơm rang vàng thơm kết hợp với
+                    thịt bò mềm và dưa cải chua nhẹ,
+                    tạo nên hương vị hài hòa.
+
+                </p>
+
+
+                <div class="topping-box">
+
+                    <h3>
+                        Chọn topping
+                    </h3>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Trứng ốp la +5.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm thịt bò +10.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm xúc xích +5.000đ
+                    </label>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <label>
+                        Số lượng:
+                    </label>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <button class="buy-button">
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nutrition">
+
+            <h3>
+                Thành phần dinh dưỡng
+            </h3>
+
+            <table>
+
+                <tr>
+                    <th>Thành phần</th>
+                    <th>Giá trị</th>
+                </tr>
+
+                <tr>
+                    <td>Calories</td>
+                    <td>590 kcal</td>
+                </tr>
+
+                <tr>
+                    <td>Protein</td>
+                    <td>27 g</td>
+                </tr>
+
+                <tr>
+                    <td>Carbohydrate</td>
+                    <td>70 g</td>
+                </tr>
+
+                <tr>
+                    <td>Chất béo</td>
+                    <td>18 g</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <a href="products.html" class="back">
+            ← Quay lại thực đơn
+        </a>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!--                4. CƠM CHIÊN DƯƠNG CHÂU            -->
+    <!-- ================================================= -->
+
+    <section class="product" id="com-chien">
+
+        <div class="product-content">
+
+            <div class="product-image">
+
+                <img
+                    src="../assets/images/com-chien.jpg"
+                    alt="Cơm Chiên Dương Châu"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="category">
+                    Cơm
+                </span>
+
+                <h2>
+                    Cơm Chiên Dương Châu
+                </h2>
+
+                <div class="rating">
+                    ★★★★★ 4.8/5
+                </div>
+
+                <div class="price">
+                    32.000đ
+                </div>
+
+                <p class="description">
+
+                    Cơm chiên tơi hạt kết hợp trứng,
+                    xúc xích, rau củ và gia vị đặc trưng.
+
+                </p>
+
+
+                <div class="topping-box">
+
+                    <h3>
+                        Chọn topping
+                    </h3>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm trứng +5.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm xúc xích +5.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm thịt +8.000đ
+                    </label>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <label>
+                        Số lượng:
+                    </label>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <button class="buy-button">
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nutrition">
+
+            <h3>
+                Thành phần dinh dưỡng
+            </h3>
+
+            <table>
+
+                <tr>
+                    <th>Thành phần</th>
+                    <th>Giá trị</th>
+                </tr>
+
+                <tr>
+                    <td>Calories</td>
+                    <td>610 kcal</td>
+                </tr>
+
+                <tr>
+                    <td>Protein</td>
+                    <td>24 g</td>
+                </tr>
+
+                <tr>
+                    <td>Carbohydrate</td>
+                    <td>75 g</td>
+                </tr>
+
+                <tr>
+                    <td>Chất béo</td>
+                    <td>20 g</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <a href="products.html" class="back">
+            ← Quay lại thực đơn
+        </a>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!--                5. CƠM SƯỜN MẬT ONG               -->
+    <!-- ================================================= -->
+
+    <section class="product" id="com-suon">
+
+        <div class="product-content">
+
+            <div class="product-image">
+
+                <img
+                    src="../assets/images/com-suon.jpg"
+                    alt="Cơm Sườn Nướng Mật Ong"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="category">
+                    Cơm
+                </span>
+
+                <h2>
+                    Cơm Sườn Nướng Mật Ong
+                </h2>
+
+                <div class="rating">
+                    ★★★★★ 4.9/5
+                </div>
+
+                <div class="price">
+                    38.000đ
+                </div>
+
+                <p class="description">
+
+                    Sườn heo được nướng vàng cùng
+                    sốt mật ong đậm đà, dùng với
+                    cơm nóng và rau xanh.
+
+                </p>
+
+
+                <div class="topping-box">
+
+                    <h3>
+                        Chọn topping
+                    </h3>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Trứng ốp la +5.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm sườn +12.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm rau +3.000đ
+                    </label>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <label>
+                        Số lượng:
+                    </label>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <button class="buy-button">
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nutrition">
+
+            <h3>
+                Thành phần dinh dưỡng
+            </h3>
+
+            <table>
+
+                <tr>
+                    <th>Thành phần</th>
+                    <th>Giá trị</th>
+                </tr>
+
+                <tr>
+                    <td>Calories</td>
+                    <td>680 kcal</td>
+                </tr>
+
+                <tr>
+                    <td>Protein</td>
+                    <td>35 g</td>
+                </tr>
+
+                <tr>
+                    <td>Carbohydrate</td>
+                    <td>70 g</td>
+                </tr>
+
+                <tr>
+                    <td>Chất béo</td>
+                    <td>25 g</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <a href="products.html" class="back">
+            ← Quay lại thực đơn
+        </a>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!--                    6. BÒ LÚC LẮC                 -->
+    <!-- ================================================= -->
+
+    <section class="product" id="com-bo-luc-lac">
+
+        <div class="product-content">
+
+            <div class="product-image">
+
+                <img
+                    src="../assets/images/com-bo-luc-lac.jpg"
+                    alt="Cơm Bò Lúc Lắc"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="category">
+                    Cơm
+                </span>
+
+                <h2>
+                    Cơm Bò Lúc Lắc
+                </h2>
+
+                <div class="rating">
+                    ★★★★★ 4.9/5
+                </div>
+
+                <div class="price">
+                    42.000đ
+                </div>
+
+                <p class="description">
+
+                    Thịt bò mềm được áp chảo thơm
+                    cùng hành tây và sốt đặc biệt,
+                    ăn kèm cơm nóng.
+
+                </p>
+
+
+                <div class="topping-box">
+
+                    <h3>
+                        Chọn topping
+                    </h3>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Trứng ốp la +5.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm thịt bò +12.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm rau +3.000đ
+                    </label>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <label>
+                        Số lượng:
+                    </label>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <button class="buy-button">
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nutrition">
+
+            <h3>
+                Thành phần dinh dưỡng
+            </h3>
+
+            <table>
+
+                <tr>
+                    <th>Thành phần</th>
+                    <th>Giá trị</th>
+                </tr>
+
+                <tr>
+                    <td>Calories</td>
+                    <td>670 kcal</td>
+                </tr>
+
+                <tr>
+                    <td>Protein</td>
+                    <td>38 g</td>
+                </tr>
+
+                <tr>
+                    <td>Carbohydrate</td>
+                    <td>68 g</td>
+                </tr>
+
+                <tr>
+                    <td>Chất béo</td>
+                    <td>24 g</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <a href="products.html" class="back">
+            ← Quay lại thực đơn
+        </a>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!--                    7. CÁ KHO TỘ                  -->
+    <!-- ================================================= -->
+
+    <section class="product" id="com-ca-kho">
+
+        <div class="product-content">
+
+            <div class="product-image">
+
+                <img
+                    src="../assets/images/com-ca-kho.jpg"
+                    alt="Cơm Cá Kho Tộ"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="category">
+                    Cơm
+                </span>
+
+                <h2>
+                    Cơm Cá Kho Tộ
+                </h2>
+
+                <div class="rating">
+                    ★★★★★ 4.7/5
+                </div>
+
+                <div class="price">
+                    34.000đ
+                </div>
+
+                <p class="description">
+
+                    Cá kho đậm vị với nước sốt
+                    thơm ngon, dùng cùng cơm trắng
+                    nóng và rau xanh.
+
+                </p>
+
+
+                <div class="topping-box">
+
+                    <h3>
+                        Chọn topping
+                    </h3>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm cá +10.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Trứng ốp la +5.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm rau +3.000đ
+                    </label>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <label>
+                        Số lượng:
+                    </label>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <button class="buy-button">
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nutrition">
+
+            <h3>
+                Thành phần dinh dưỡng
+            </h3>
+
+            <table>
+
+                <tr>
+                    <th>Thành phần</th>
+                    <th>Giá trị</th>
+                </tr>
+
+                <tr>
+                    <td>Calories</td>
+                    <td>560 kcal</td>
+                </tr>
+
+                <tr>
+                    <td>Protein</td>
+                    <td>30 g</td>
+                </tr>
+
+                <tr>
+                    <td>Carbohydrate</td>
+                    <td>65 g</td>
+                </tr>
+
+                <tr>
+                    <td>Chất béo</td>
+                    <td>18 g</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <a href="products.html" class="back">
+            ← Quay lại thực đơn
+        </a>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!--                    8. GÀ TERIYAKI                -->
+    <!-- ================================================= -->
+
+    <section class="product" id="com-ga-teriyaki">
+
+        <div class="product-content">
+
+            <div class="product-image">
+
+                <img
+                    src="../assets/images/com-ga-teriyaki.jpg"
+                    alt="Cơm Gà Teriyaki"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="category">
+                    Cơm
+                </span>
+
+                <h2>
+                    Cơm Gà Teriyaki
+                </h2>
+
+                <div class="rating">
+                    ★★★★★ 4.8/5
+                </div>
+
+                <div class="price">
+                    39.000đ
+                </div>
+
+                <p class="description">
+
+                    Thịt gà mềm thơm phủ sốt Teriyaki
+                    đậm đà, kết hợp cùng cơm nóng
+                    và rau củ.
+
+                </p>
+
+
+                <div class="topping-box">
+
+                    <h3>
+                        Chọn topping
+                    </h3>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Trứng +5.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm gà +10.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm rau +3.000đ
+                    </label>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <label>
+                        Số lượng:
+                    </label>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <button class="buy-button">
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nutrition">
+
+            <h3>
+                Thành phần dinh dưỡng
+            </h3>
+
+            <table>
+
+                <tr>
+                    <th>Thành phần</th>
+                    <th>Giá trị</th>
+                </tr>
+
+                <tr>
+                    <td>Calories</td>
+                    <td>600 kcal</td>
+                </tr>
+
+                <tr>
+                    <td>Protein</td>
+                    <td>34 g</td>
+                </tr>
+
+                <tr>
+                    <td>Carbohydrate</td>
+                    <td>70 g</td>
+                </tr>
+
+                <tr>
+                    <td>Chất béo</td>
+                    <td>17 g</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <a href="products.html" class="back">
+            ← Quay lại thực đơn
+        </a>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!--                  9. THỊT KHO TRỨNG               -->
+    <!-- ================================================= -->
+
+    <section class="product" id="com-thit-kho">
+
+        <div class="product-content">
+
+            <div class="product-image">
+
+                <img
+                    src="../assets/images/com-thit-kho.jpg"
+                    alt="Cơm Thịt Kho Trứng"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="category">
+                    Cơm
+                </span>
+
+                <h2>
+                    Cơm Thịt Kho Trứng
+                </h2>
+
+                <div class="rating">
+                    ★★★★★ 4.8/5
+                </div>
+
+                <div class="price">
+                    33.000đ
+                </div>
+
+                <p class="description">
+
+                    Thịt kho mềm đậm đà kết hợp
+                    trứng kho thấm vị, dùng với
+                    cơm trắng nóng.
+
+                </p>
+
+
+                <div class="topping-box">
+
+                    <h3>
+                        Chọn topping
+                    </h3>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm trứng +5.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm thịt +10.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm rau +3.000đ
+                    </label>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <label>
+                        Số lượng:
+                    </label>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <button class="buy-button">
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nutrition">
+
+            <h3>
+                Thành phần dinh dưỡng
+            </h3>
+
+            <table>
+
+                <tr>
+                    <th>Thành phần</th>
+                    <th>Giá trị</th>
+                </tr>
+
+                <tr>
+                    <td>Calories</td>
+                    <td>640 kcal</td>
+                </tr>
+
+                <tr>
+                    <td>Protein</td>
+                    <td>31 g</td>
+                </tr>
+
+                <tr>
+                    <td>Carbohydrate</td>
+                    <td>67 g</td>
+                </tr>
+
+                <tr>
+                    <td>Chất béo</td>
+                    <td>23 g</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <a href="products.html" class="back">
+            ← Quay lại thực đơn
+        </a>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!--                    10. HEO QUAY                  -->
+    <!-- ================================================= -->
+
+    <section class="product" id="com-heo-quay">
+
+        <div class="product-content">
+
+            <div class="product-image">
+
+                <img
+                    src="../assets/images/com-heo-quay.jpg"
+                    alt="Cơm Heo Quay"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="category">
+                    Cơm
+                </span>
+
+                <h2>
+                    Cơm Heo Quay
+                </h2>
+
+                <div class="rating">
+                    ★★★★★ 4.8/5
+                </div>
+
+                <div class="price">
+                    40.000đ
+                </div>
+
+                <p class="description">
+
+                    Thịt heo quay với lớp da giòn,
+                    thịt mềm thơm, ăn cùng cơm trắng
+                    và nước sốt đặc biệt.
+
+                </p>
+
+
+                <div class="topping-box">
+
+                    <h3>
+                        Chọn topping
+                    </h3>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Trứng ốp la +5.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm heo quay +12.000đ
+                    </label>
+
+                    <label class="topping">
+                        <input type="checkbox">
+                        Thêm rau +3.000đ
+                    </label>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <label>
+                        Số lượng:
+                    </label>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <button class="buy-button">
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nutrition">
+
+            <h3>
+                Thành phần dinh dưỡng
+            </h3>
+
+            <table>
+
+                <tr>
+                    <th>Thành phần</th>
+                    <th>Giá trị</th>
+                </tr>
+
+                <tr>
+                    <td>Calories</td>
+                    <td>690 kcal</td>
+                </tr>
+
+                <tr>
+                    <td>Protein</td>
+                    <td>32 g</td>
+                </tr>
+
+                <tr>
+                    <td>Carbohydrate</td>
+                    <td>65 g</td>
+                </tr>
+
+                <tr>
+                    <td>Chất béo</td>
+                    <td>27 g</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <a href="products.html" class="back">
+            ← Quay lại thực đơn
+        </a>
+
+    </section>
+
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 FINFood - Đồ ăn ngon mỗi ngày
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

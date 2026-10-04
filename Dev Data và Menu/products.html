@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Thực đơn | FINFood</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f5f0;
+            color: #2d2926;
+            line-height: 1.6;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #eee5dc;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #a84b27;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #2d2926;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #403a35;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .nav-menu a:hover {
+            color: #b85c32;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #3a2920, #71452f);
+            color: white;
+            padding: 65px 25px;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .hero-small {
+            color: #e8b98f;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: #eee2d8;
+            font-size: 17px;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 45px 25px;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .filter-box {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(70, 45, 30, 0.08);
+            margin-bottom: 45px;
+        }
+
+        .filter-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 15px;
+        }
+
+        .search-input,
+        .filter-select {
+            height: 48px;
+            border: 1px solid #ded5cc;
+            border-radius: 10px;
+            padding: 0 15px;
+            font-size: 14px;
+            outline: none;
+            background: #fff;
+        }
+
+        .search-input:focus,
+        .filter-select:focus {
+            border-color: #b85c32;
+        }
+
+        .filter-button {
+            height: 48px;
+            border: none;
+            border-radius: 10px;
+            padding: 0 22px;
+            background: #a84b27;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .filter-button:hover {
+            background: #863a1d;
+        }
+
+        /* ================= CATEGORY ================= */
+
+        .category-menu {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .category-menu a {
+            text-decoration: none;
+            background: white;
+            color: #5a4b41;
+            padding: 10px 17px;
+            border-radius: 30px;
+            border: 1px solid #eadfd5;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .category-menu a:hover {
+            background: #a84b27;
+            color: white;
+        }
+
+        /* ================= CATEGORY SECTION ================= */
+
+        .menu-category {
+            margin-bottom: 65px;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e5dcd4;
+            padding-bottom: 15px;
+        }
+
+        .category-header h2 {
+            font-size: 30px;
+            color: #332822;
+        }
+
+        .category-header p {
+            color: #8a7a70;
+            font-size: 14px;
+        }
+
+        /* ================= PRODUCT GRID ================= */
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 17px;
+            overflow: hidden;
+            box-shadow: 0 7px 25px rgba(70, 45, 30, 0.08);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(70, 45, 30, 0.15);
+        }
+
+        .product-image {
+            height: 210px;
+            background: linear-gradient(135deg, #ead7c5, #f6eee7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+            background: #a84b27;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .product-content {
+            padding: 18px;
+        }
+
+        .product-category {
+            color: #b56642;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        .product-content h3 {
+            margin: 6px 0 8px;
+            font-size: 18px;
+            color: #2f2925;
+        }
+
+        .product-content p {
+            color: #81746b;
+            font-size: 13px;
+            min-height: 62px;
+        }
+
+        .rating {
+            color: #d89235;
+            font-size: 13px;
+            margin: 10px 0;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+        }
+
+        .price {
+            color: #a84b27;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .detail-button {
+            text-decoration: none;
+            background: #332822;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .detail-button:hover {
+            background: #a84b27;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #2d241f;
+            color: #ddd1c7;
+            padding: 45px 25px;
+            margin-top: 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        footer p,
+        footer li {
+            font-size: 14px;
+            color: #bfb2a8;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 8px;
+        }
+
+        .copyright {
+            max-width: 1200px;
+            margin: 35px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #51453e;
+            text-align: center;
+            color: #9e9289;
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .filter-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 45px 20px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+    <nav class="navbar">
+
+        <a href="products.html" class="logo">
+            FIN<span>Food</span>
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="products.html">Thực đơn</a></li>
+            <li><a href="#">Về chúng tôi</a></li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            FINFood Menu
+        </div>
+
+        <h1>Khám phá thực đơn</h1>
+
+        <p>
+            Từ những món ăn quen thuộc đến các lựa chọn mới mẻ,
+            FINFood mang đến thực đơn đa dạng, ngon miệng và phù hợp
+            cho mọi nhu cầu của bạn.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+
+    <!-- SEARCH -->
+
+    <section class="filter-box">
+
+        <div class="filter-title">
+            Tìm kiếm món ăn
+        </div>
+
+        <div class="filter-row">
+
+            <input
+                type="text"
+                class="search-input"
+                placeholder="Nhập tên món ăn..."
+            >
+
+            <select class="filter-select">
+                <option>Tất cả danh mục</option>
+                <option>Cơm</option>
+                <option>Bún / Phở / Mì</option>
+                <option>Đồ uống</option>
+                <option>Ăn vặt</option>
+                <option>Combo</option>
+                <option>Tráng miệng</option>
+            </select>
+
+            <select class="filter-select">
+                <option>Sắp xếp theo</option>
+                <option>Giá thấp đến cao</option>
+                <option>Giá cao đến thấp</option>
+                <option>Món bán chạy</option>
+            </select>
+
+            <button class="filter-button">
+                Tìm kiếm
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORY MENU -->
+
+    <div class="category-menu">
+
+        <a href="#com">Cơm</a>
+        <a href="#bun-pho-mi">Bún / Phở / Mì</a>
+        <a href="#do-uong">Đồ uống</a>
+        <a href="#an-vat">Ăn vặt</a>
+        <a href="#combo">Combo</a>
+        <a href="#trang-mieng">Tráng miệng</a>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- CƠM -->
+    <!-- ================================================= -->
+
+    <section class="menu-category" id="com">
+
+        <div class="category-header">
+            <div>
+                <h2>Cơm</h2>
+                <p>Các món cơm thơm ngon, đầy đủ dinh dưỡng</p>
+            </div>
+
+            <p>10 món</p>
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <span class="badge">Bán chạy</span>
+                    <img src="../assets/images/com-tam.jpg"
+                         alt="Cơm Tấm Sườn Bì Chả">
+                </div>
+
+                <div class="product-content">
+
+                    <span class="product-category">Cơm</span>
+
+                    <h3>Cơm Tấm Sườn Bì Chả</h3>
+
+                    <p>
+                        Cơm tấm thơm mềm dùng cùng sườn nướng,
+                        bì và chả hấp đậm đà.
+                    </p>
+
+                    <div class="rating">★★★★★ 4.9</div>
+
+                    <div class="product-bottom">
+                        <span class="price">30.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">
+                            Chi tiết
+                        </a>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <span class="badge">Yêu thích</span>
+                    <img src="../assets/images/com-ga.jpg"
+                         alt="Cơm Gà Xối Mỡ">
+                </div>
+
+                <div class="product-content">
+
+                    <span class="product-category">Cơm</span>
+
+                    <h3>Cơm Gà Xối Mỡ</h3>
+
+                    <p>
+                        Gà chiên vàng giòn bên ngoài,
+                        thịt mềm thơm ăn cùng cơm nóng.
+                    </p>
+
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">35.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <img src="../assets/images/com-rang.jpg"
+                         alt="Cơm Rang Dưa Bò">
+                </div>
+
+                <div class="product-content">
+
+                    <span class="product-category">Cơm</span>
+
+                    <h3>Cơm Rang Dưa Bò</h3>
+
+                    <p>
+                        Cơm rang vàng thơm kết hợp thịt bò
+                        và dưa cải chua nhẹ.
+                    </p>
+
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">28.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <img src="../assets/images/com-chien.jpg"
+                         alt="Cơm Chiên Dương Châu">
+                </div>
+
+                <div class="product-content">
+
+                    <span class="product-category">Cơm</span>
+
+                    <h3>Cơm Chiên Dương Châu</h3>
+
+                    <p>
+                        Cơm chiên cùng trứng, xúc xích,
+                        rau củ và tôm.
+                    </p>
+
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">32.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <span class="badge">Mới</span>
+                    <img src="../assets/images/com-suon.jpg"
+                         alt="Cơm Sườn Nướng Mật Ong">
+                </div>
+
+                <div class="product-content">
+
+                    <span class="product-category">Cơm</span>
+
+                    <h3>Cơm Sườn Nướng Mật Ong</h3>
+
+                    <p>
+                        Sườn nướng mềm thơm phủ sốt mật ong
+                        đậm đà.
+                    </p>
+
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">38.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <img src="../assets/images/com-bo-luc-lac.jpg"
+                         alt="Cơm Bò Lúc Lắc">
+                </div>
+
+                <div class="product-content">
+
+                    <span class="product-category">Cơm</span>
+
+                    <h3>Cơm Bò Lúc Lắc</h3>
+
+                    <p>
+                        Thịt bò mềm được áp chảo cùng
+                        sốt đặc biệt của FINFood.
+                    </p>
+
+                    <div class="rating">★★★★★ 4.9</div>
+
+                    <div class="product-bottom">
+                        <span class="price">42.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <img src="../assets/images/com-ca-kho.jpg"
+                         alt="Cơm Cá Kho Tộ">
+                </div>
+
+                <div class="product-content">
+
+                    <span class="product-category">Cơm</span>
+
+                    <h3>Cơm Cá Kho Tộ</h3>
+
+                    <p>
+                        Cá kho đậm vị, mềm thơm ăn cùng
+                        cơm trắng nóng hổi.
+                    </p>
+
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">34.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <img src="../assets/images/com-ga-teriyaki.jpg"
+                         alt="Cơm Gà Teriyaki">
+                </div>
+
+                <div class="product-content">
+
+                    <span class="product-category">Cơm</span>
+
+                    <h3>Cơm Gà Teriyaki</h3>
+
+                    <p>
+                        Gà áp chảo mềm mọng kết hợp
+                        sốt Teriyaki thơm ngọt.
+                    </p>
+
+                    <div class="rating">★★★★★ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">39.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <img src="../assets/images/com-thit-kho.jpg"
+                         alt="Cơm Thịt Kho Trứng">
+                </div>
+
+                <div class="product-content">
+
+                    <span class="product-category">Cơm</span>
+
+                    <h3>Cơm Thịt Kho Trứng</h3>
+
+                    <p>
+                        Thịt kho mềm cùng trứng đậm đà,
+                        mang hương vị gia đình.
+                    </p>
+
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">33.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="product-card">
+
+                <div class="product-image">
+                    <img src="../assets/images/com-heo-quay.jpg"
+                         alt="Cơm Heo Quay">
+                </div>
+
+                <div class="product-content">
+
+                    <span class="product-category">Cơm</span>
+
+                    <h3>Cơm Heo Quay</h3>
+
+                    <p>
+                        Heo quay da giòn, thịt mềm ăn kèm
+                        cơm và nước sốt đặc biệt.
+                    </p>
+
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">40.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- BÚN PHỞ MÌ -->
+    <!-- ================================================= -->
+
+    <section class="menu-category" id="bun-pho-mi">
+
+        <div class="category-header">
+            <div>
+                <h2>Bún / Phở / Mì</h2>
+                <p>Những món nước và món mì đậm đà hương vị</p>
+            </div>
+
+            <p>10 món</p>
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <span class="badge">Bán chạy</span>
+                    <img src="../assets/images/bun-tron.jpg" alt="Bún Trộn Bắp Bò">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Bún</span>
+                    <h3>Bún Trộn Bắp Bò</h3>
+                    <p>Bún mềm kết hợp bắp bò, rau sống và nước trộn đậm đà.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">35.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/pho-bo.jpg" alt="Phở Bò Tái">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Phở</span>
+                    <h3>Phở Bò Tái</h3>
+                    <p>Nước dùng trong thơm, bánh phở mềm và thịt bò tái.</p>
+                    <div class="rating">★★★★★ 4.9</div>
+
+                    <div class="product-bottom">
+                        <span class="price">40.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/mi-xao.jpg" alt="Mì Xào Bò Rau Cải">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Mì</span>
+                    <h3>Mì Xào Bò Rau Cải</h3>
+                    <p>Mì xào dai mềm cùng thịt bò và rau cải tươi.</p>
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">32.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/bun-bo-hue.jpg" alt="Bún Bò Huế">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Bún</span>
+                    <h3>Bún Bò Huế</h3>
+                    <p>Nước dùng cay nhẹ, thơm mùi sả cùng thịt bò mềm.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">38.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/pho-ga.jpg" alt="Phở Gà">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Phở</span>
+                    <h3>Phở Gà</h3>
+                    <p>Phở gà thanh nhẹ, thịt gà mềm và nước dùng thơm.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">38.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/bun-thit-nuong.jpg" alt="Bún Thịt Nướng">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Bún</span>
+                    <h3>Bún Thịt Nướng</h3>
+                    <p>Thịt nướng thơm cùng bún, rau sống và nước mắm chua ngọt.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">35.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/mi-quang.jpg" alt="Mì Quảng">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Mì</span>
+                    <h3>Mì Quảng</h3>
+                    <p>Sợi mì vàng đặc trưng cùng thịt, tôm và đậu phộng.</p>
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">36.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/hu-tieu.jpg" alt="Hủ Tiếu Nam Vang">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Hủ tiếu</span>
+                    <h3>Hủ Tiếu Nam Vang</h3>
+                    <p>Hủ tiếu thanh ngọt cùng thịt, tôm và trứng cút.</p>
+                    <div class="rating">★★★★★ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">42.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <span class="badge">Mới</span>
+                    <img src="../assets/images/mi-cay.jpg" alt="Mì Cay Hải Sản">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Mì</span>
+                    <h3>Mì Cay Hải Sản</h3>
+                    <p>Mì cay kết hợp tôm, mực và rau củ tươi.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">45.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/bun-cha.jpg" alt="Bún Chả Hà Nội">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Bún</span>
+                    <h3>Bún Chả Hà Nội</h3>
+                    <p>Chả nướng thơm, bún mềm và nước chấm chua ngọt.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">37.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ĐỒ UỐNG -->
+    <!-- ================================================= -->
+
+    <section class="menu-category" id="do-uong">
+
+        <div class="category-header">
+            <div>
+                <h2>Đồ uống</h2>
+                <p>Thức uống mát lạnh cho mọi thời điểm</p>
+            </div>
+
+            <p>10 món</p>
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <span class="badge">Bán chạy</span>
+                    <img src="../assets/images/tra-sua.jpg" alt="Trà Sữa Trân Châu Đen">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Trà sữa</span>
+                    <h3>Trà Sữa Trân Châu Đen</h3>
+                    <p>Trà sữa thơm béo kết hợp trân châu đen dai mềm.</p>
+                    <div class="rating">★★★★★ 4.9</div>
+
+                    <div class="product-bottom">
+                        <span class="price">20.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/tra-dao.jpg" alt="Trà Đào Cam Sả">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Trà</span>
+                    <h3>Trà Đào Cam Sả</h3>
+                    <p>Vị trà thanh mát hòa quyện cùng đào, cam và sả.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">25.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/ca-phe.jpg" alt="Cà Phê Sữa Đá">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Cà phê</span>
+                    <h3>Cà Phê Sữa Đá</h3>
+                    <p>Cà phê đậm vị kết hợp sữa đặc ngọt béo và đá lạnh.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">22.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/ca-phe-den.jpg" alt="Cà Phê Đen Đá">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Cà phê</span>
+                    <h3>Cà Phê Đen Đá</h3>
+                    <p>Cà phê rang xay đậm đà dành cho người yêu vị nguyên bản.</p>
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">18.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <span class="badge">Mới</span>
+                    <img src="../assets/images/matcha.jpg" alt="Matcha Latte">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Matcha</span>
+                    <h3>Matcha Latte</h3>
+                    <p>Matcha thơm nhẹ kết hợp sữa tươi béo mịn.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">28.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/tra-vai.jpg" alt="Trà Vải Hoa Hồng">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Trà</span>
+                    <h3>Trà Vải Hoa Hồng</h3>
+                    <p>Trà thanh nhẹ, thơm hương hoa hồng cùng vị vải ngọt.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">25.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/nuoc-ep-cam.jpg" alt="Nước Ép Cam">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Nước ép</span>
+                    <h3>Nước Ép Cam</h3>
+                    <p>Nước cam tươi mát, vị chua ngọt tự nhiên.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">25.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/nuoc-ep-dua-hau.jpg" alt="Nước Ép Dưa Hấu">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Nước ép</span>
+                    <h3>Nước Ép Dưa Hấu</h3>
+                    <p>Dưa hấu tươi xay ép mang đến vị ngọt mát tự nhiên.</p>
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">23.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/soda.jpg" alt="Soda Chanh Bạc Hà">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Soda</span>
+                    <h3>Soda Chanh Bạc Hà</h3>
+                    <p>Soda mát lạnh cùng chanh và bạc hà thơm dịu.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">24.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/chocolate.jpg" alt="Chocolate Đá Xay">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Đá xay</span>
+                    <h3>Chocolate Đá Xay</h3>
+                    <p>Chocolate đậm vị xay cùng sữa và đá mịn.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">30.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ĂN VẶT -->
+    <!-- ================================================= -->
+
+    <section class="menu-category" id="an-vat">
+
+        <div class="category-header">
+            <div>
+                <h2>Ăn vặt</h2>
+                <p>Những món ăn nhẹ phù hợp để thưởng thức cùng bạn bè</p>
+            </div>
+
+            <p>10 món</p>
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <span class="badge">Bán chạy</span>
+                    <img src="../assets/images/khoai-tay.jpg" alt="Khoai Tây Chiên">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Ăn vặt</span>
+                    <h3>Khoai Tây Chiên</h3>
+                    <p>Khoai tây vàng giòn, dùng cùng sốt chấm đặc biệt.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">25.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/ga-ran.jpg" alt="Gà Rán Giòn">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Ăn vặt</span>
+                    <h3>Gà Rán Giòn</h3>
+                    <p>Miếng gà giòn bên ngoài, mềm mọng bên trong.</p>
+                    <div class="rating">★★★★★ 4.9</div>
+
+                    <div class="product-bottom">
+                        <span class="price">30.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/xuc-xich.jpg" alt="Xúc Xích Chiên">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Ăn vặt</span>
+                    <h3>Xúc Xích Chiên</h3>
+                    <p>Xúc xích chiên vàng thơm, phù hợp cho bữa ăn nhẹ.</p>
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">20.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/ca-vien.jpg" alt="Cá Viên Chiên">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Ăn vặt</span>
+                    <h3>Cá Viên Chiên</h3>
+                    <p>Cá viên chiên nóng giòn cùng tương ớt và sốt đặc biệt.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">22.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/pho-mai-que.jpg" alt="Phô Mai Que">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Ăn vặt</span>
+                    <h3>Phô Mai Que</h3>
+                    <p>Lớp vỏ giòn rụm, bên trong là phô mai kéo sợi.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">25.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/banh-trang-tron.jpg" alt="Bánh Tráng Trộn">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Ăn vặt</span>
+                    <h3>Bánh Tráng Trộn</h3>
+                    <p>Bánh tráng dai mềm kết hợp xoài, trứng cút và nước sốt.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">20.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/bap-xao.jpg" alt="Bắp Xào Bơ">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Ăn vặt</span>
+                    <h3>Bắp Xào Bơ</h3>
+                    <p>Bắp ngọt xào bơ thơm cùng hành lá và gia vị.</p>
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">22.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/ha-cao.jpg" alt="Há Cảo Chiên">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Ăn vặt</span>
+                    <h3>Há Cảo Chiên</h3>
+                    <p>Há cảo vàng giòn với nhân thịt và rau củ.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">28.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/nem-chua-ran.jpg" alt="Nem Chua Rán">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Ăn vặt</span>
+                    <h3>Nem Chua Rán</h3>
+                    <p>Nem chua rán giòn thơm, ăn kèm tương ớt.</p>
+                    <div class="rating">★★★★★ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">25.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/khoai-lang.jpg" alt="Khoai Lang Kén">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Ăn vặt</span>
+                    <h3>Khoai Lang Kén</h3>
+                    <p>Khoai lang mềm dẻo bên trong và giòn thơm bên ngoài.</p>
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">24.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- COMBO -->
+    <!-- ================================================= -->
+
+    <section class="menu-category" id="combo">
+
+        <div class="category-header">
+            <div>
+                <h2>Combo</h2>
+                <p>Lựa chọn tiết kiệm cho cá nhân và nhóm bạn</p>
+            </div>
+
+            <p>10 món</p>
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <span class="badge">Tiết kiệm</span>
+                    <img src="../assets/images/combo.jpg" alt="Combo Sinh Viên">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Combo</span>
+                    <h3>Combo Sinh Viên</h3>
+                    <p>Cơm, món ăn kèm và nước uống với mức giá tiết kiệm.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">50.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/combo-ga.jpg" alt="Combo Cơm Gà">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Combo</span>
+                    <h3>Combo Cơm Gà</h3>
+                    <p>Cơm gà kết hợp đồ uống mát lạnh cho một bữa ăn hoàn chỉnh.</p>
+                    <div class="rating">★★★★★ 4.9</div>
+
+                    <div class="product-bottom">
+                        <span class="price">55.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/combo-suon.jpg" alt="Combo Cơm Sườn">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Combo</span>
+                    <h3>Combo Cơm Sườn</h3>
+                    <p>Cơm sườn nướng thơm ngon cùng nước uống tùy chọn.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">58.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/combo-bun.jpg" alt="Combo Bún và Trà Đào">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Combo</span>
+                    <h3>Combo Bún + Trà Đào</h3>
+                    <p>Bún thịt nướng kết hợp trà đào cam sả mát lạnh.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">55.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <span class="badge">Mới</span>
+                    <img src="../assets/images/combo-mi.jpg" alt="Combo Mì Cay">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Combo</span>
+                    <h3>Combo Mì Cay + Nước</h3>
+                    <p>Mì cay hải sản cùng một loại nước uống tùy chọn.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">60.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/combo-ga-ran.jpg" alt="Combo Gà Rán và Khoai">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Combo</span>
+                    <h3>Combo Gà Rán + Khoai</h3>
+                    <p>Gà rán giòn kết hợp khoai tây chiên vàng thơm.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">52.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/combo-burger.jpg" alt="Combo Burger">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Combo</span>
+                    <h3>Combo Burger + Khoai + Nước</h3>
+                    <p>Burger, khoai tây chiên và nước uống cho một bữa ăn nhanh.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">65.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <span class="badge">2 người</span>
+                    <img src="../assets/images/combo-2-nguoi.jpg" alt="Combo 2 Người">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Combo</span>
+                    <h3>Combo 2 Người</h3>
+                    <p>Combo đa dạng dành cho hai người cùng thưởng thức.</p>
+                    <div class="rating">★★★★★ 4.9</div>
+
+                    <div class="product-bottom">
+                        <span class="price">95.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/combo-tiet-kiem.jpg" alt="Combo Tiết Kiệm">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Combo</span>
+                    <h3>Combo Tiết Kiệm</h3>
+                    <p>Lựa chọn đơn giản, ngon miệng với mức giá hợp lý.</p>
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">45.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/combo-cuoi-tuan.jpg" alt="Combo Cuối Tuần">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Combo</span>
+                    <h3>Combo Cuối Tuần</h3>
+                    <p>Nhiều món ăn hấp dẫn phù hợp cho những buổi gặp mặt.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">75.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- TRÁNG MIỆNG -->
+    <!-- ================================================= -->
+
+    <section class="menu-category" id="trang-mieng">
+
+        <div class="category-header">
+            <div>
+                <h2>Tráng miệng</h2>
+                <p>Khép lại bữa ăn bằng những món ngọt nhẹ nhàng</p>
+            </div>
+
+            <p>10 món</p>
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <span class="badge">Bán chạy</span>
+                    <img src="../assets/images/flan.jpg" alt="Bánh Flan Caramel">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Tráng miệng</span>
+                    <h3>Bánh Flan Caramel</h3>
+                    <p>Bánh flan mềm mịn kết hợp lớp caramel thơm ngọt.</p>
+                    <div class="rating">★★★★★ 4.9</div>
+
+                    <div class="product-bottom">
+                        <span class="price">18.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/sua-chua.jpg" alt="Sữa Chua Trái Cây">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Tráng miệng</span>
+                    <h3>Sữa Chua Trái Cây</h3>
+                    <p>Sữa chua mát lạnh kết hợp nhiều loại trái cây tươi.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">20.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/khuc-bach.jpg" alt="Chè Khúc Bạch">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Chè</span>
+                    <h3>Chè Khúc Bạch</h3>
+                    <p>Khúc bạch mềm mịn cùng nước vải thanh mát.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">22.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <span class="badge">Yêu thích</span>
+                    <img src="../assets/images/che-thai.jpg" alt="Chè Thái Sầu Riêng">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Chè</span>
+                    <h3>Chè Thái Sầu Riêng</h3>
+                    <p>Chè Thái béo thơm kết hợp sầu riêng và trái cây.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">28.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/tau-hu.jpg" alt="Tàu Hũ Trân Châu">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Tráng miệng</span>
+                    <h3>Tàu Hũ Trân Châu</h3>
+                    <p>Tàu hũ mềm mịn cùng trân châu dai và nước đường.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">20.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/kem-vani.jpg" alt="Kem Vani">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Kem</span>
+                    <h3>Kem Vani</h3>
+                    <p>Kem vani mát lạnh với hương thơm nhẹ nhàng.</p>
+                    <div class="rating">★★★★☆ 4.6</div>
+
+                    <div class="product-bottom">
+                        <span class="price">18.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/kem-chocolate.jpg" alt="Kem Chocolate">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Kem</span>
+                    <h3>Kem Chocolate</h3>
+                    <p>Kem chocolate béo thơm với vị cacao đậm đà.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">20.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/mochi.jpg" alt="Mochi Kem">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Mochi</span>
+                    <h3>Mochi Kem</h3>
+                    <p>Lớp vỏ mochi mềm dẻo bên ngoài, kem mát lạnh bên trong.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">25.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/tiramisu.jpg" alt="Bánh Tiramisu">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Bánh</span>
+                    <h3>Bánh Tiramisu</h3>
+                    <p>Tiramisu mềm mịn với vị cacao và cà phê đặc trưng.</p>
+                    <div class="rating">★★★★★ 4.8</div>
+
+                    <div class="product-bottom">
+                        <span class="price">30.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="../assets/images/pudding-xoai.jpg" alt="Pudding Xoài">
+                </div>
+
+                <div class="product-content">
+                    <span class="product-category">Tráng miệng</span>
+                    <h3>Pudding Xoài</h3>
+                    <p>Pudding mềm mịn kết hợp vị xoài chua ngọt tự nhiên.</p>
+                    <div class="rating">★★★★☆ 4.7</div>
+
+                    <div class="product-bottom">
+                        <span class="price">22.000 VNĐ</span>
+                        <a href="product_detail.html" class="detail-button">Chi tiết</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <h3>FINFood</h3>
+
+            <p>
+                FINFood mang đến những món ăn ngon,
+                đa dạng và phù hợp với nhu cầu của
+                học sinh, sinh viên và người trẻ.
+            </p>
+        </div>
+
+
+        <div>
+            <h3>Danh mục</h3>
+
+            <ul>
+                <li>Cơm</li>
+                <li>Bún / Phở / Mì</li>
+                <li>Đồ uống</li>
+                <li>Ăn vặt</li>
+            </ul>
+        </div>
+
+
+        <div>
+            <h3>Liên hệ</h3>
+
+            <ul>
+                <li>📞 0123 456 789</li>
+                <li>✉️ finfood@gmail.com</li>
+                <li>📍 Hà Nội, Việt Nam</li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 FINFood. All rights reserved.
+    </div>
+
+</footer>
+
+</body>
+</html>
