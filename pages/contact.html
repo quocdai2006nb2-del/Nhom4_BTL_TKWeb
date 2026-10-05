@@ -1,110 +1,694 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đặt Hàng & Thanh Toán - FINSTART Food</title>
+
+    <title>Đặt hàng - FINFood</title>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <style>
+
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        /* HEADER */
+
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            color: #d90429 !important;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: #333 !important;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            color: #d90429 !important;
+        }
+
+        .active {
+            color: #d90429 !important;
+        }
+
+
+        /* TIÊU ĐỀ */
+
+        .page-title {
+            background-color: #d90429;
+            color: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+
+        /* CARD */
+
+        .box {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .box-title {
+            color: #d90429;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+
+        /* BẢNG ĐƠN HÀNG */
+
+        .table th {
+            background-color: #ffe5e5;
+            color: #333;
+        }
+
+        .total {
+            color: #d90429;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+
+        /* FORM */
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control:focus {
+            border-color: #d90429;
+            box-shadow: none;
+        }
+
+
+        /* PHƯƠNG THỨC THANH TOÁN */
+
+        .payment {
+            border: 1px solid #ddd;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .payment:hover {
+            background-color: #fff5f5;
+        }
+
+
+        /* NGÂN SÁCH */
+
+        .budget-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .budget-title {
+            color: #856404;
+            font-weight: bold;
+        }
+
+
+        /* QR */
+
+        .qr-box {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 15px;
+            background-color: #f8f9fa;
+        }
+
+        .qr-box img {
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+        }
+
+
+        /* TRẠNG THÁI ĐƠN */
+
+        .status {
+            text-align: center;
+        }
+
+        .status-item {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f8f9fa;
+        }
+
+        .status-active {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+
+        /* BUTTON */
+
+        .btn-order {
+            background-color: #d90429;
+            color: white;
+            font-weight: bold;
+            padding: 10px 25px;
+            border: none;
+        }
+
+        .btn-order:hover {
+            background-color: #b80321;
+            color: white;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            background-color: #2b2d42;
+            color: white;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            .page-title h1 {
+                font-size: 25px;
+            }
+
+            .navbar-brand {
+                font-size: 20px;
+            }
+
+            .status-item {
+                display: block;
+                margin: 8px 0;
+            }
+
+        }
+
+    </style>
 </head>
+
+
 <body>
 
-    <header>
-        <div class="logo">
-            <h1>FINSTART Food</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Trang chủ</a></li>
-                <li><a href="products.html">Thực đơn</a></li>
-                <li><a href="calculator.html">Tính ngân sách</a></li>
-                <li><a href="contact.html" class="active" aria-current="page">Đặt hàng</a></li>
-                <li><a href="about.html">Giới thiệu</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <h2>Biểu Mẫu Đặt Món & Thanh Toán</h2>
+<!-- ================= HEADER ================= -->
 
-        <!-- Khối Cảnh Báo Vượt Quỹ Ăn (US05) -->
-        <section id="budget-warning-alert" style="display:none; color: red;">
-            <p>⚠️ <strong>CẢNH BÁO TÀI CHÍNH:</strong> Đơn hàng này vượt quá hạn mức bữa ăn đã đề ra của bạn! Bạn có chắc chắn muốn tiếp tục?</p>
-        </section>
+<header>
 
-        <!-- Form Đặt Hàng (US04, US05, US07) -->
-        <section class="form-container">
-            <form action="#" method="POST" id="order-form">
-                
-                <fieldset>
-                    <legend>Thông Tin Khách Hàng</legend>
-                    
-                    <label for="fullname">Họ và tên người nhận (*):</label><br>
-                    <input type="text" id="fullname" name="fullname" placeholder="Nguyễn Văn A" required>
-                    <span class="error-message" id="err-fullname"></span><br><br>
+    <nav class="navbar navbar-expand-lg">
 
-                    <label for="phone">Số điện thoại (*):</label><br>
-                    <input type="tel" id="phone" name="phone" placeholder="0912345678" required>
-                    <span class="error-message" id="err-phone"></span><br><br>
+        <div class="container">
 
-                    <label for="email">Email sinh viên (*):</label><br>
-                    <input type="email" id="email" name="email" placeholder="sv@bav.edu.vn" required>
-                    <span class="error-message" id="err-email"></span><br><br>
+            <a class="navbar-brand" href="../index.html">
+                FINFood
+            </a>
 
-                    <label for="address">Địa chỉ giao (Phòng KTX / Tòa nhà) (*):</label><br>
-                    <input type="text" id="address" name="address" placeholder="Phòng 302 KTX Học viện Ngân hàng" required>
-                    <span class="error-message" id="err-address"></span>
-                </fieldset>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#menu">
 
-                <br>
+                <span class="navbar-toggler-icon"></span>
 
-                <fieldset>
-                    <legend>Phương Thức Thanh Toán (US07)</legend>
-                    
-                    <input type="radio" id="pay-cod" name="payment_method" value="cod" checked>
-                    <label for="pay-cod">Tiền mặt khi nhận hàng (COD)</label><br>
+            </button>
 
-                    <input type="radio" id="pay-qr" name="payment_method" value="vietqr">
-                    <label for="pay-qr">Chuyển khoản Ngân hàng (VietQR - Tự động bật QR)</label><br>
 
-                    <input type="radio" id="pay-momo" name="payment_method" value="momo">
-                    <label for="pay-momo">Ví điện tử MoMo</label><br><br>
+            <div class="collapse navbar-collapse" id="menu">
 
-                    <label for="notes">Ghi chú cho quán & shipper:</label><br>
-                    <textarea id="notes" name="notes" rows="3" cols="40" placeholder="Ví dụ: Cho ít cay, gọi trước khi đến 5 phút..."></textarea>
-                </fieldset>
+                <ul class="navbar-nav ml-auto">
 
-                <br>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            Trang chủ
+                        </a>
+                    </li>
 
-                <button type="submit" id="btn-submit-order">Xác Nhận Đặt Hàng</button>
-            </form>
-        </section>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">
+                            Món ăn
+                        </a>
+                    </li>
 
-        <!-- Khung Modal Mô Phỏng Hiện Mã QR Thanh Toán Online (US07) -->
-        <section id="qr-modal" class="modal-box" style="display:none;">
-            <div class="modal-content">
-                <h3>Quét Mã QR Để Thanh Toán</h3>
-                <p>Vui lòng dùng App Ngân hàng hoặc MoMo quét mã dưới đây:</p>
-                <img src="../assets/images/qr-code-demo.jpg" alt="Mã QR chuyển khoản mô phỏng" width="200" height="200">
-                <p>Tổng tiền: <strong id="modal-total-amount">0 VNĐ</strong></p>
-                <button type="button" id="btn-close-qr">Đã hoàn tất chuyển khoản</button>
+                    <li class="nav-item">
+                        <a class="nav-link" href="calculator.html">
+                            Tính ngân sách
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                           aria-current="page"
+                           href="contact.html">
+                            Đặt hàng
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            Giới thiệu
+                        </a>
+                    </li>
+
+                </ul>
+
             </div>
-        </section>
 
-        <!-- Khối Tiến Trình Trạng Thái Đơn Hàng Realtime (US08) -->
-        <section class="order-status-section" id="order-status-block" style="display:none;">
-            <h3>Trạng Thái Đơn Hàng Của Bạn (#ORD-2026-001)</h3>
-            <ol class="timeline-ui">
-                <li id="step1" class="step active">1. Đã tiếp nhận đơn hàng</li>
-                <li id="step2" class="step">2. Quán đang chế biến</li>
-                <li id="step3" class="step">3. Shipper đang giao tới KTX</li>
-                <li id="step4" class="step">4. Đã giao thành công</li>
-            </ol>
-            <p><strong>Hotline Shipper:</strong> 0988.777.666 (Tài xế Nguyễn Văn B)</p>
-        </section>
-    </main>
+        </div>
 
-    <footer>
-        <p>&copy; 2026 FINSTART Food. All rights reserved.</p>
-    </footer>
+    </nav>
+
+</header>
+
+
+
+<!-- ================= TIÊU ĐỀ ================= -->
+
+<div class="page-title">
+
+    <div class="container">
+
+        <h1>ĐẶT HÀNG</h1>
+
+        <p class="mb-0">
+            Đặt món nhanh chóng - Chi tiêu hợp lý
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= NỘI DUNG ================= -->
+
+<div class="container">
+
+
+    <!-- ================= ĐƠN HÀNG ================= -->
+
+    <div class="box">
+
+        <div class="box-title">
+            1. Thông tin đơn hàng
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+                        <th>Món ăn</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>Cơm gà sốt tiêu</td>
+                        <td>1</td>
+                        <td>35.000đ</td>
+                        <td>35.000đ</td>
+                    </tr>
+
+                    <tr>
+                        <td>Trà đào</td>
+                        <td>1</td>
+                        <td>15.000đ</td>
+                        <td>15.000đ</td>
+                    </tr>
+
+                    <tr>
+                        <td>Phí giao hàng</td>
+                        <td>1</td>
+                        <td>10.000đ</td>
+                        <td>10.000đ</td>
+                    </tr>
+
+                    <tr>
+
+                        <th colspan="3" class="text-right">
+                            Tổng tiền
+                        </th>
+
+                        <th class="total">
+                            60.000đ
+                        </th>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= THÔNG TIN KHÁCH HÀNG ================= -->
+
+    <div class="box">
+
+        <div class="box-title">
+            2. Thông tin khách hàng
+        </div>
+
+
+        <form>
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    Họ và tên *
+                </label>
+
+                <input type="text"
+                       id="name"
+                       class="form-control"
+                       placeholder="Nhập họ và tên"
+                       required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="phone">
+                    Số điện thoại *
+                </label>
+
+                <input type="tel"
+                       id="phone"
+                       class="form-control"
+                       placeholder="Nhập số điện thoại"
+                       required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input type="email"
+                       id="email"
+                       class="form-control"
+                       placeholder="Nhập email">
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="address">
+                    Địa chỉ giao hàng *
+                </label>
+
+                <input type="text"
+                       id="address"
+                       class="form-control"
+                       placeholder="Ví dụ: Phòng 203 - KTX A"
+                       required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="note">
+                    Ghi chú
+                </label>
+
+                <textarea id="note"
+                          class="form-control"
+                          rows="3"
+                          placeholder="Nhập ghi chú cho người giao hàng"></textarea>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- ================= NGÂN SÁCH ================= -->
+
+    <div class="box">
+
+        <div class="box-title">
+            3. Kiểm tra ngân sách
+        </div>
+
+
+        <div class="budget-box">
+
+            <p class="budget-title">
+                Ngân sách ăn uống của bạn
+            </p>
+
+            <p>
+                Số tiền còn lại:
+                <strong>100.000đ</strong>
+            </p>
+
+            <p>
+                Tổng đơn hàng:
+                <strong>60.000đ</strong>
+            </p>
+
+            <p class="mb-0">
+                Sau khi đặt hàng còn:
+                <strong>40.000đ</strong>
+            </p>
+
+        </div>
+
+
+        <div class="alert alert-success mt-3 mb-0">
+
+            Đơn hàng hiện tại nằm trong ngân sách của bạn.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= THANH TOÁN ================= -->
+
+    <div class="box">
+
+        <div class="box-title">
+            4. Phương thức thanh toán
+        </div>
+
+
+        <div class="payment">
+
+            <input type="radio"
+                   name="payment"
+                   id="cod"
+                   checked>
+
+            <label for="cod">
+                Thanh toán khi nhận hàng (COD)
+            </label>
+
+        </div>
+
+
+
+        <div class="payment">
+
+            <input type="radio"
+                   name="payment"
+                   id="vietqr">
+
+            <label for="vietqr">
+                Thanh toán bằng VietQR
+            </label>
+
+        </div>
+
+
+
+        <div class="payment">
+
+            <input type="radio"
+                   name="payment"
+                   id="momo">
+
+            <label for="momo">
+                Thanh toán bằng MoMo
+            </label>
+
+        </div>
+
+
+
+        <!-- QR VIETQR -->
+
+        <div class="qr-box">
+
+            <h5>
+                Mã QR thanh toán
+            </h5>
+
+            <p class="text-muted">
+                Quét mã QR để thanh toán đơn hàng
+            </p>
+
+            <img src="../images/qr/vietqr.png"
+                 alt="Mã QR VietQR">
+
+            <p class="small">
+                Nội dung chuyển khoản:
+                <strong>FINFOOD 60000</strong>
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================= XÁC NHẬN ================= -->
+
+    <div class="box text-center">
+
+        <p class="mb-2">
+            Tổng thanh toán:
+        </p>
+
+        <p class="total">
+            60.000đ
+        </p>
+
+
+        <button type="submit"
+                class="btn btn-order">
+
+            XÁC NHẬN ĐẶT HÀNG
+
+        </button>
+
+    </div>
+
+
+
+    <!-- ================= TRẠNG THÁI ================= -->
+
+    <div class="box">
+
+        <div class="box-title">
+            5. Trạng thái đơn hàng
+        </div>
+
+
+        <div class="status">
+
+            <div class="status-item status-active">
+                1. Chờ xác nhận
+            </div>
+
+            <div class="status-item">
+                2. Đang chuẩn bị món
+            </div>
+
+            <div class="status-item">
+                3. Đang giao hàng
+            </div>
+
+            <div class="status-item">
+                4. Đã giao hàng
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p class="font-weight-bold mb-1">
+        FINFood
+    </p>
+
+    <p class="mb-0">
+        Ăn ngon - Chi tiêu hợp lý
+    </p>
+
+    <p class="small mb-0 mt-2">
+        © 2026 FINFood
+    </p>
+
+</footer>
+
 
 </body>
+
 </html>
+```
