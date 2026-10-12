@@ -2,8 +2,8 @@
 A. Tính hạn mức ăn cá nhân
 - Nhập: Ngân sách tháng, Số ngày trong tháng, Số bữa/ngày
 - Tính:
-  - Hạn mức/ngày = Ngân sách tháng ÷ Số ngày
-  - Hạn mức/bữa = Hạn mức/ngày ÷ Số bữa
+  Hạn mức/ngày = Ngân sách tháng ÷ Số ngày
+  Hạn mức/bữa = Hạn mức/ngày ÷ Số bữa
 - Hiển thị hạn mức ăn/ngày và hạn mức/bữa
 B. Chia bill nhóm
 - Nhập số người
