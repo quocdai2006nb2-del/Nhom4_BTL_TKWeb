@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -8,15 +7,22 @@
     <title>Đặt hàng - LUMIFood</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
         }
 
         header {
             background-color: #ff7a00;
-            padding: 15px;
+            padding: 15px 5%;
+            box-shadow: 0 2px 5px #00000015;
         }
 
         .logo {
@@ -27,47 +33,64 @@
 
         nav {
             margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 20px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-right: 20px;
+            transition: 0.3s;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav a:focus {
             text-decoration: underline;
         }
 
         .container {
             width: 90%;
-            margin: 20px auto;
+            max-width: 1100px;
+            margin: 25px auto;
         }
 
         h1 {
             text-align: center;
             color: #ff7a00;
-        }
-
-        .box {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
+            margin-bottom: 25px;
         }
 
         h2 {
             color: #ff7a00;
+            font-size: 22px;
+            margin-top: 0;
+        }
+
+        .box {
+            background-color: white;
+            padding: 22px;
+            margin-bottom: 22px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px #00000008;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 500px;
         }
 
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
             text-align: center;
         }
 
@@ -75,76 +98,153 @@
             background-color: #ffe0c2;
         }
 
-        label {
-            display: block;
-            margin-top: 10px;
-            margin-bottom: 5px;
+        tbody tr:nth-child(even) {
+            background-color: #fffaf5;
         }
 
-        input, textarea, select {
+        .total {
+            color: #e53935;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        textarea,
+        select {
             width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 15px;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #ff7a00;
+            box-shadow: 0 0 0 3px #ff7a0020;
         }
 
         textarea {
-            height: 80px;
+            height: 90px;
+            resize: vertical;
+        }
+
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-top: 20px;
+            padding: 15px;
+        }
+
+        legend {
+            color: #ff7a00;
+            font-weight: bold;
+            padding: 0 8px;
         }
 
         .payment {
-            margin-top: 10px;
+            margin: 10px 0;
+        }
+
+        .payment label {
+            display: inline;
+            margin-left: 5px;
+            font-weight: normal;
+            cursor: pointer;
         }
 
         .payment input {
-            width: auto;
+            accent-color: #ff7a00;
         }
 
         .button {
+            display: inline-block;
             background-color: #ff7a00;
             color: white;
             border: none;
-            padding: 12px 25px;
-            margin-top: 15px;
+            border-radius: 6px;
+            padding: 12px 28px;
+            margin-top: 20px;
+            font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .button:hover {
             background-color: #e66d00;
         }
 
-        .total {
-            color: #ff0000;
-            font-size: 20px;
-            font-weight: bold;
+        .button:focus-visible {
+            outline: 3px solid #ffbf80;
+            outline-offset: 3px;
         }
 
         .warning {
             background-color: #fff3cd;
             padding: 15px;
             border: 1px solid #ffeeba;
+            border-radius: 6px;
             margin-top: 15px;
+        }
+
+        .success {
+            color: #218838;
+            font-weight: bold;
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .qr {
             text-align: center;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            flex: 1 1 220px;
         }
 
         .qr img {
-            width: 180px;
-            height: 180px;
+            width: 160px;
+            height: 160px;
+            max-width: 100%;
+            object-fit: contain;
             margin: 10px;
         }
 
         .status {
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .status span {
             display: inline-block;
-            padding: 10px;
-            margin: 5px;
+            padding: 10px 15px;
             border: 1px solid #ff7a00;
-            border-radius: 5px;
+            border-radius: 20px;
+            background-color: #fffaf5;
+        }
+
+        .status .active {
+            background-color: #ff7a00;
+            color: white;
         }
 
         footer {
@@ -155,23 +255,39 @@
             margin-top: 30px;
         }
 
+        footer p {
+            margin: 5px;
+        }
+
         @media (max-width: 600px) {
+            header {
+                padding: 15px 5%;
+            }
+
             .container {
                 width: 95%;
             }
 
-            nav a {
-                display: block;
-                margin: 10px 0;
+            nav {
+                flex-direction: column;
+                gap: 8px;
             }
 
-            table {
-                font-size: 14px;
+            .box {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 20px;
             }
 
             .qr img {
                 width: 140px;
                 height: 140px;
+            }
+
+            .button {
+                width: 100%;
             }
         }
     </style>
@@ -180,183 +296,230 @@
 <body>
 
     <header>
-        <div class="logo">FINFood</div>
+        <div class="logo">LUMIFood</div>
 
-        <nav>
+        <nav aria-label="Điều hướng chính">
             <a href="../index.html">Trang chủ</a>
             <a href="products.html">Món ăn</a>
-            <a href="calculator.html">Tính ngân sách</a>
-            <a href="contact.html" aria-current="page">Đặt hàng</a>
             <a href="about.html">Giới thiệu</a>
+            <a href="calculator.html">Ngân sách</a>
+            <a href="contact.html" aria-current="page">Đặt hàng</a>
         </nav>
     </header>
 
-
-    <div class="container">
+    <main class="container">
 
         <h1>ĐẶT HÀNG</h1>
 
-
-        <!-- Thông tin món ăn -->
-        <div class="box">
-
+        <section class="box">
             <h2>1. Thông tin đơn hàng</h2>
 
-            <table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Món ăn</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
 
-                <tr>
-                    <th>Món ăn</th>
-                    <th>Số lượng</th>
-                    <th>Đơn giá</th>
-                    <th>Thành tiền</th>
-                </tr>
+                    <tbody>
+                        <tr>
+                            <td>Cơm gà</td>
+                            <td>1</td>
+                            <td>40.000đ</td>
+                            <td>40.000đ</td>
+                        </tr>
 
-                <tr>
-                    <td>Cơm gà</td>
-                    <td>1</td>
-                    <td>40.000đ</td>
-                    <td>40.000đ</td>
-                </tr>
+                        <tr>
+                            <td>Trà đào</td>
+                            <td>1</td>
+                            <td>20.000đ</td>
+                            <td>20.000đ</td>
+                        </tr>
+                    </tbody>
 
-                <tr>
-                    <td>Trà đào</td>
-                    <td>1</td>
-                    <td>20.000đ</td>
-                    <td>20.000đ</td>
-                </tr>
+                    <tfoot>
+                        <tr>
+                            <th colspan="3">Tổng tiền</th>
+                            <th class="total">60.000đ</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
 
-                <tr>
-                    <th colspan="3">Tổng tiền</th>
-                    <th>60.000đ</th>
-                </tr>
-
-            </table>
-
-        </div>
-
-
-        <!-- Form đặt hàng -->
-        <div class="box">
-
+        <section class="box">
             <h2>2. Thông tin khách hàng</h2>
 
-            <form>
+            <form action="#" method="post">
 
-                <label>Họ và tên:</label>
-                <input type="text" placeholder="Nhập họ và tên" required>
+                <label for="fullname">Họ và tên:</label>
+                <input
+                    type="text"
+                    id="fullname"
+                    name="fullname"
+                    placeholder="Nhập họ và tên"
+                    autocomplete="name"
+                    required
+                >
 
+                <label for="phone">Số điện thoại:</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Nhập số điện thoại"
+                    autocomplete="tel"
+                    pattern="[0-9]{10}"
+                    title="Vui lòng nhập số điện thoại gồm 10 chữ số"
+                    required
+                >
 
-                <label>Số điện thoại:</label>
-                <input type="tel" placeholder="Nhập số điện thoại" required>
+                <label for="email">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Nhập email"
+                    autocomplete="email"
+                >
 
+                <label for="address">Địa chỉ giao hàng:</label>
+                <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Nhập địa chỉ giao hàng"
+                    autocomplete="street-address"
+                    required
+                >
 
-                <label>Email:</label>
-                <input type="email" placeholder="Nhập email">
+                <label for="note">Ghi chú:</label>
+                <textarea
+                    id="note"
+                    name="note"
+                    placeholder="Ví dụ: Không lấy hành..."
+                ></textarea>
 
+                <fieldset>
+                    <legend>3. Phương thức thanh toán</legend>
 
-                <label>Địa chỉ giao hàng:</label>
-                <input type="text" placeholder="Nhập địa chỉ giao hàng" required>
+                    <div class="payment">
+                        <input
+                            type="radio"
+                            id="cod"
+                            name="payment"
+                            value="cod"
+                            checked
+                            required
+                        >
+                        <label for="cod">
+                            Thanh toán khi nhận hàng
+                        </label>
+                    </div>
 
+                    <div class="payment">
+                        <input
+                            type="radio"
+                            id="vietqr"
+                            name="payment"
+                            value="vietqr"
+                        >
+                        <label for="vietqr">
+                            Thanh toán bằng VietQR
+                        </label>
+                    </div>
 
-                <label>Ghi chú:</label>
-                <textarea placeholder="Ví dụ: Không lấy hành..."></textarea>
-
-
-                <h2>3. Phương thức thanh toán</h2>
-
-                <div class="payment">
-                    <input type="radio" name="payment" checked>
-                    Thanh toán khi nhận hàng
-                </div>
-
-                <div class="payment">
-                    <input type="radio" name="payment">
-                    Thanh toán bằng VietQR
-                </div>
-
-                <div class="payment">
-                    <input type="radio" name="payment">
-                    Thanh toán bằng MoMo
-                </div>
-
+                    <div class="payment">
+                        <input
+                            type="radio"
+                            id="momo"
+                            name="payment"
+                            value="momo"
+                        >
+                        <label for="momo">
+                            Thanh toán bằng MoMo
+                        </label>
+                    </div>
+                </fieldset>
 
                 <button type="submit" class="button">
                     Đặt hàng
                 </button>
 
             </form>
+        </section>
 
-        </div>
-
-
-        <!-- Ngân sách -->
-        <div class="box">
-
+        <section class="box">
             <h2>4. Kiểm tra ngân sách</h2>
 
-            <p>Số tiền còn lại: <b>100.000đ</b></p>
-
-            <p>Tiền đơn hàng: <b>60.000đ</b></p>
-
-            <p>Số tiền còn lại sau khi mua: <b>40.000đ</b></p>
+            <p>Số tiền ban đầu: <strong>100.000đ</strong></p>
+            <p>Tiền đơn hàng: <strong>60.000đ</strong></p>
+            <p>
+                Số tiền còn lại:
+                <span class="total">40.000đ</span>
+            </p>
 
             <div class="warning">
-                Đơn hàng này vẫn nằm trong ngân sách của bạn.
+                <p class="success">
+                    Đơn hàng vẫn nằm trong ngân sách của bạn!
+                </p>
+                <p>
+                    Bạn còn 40.000đ sau khi thanh toán đơn hàng.
+                </p>
             </div>
+        </section>
 
-        </div>
-
-
-        <!-- QR -->
-        <div class="box">
-
+        <section class="box">
             <h2>5. Thanh toán QR</h2>
 
-            <div class="qr">
+            <div class="qr-container">
 
-                <p>Quét mã VietQR để thanh toán:</p>
+                <div class="qr">
+                    <h3>VietQR</h3>
+                    <p>Quét mã để thanh toán qua ngân hàng.</p>
 
-                <img src="../images/qr/vietqr.png"
-                     alt="Mã QR VietQR">
+                    <img
+                        src="../images/qr/vietqr.png"
+                        alt="Mã QR thanh toán VietQR"
+                        loading="lazy"
+                    >
+                </div>
 
-                <p>Hoặc thanh toán bằng MoMo:</p>
+                <div class="qr">
+                    <h3>MoMo</h3>
+                    <p>Quét mã để thanh toán bằng MoMo.</p>
 
-                <img src="../images/qr/momo.png"
-                     alt="Mã QR MoMo">
+                    <img
+                        src="../images/qr/momo.png"
+                        alt="Mã QR thanh toán MoMo"
+                        loading="lazy"
+                    >
+                </div>
 
             </div>
+        </section>
 
-        </div>
-
-
-        <!-- Trạng thái đơn hàng -->
-        <div class="box">
-
+        <section class="box">
             <h2>6. Trạng thái đơn hàng</h2>
 
             <div class="status">
-
-                <span>1. Chờ xác nhận</span>
-
+                <span class="active">1. Chờ xác nhận</span>
                 <span>2. Đang chuẩn bị</span>
-
                 <span>3. Đang giao</span>
-
                 <span>4. Đã giao</span>
-
             </div>
+        </section>
 
-        </div>
-
-    </div>
-
+    </main>
 
     <footer>
-        <p>LUMIFood - Ăn ngon, chi tiêu hợp lý</p>
-        <p>LUMIFood la so 1</p>
+        <p>LUMIFood Ăn ngon vaf chi tiêu hợp lý</p>
+        <p>LUMIFood là số 1!</p>
     </footer>
 
 </body>
 </html>
-```
-
