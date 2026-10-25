@@ -523,3 +523,217 @@
 
 </body>
 </html>
+ <!-- JAVASCRIPT -->
+    <script>
+        // Ngân sách ban đầu của khách hàng
+        const initialBudget = 100000;
+
+        // Định dạng số tiền theo kiểu Việt Nam
+        function formatMoney(amount) {
+            return amount.toLocaleString("vi-VN") + "đ";
+        }
+
+        // Tính tổng tiền và cập nhật ngân sách
+        function updateOrderTotal() {
+            const quantityInputs =
+                document.querySelectorAll(".quantity");
+
+            let total = 0;
+
+            quantityInputs.forEach(function(input) {
+                let quantity = Number(input.value);
+
+                // Không cho số lượng âm hoặc lớn hơn 99
+                if (!Number.isFinite(quantity) || quantity < 0) {
+                    quantity = 0;
+                }
+
+                if (quantity > 99) {
+                    quantity = 99;
+                }
+
+                input.value = quantity;
+
+                const price = Number(input.dataset.price);
+                const lineTotal = quantity * price;
+
+                total += lineTotal;
+
+                input.closest("tr")
+                    .querySelector(".line-total")
+                    .textContent = formatMoney(lineTotal);
+            });
+
+            // Cập nhật tổng tiền đơn hàng
+            document.getElementById("order-total").textContent =
+                formatMoney(total);
+
+            document.getElementById("budget-order-total").textContent =
+                formatMoney(total);
+
+            // Tính số tiền còn lại trong ngân sách
+            const remaining = initialBudget - total;
+
+            document.getElementById("remaining-budget").textContent =
+                formatMoney(remaining);
+
+            const message =
+                document.getElementById("budget-message");
+
+            const detail =
+                document.getElementById("budget-detail");
+
+            if (remaining >= 0) {
+                message.textContent =
+                    "Đơn hàng vẫn nằm trong ngân sách của bạn!";
+
+                message.className = "success";
+
+                detail.textContent =
+                    "Bạn còn " + formatMoney(remaining) +
+                    " sau khi thanh toán đơn hàng.";
+            } else {
+                message.textContent =
+                    "Đơn hàng vượt quá ngân sách!";
+
+                message.className = "";
+
+                detail.textContent =
+                    "Bạn cần thêm " +
+                    formatMoney(Math.abs(remaining)) +
+                    " để thanh toán đơn hàng.";
+            }
+
+            return total;
+        }
+
+        // Theo dõi thay đổi số lượng món ăn
+        document.querySelectorAll(".quantity").forEach(
+            function(input) {
+                input.addEventListener(
+                    "input",
+                    updateOrderTotal
+                );
+
+                input.addEventListener(
+                    "change",
+                    updateOrderTotal
+                );
+            }
+        );
+
+        // Xử lý khi khách hàng nhấn nút Đặt hàng
+        document.getElementById("order-form").addEventListener(
+            "submit",
+            function(event) {
+                event.preventDefault();
+
+                const fullname =
+                    document.getElementById("fullname").value.trim();
+
+                const phone =
+                    document.getElementById("phone").value.trim();
+
+                const address =
+                    document.getElementById("address").value.trim();
+
+                const total = updateOrderTotal();
+
+                // Kiểm tra thông tin khách hàng
+                if (!fullname || !phone || !address) {
+                    alert(
+                        "Vui lòng nhập đầy đủ họ tên, " +
+                        "số điện thoại và địa chỉ."
+                    );
+
+                    return;
+                }
+
+                // Kiểm tra số lượng món ăn
+                if (total <= 0) {
+                    alert(
+                        "Bạn hãy chọn số lượng món ăn lớn hơn 0."
+                    );
+
+                    return;
+                }
+
+                // Lấy phương thức thanh toán
+                const payment = document.querySelector(
+                    'input[name="payment"]:checked'
+                );
+
+                const paymentNames = {
+                    cod: "Thanh toán khi nhận hàng",
+                    vietqr: "VietQR",
+                    momo: "MoMo"
+                };
+
+                const paymentName = payment
+                    ? paymentNames[payment.value]
+                    : "Chưa chọn";
+
+                // Hỏi khách hàng xác nhận đơn hàng
+                const confirmed = confirm(
+                    "Xác nhận đơn hàng của " + fullname + "?\n" +
+                    "Tổng tiền: " + formatMoney(total) + "\n" +
+                    "Thanh toán: " + paymentName
+                );
+
+                if (!confirmed) {
+                    alert("Bạn đã hủy xác nhận đơn hàng.");
+                    return;
+                }
+
+                // Cho phép nhập ghi chú bổ sung
+                const extraNote = prompt(
+                    "Bạn có ghi chú bổ sung cho đơn hàng không? " +
+                    "(Có thể để trống)"
+                );
+
+                if (extraNote === null) {
+                    alert("Bạn đã hủy thao tác đặt hàng.");
+                    return;
+                }
+
+                // Thêm ghi chú vào ô ghi chú hiện tại
+                const currentNote =
+                    document.getElementById("note").value.trim();
+
+                if (extraNote.trim()) {
+                    document.getElementById("note").value =
+                        currentNote
+                            ? currentNote + "\n" + extraNote.trim()
+                            : extraNote.trim();
+                }
+
+                // Cập nhật thông báo trạng thái đơn hàng
+                document.getElementById("order-message").textContent =
+                    "Đã xác nhận đơn hàng (bản demo). " +
+                    "Phương thức thanh toán: " + paymentName + ".";
+
+                // Hiển thị trạng thái chờ xác nhận
+                document.querySelectorAll(
+                    "#order-status span"
+                ).forEach(function(item, index) {
+                    item.classList.toggle("active", index === 0);
+                });
+
+                // Thông báo kết quả đặt hàng
+                alert(
+                    "Đặt hàng thành công (bản demo)!\n" +
+                    "Khách hàng: " + fullname + "\n" +
+                    "Số điện thoại: " + phone + "\n" +
+                    "Địa chỉ: " + address + "\n" +
+                    "Tổng tiền: " + formatMoney(total) + "\n" +
+                    "Thanh toán: " + paymentName
+                );
+            }
+        );
+
+        // Cập nhật số tiền khi trang được mở
+        updateOrderTotal();
+    </script>
+
+</body>
+</html>
