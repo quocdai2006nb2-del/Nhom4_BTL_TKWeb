@@ -7,393 +7,55 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Lumifood - Chi tiết món ăn</title>
+    <title>Chi tiết món ăn | LumiFood</title>
 
-    <style>
+    <link rel="stylesheet" href="../assets/css/main.css">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f5f2;
-            color: #333;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            background-color: white;
-            height: 75px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 8%;
-            border-bottom: 1px solid #ddd;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 30px;
-            font-weight: bold;
-            color: #d35400;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            margin-left: 30px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #d35400;
-        }
-
-        /* ================= CONTAINER ================= */
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 40px auto;
-        }
-
-        .title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .title h1 {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
-
-        .title p {
-            color: #777;
-            font-size: 16px;
-        }
-
-        /* ================= CATEGORY ================= */
-
-        .category-title {
-            font-size: 30px;
-            color: #d35400;
-            margin: 50px 0 25px 0;
-            border-left: 6px solid #d35400;
-            padding-left: 15px;
-        }
-
-        /* ================= PRODUCT ================= */
-
-        .product {
-            background-color: white;
-            padding: 30px;
-            margin-bottom: 45px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .product-content {
-            display: grid;
-            grid-template-columns: 45% 55%;
-            gap: 40px;
-        }
-
-        /* ================= IMAGE ================= */
-
-        .product-image {
-            width: 100%;
-            height: 350px;
-            background-color: #eee;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* ================= INFO ================= */
-
-        .category {
-            display: inline-block;
-            background-color: #fff0e5;
-            color: #d35400;
-            padding: 7px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .product-info h2 {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .rating {
-            color: #f39c12;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            color: #d35400;
-            font-size: 27px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .description {
-            line-height: 1.7;
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        /* ================= TOPPING ================= */
-
-        .topping-box {
-            margin-top: 20px;
-        }
-
-        .topping-box h3 {
-            margin-bottom: 15px;
-        }
-
-        .topping {
-            display: block;
-            margin: 12px 0;
-        }
-
-        .topping input {
-            margin-right: 8px;
-        }
-
-        /* ================= QUANTITY ================= */
-
-        .quantity {
-            margin-top: 20px;
-        }
-
-        .quantity input {
-            width: 70px;
-            padding: 9px;
-            margin-left: 8px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        /* ================= BUTTON ================= */
-
-        .buy-button {
-            margin-top: 25px;
-            background-color: #d35400;
-            color: white;
-            border: none;
-            padding: 13px 28px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .buy-button:hover {
-            background-color: #a84300;
-        }
-
-        /* ================= NUTRITION ================= */
-
-        .nutrition {
-            margin-top: 30px;
-        }
-
-        .nutrition h3 {
-            margin-bottom: 15px;
-            font-size: 21px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table th,
-        table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        table th {
-            background-color: #f5f5f5;
-        }
-
-        /* ================= BACK ================= */
-
-        .back {
-            display: inline-block;
-            margin-top: 20px;
-            color: #d35400;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-        }
-
-        /* ================= RESPONSIVE ================= */
-
-        @media screen and (max-width: 768px) {
-
-            header {
-                height: auto;
-                padding: 20px;
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav a {
-                margin: 0 10px;
-            }
-
-            .product-content {
-                grid-template-columns: 1fr;
-            }
-
-            .product-image {
-                height: 280px;
-            }
-
-        }
-
-    </style>
-
+    <script src="../assets/js/product-detail.js" defer></script>
 </head>
 
 
-<body>
+<body class="product-detail-page">
 
 
 <!-- ================= HEADER ================= -->
 
 <header>
-
     <div class="logo">
-        FINFood
+        <h1><a href="../index.html">LumiFood</a></h1>
     </div>
-
-    <nav>
-
-        <a href="products.html">
-            Thực đơn
-        </a>
-
-        <a href="../index.html">
-            Trang chủ
-        </a>
-
+    <nav aria-label="Điều hướng chính">
+        <ul>
+            <li><a href="../index.html">Trang chủ</a></li>
+            <li><a href="products.html" class="active">Thực đơn</a></li>
+            <li><a href="calculator.html">Tính ngân sách</a></li>
+            <li><a href="contact.html">Đặt hàng</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+        </ul>
     </nav>
-
 </header>
 
 
 
 <!-- ================= MAIN ================= -->
 
-<div class="container">
-
-
-    <!-- TIÊU ĐỀ -->
-
-    <div class="title">
-
-        <h1>
-            Chi tiết món ăn
-        </h1>
-
-        <p>
-            Khám phá món ăn ngon cùng FINFood
-        </p>
-
+<main class="detail-container">
+    <div class="title page-title">
+        <h1>Chi tiết món ăn</h1>
+        <p>Thông tin chi tiết món ăn tại LumiFood</p>
     </div>
 
-
-
-    <!-- ================================================= -->
-    <!--                    1. CƠM TẤM                     -->
-    <!-- ================================================= -->
-
-    <h2 class="category-title">
-        1. Cơm
-    </h2>
-
-
-    <section class="product" id="com-tam">
-
+    <section class="product box" id="com-tam" aria-labelledby="title-com-tam" hidden>
         <div class="product-content">
-
-
-            <!-- ẢNH -->
-
             <div class="product-image">
-
-                <img
-                    src="../assets/images/com-tam.jpg"
-                    alt="Cơm Tấm Sườn Bì Chả"
-                >
-
+                <img src="../assets/images/com-tam.jpg" alt="Cơm Tấm Sườn Bì Chả" loading="lazy">
             </div>
-
-
-            <!-- THÔNG TIN -->
-
             <div class="product-info">
-
-                <span class="category">
-                    Cơm
-                </span>
-
-
-                <h2>
-                    Cơm Tấm Sườn Bì Chả
-                </h2>
-
-
-                <div class="rating">
-                    ★★★★★ 4.9/5
-                </div>
-
-
-                <div class="price">
-                    30.000đ
-                </div>
-
-
-                <p class="description">
-
-                    Cơm tấm mềm thơm kết hợp cùng
-                    sườn nướng đậm đà, bì và chả trứng.
-                    Món ăn truyền thống phù hợp cho
-                    bữa trưa và bữa tối.
-
-                </p>
-
-
-                <!-- TOPPING -->
-
+                <span class="category">Cơm</span>
+                <h2 id="title-com-tam">Cơm Tấm Sườn Bì Chả</h2>
+                <div class="rating">★★★★★ 4.9</div>
+                <div class="price">30.000 VNĐ</div>
+                <p class="description">Cơm tấm thơm mềm dùng cùng sườn nướng, bì và chả hấp đậm đà.</p>
                 <div class="topping-box">
 
                     <h3>
@@ -427,36 +89,13 @@
                     </label>
 
                 </div>
-
-
-                <!-- SỐ LƯỢNG -->
-
                 <div class="quantity">
-
-                    <label>
-                        Số lượng:
-                    </label>
-
-                    <input
-                        type="number"
-                        value="1"
-                        min="1"
-                    >
-
+                    <label for="quantity-com-tam">Số lượng:</label>
+                    <input id="quantity-com-tam" type="number" value="1" min="1" step="1">
                 </div>
-
-
-                <button class="buy-button">
-                    Thêm vào giỏ hàng
-                </button>
-
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
             </div>
-
         </div>
-
-
-        <!-- DINH DƯỠNG -->
-
         <div class="nutrition">
 
             <h3>
@@ -533,69 +172,20 @@
             </table>
 
         </div>
-
-
-        <a
-            href="products.html"
-            class="back"
-        >
-            ← Quay lại thực đơn
-        </a>
-
+        <a href="products.html#com" class="back">← Quay lại thực đơn</a>
     </section>
 
-
-
-    <!-- ================================================= -->
-    <!--                    2. CƠM GÀ                      -->
-    <!-- ================================================= -->
-
-    <section class="product" id="com-ga">
-
+    <section class="product box" id="com-ga" aria-labelledby="title-com-ga" hidden>
         <div class="product-content">
-
-
             <div class="product-image">
-
-                <img
-                    src="../assets/images/com-ga.jpg"
-                    alt="Cơm Gà Xối Mỡ"
-                >
-
+                <img src="../assets/images/com-ga.jpg" alt="Cơm Gà Xối Mỡ" loading="lazy">
             </div>
-
-
             <div class="product-info">
-
-                <span class="category">
-                    Cơm
-                </span>
-
-
-                <h2>
-                    Cơm Gà Xối Mỡ
-                </h2>
-
-
-                <div class="rating">
-                    ★★★★★ 4.8/5
-                </div>
-
-
-                <div class="price">
-                    35.000đ
-                </div>
-
-
-                <p class="description">
-
-                    Cơm gà xối mỡ với lớp da vàng giòn,
-                    thịt gà mềm thơm ăn cùng cơm nóng
-                    và nước sốt đậm đà.
-
-                </p>
-
-
+                <span class="category">Cơm</span>
+                <h2 id="title-com-ga">Cơm Gà Xối Mỡ</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">35.000 VNĐ</div>
+                <p class="description">Gà chiên vàng giòn bên ngoài, thịt mềm thơm ăn cùng cơm nóng.</p>
                 <div class="topping-box">
 
                     <h3>
@@ -630,32 +220,13 @@
                     </label>
 
                 </div>
-
-
                 <div class="quantity">
-
-                    <label>
-                        Số lượng:
-                    </label>
-
-                    <input
-                        type="number"
-                        value="1"
-                        min="1"
-                    >
-
+                    <label for="quantity-com-ga">Số lượng:</label>
+                    <input id="quantity-com-ga" type="number" value="1" min="1" step="1">
                 </div>
-
-
-                <button class="buy-button">
-                    Thêm vào giỏ hàng
-                </button>
-
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
             </div>
-
         </div>
-
-
         <div class="nutrition">
 
             <h3>
@@ -693,61 +264,20 @@
             </table>
 
         </div>
-
-
-        <a href="products.html" class="back">
-            ← Quay lại thực đơn
-        </a>
-
+        <a href="products.html#com" class="back">← Quay lại thực đơn</a>
     </section>
 
-
-
-    <!-- ================================================= -->
-    <!--                    3. CƠM RANG                    -->
-    <!-- ================================================= -->
-
-    <section class="product" id="com-rang">
-
+    <section class="product box" id="com-rang" aria-labelledby="title-com-rang" hidden>
         <div class="product-content">
-
             <div class="product-image">
-
-                <img
-                    src="../assets/images/com-rang.jpg"
-                    alt="Cơm Rang Dưa Bò"
-                >
-
+                <img src="../assets/images/com-rang.jpg" alt="Cơm Rang Dưa Bò" loading="lazy">
             </div>
-
-
             <div class="product-info">
-
-                <span class="category">
-                    Cơm
-                </span>
-
-                <h2>
-                    Cơm Rang Dưa Bò
-                </h2>
-
-                <div class="rating">
-                    ★★★★★ 4.7/5
-                </div>
-
-                <div class="price">
-                    28.000đ
-                </div>
-
-                <p class="description">
-
-                    Cơm rang vàng thơm kết hợp với
-                    thịt bò mềm và dưa cải chua nhẹ,
-                    tạo nên hương vị hài hòa.
-
-                </p>
-
-
+                <span class="category">Cơm</span>
+                <h2 id="title-com-rang">Cơm Rang Dưa Bò</h2>
+                <div class="rating">★★★★☆ 4.7</div>
+                <div class="price">28.000 VNĐ</div>
+                <p class="description">Cơm rang vàng thơm kết hợp thịt bò và dưa cải chua nhẹ.</p>
                 <div class="topping-box">
 
                     <h3>
@@ -770,32 +300,13 @@
                     </label>
 
                 </div>
-
-
                 <div class="quantity">
-
-                    <label>
-                        Số lượng:
-                    </label>
-
-                    <input
-                        type="number"
-                        value="1"
-                        min="1"
-                    >
-
+                    <label for="quantity-com-rang">Số lượng:</label>
+                    <input id="quantity-com-rang" type="number" value="1" min="1" step="1">
                 </div>
-
-
-                <button class="buy-button">
-                    Thêm vào giỏ hàng
-                </button>
-
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
             </div>
-
         </div>
-
-
         <div class="nutrition">
 
             <h3>
@@ -832,60 +343,20 @@
             </table>
 
         </div>
-
-
-        <a href="products.html" class="back">
-            ← Quay lại thực đơn
-        </a>
-
+        <a href="products.html#com" class="back">← Quay lại thực đơn</a>
     </section>
 
-
-
-    <!-- ================================================= -->
-    <!--                4. CƠM CHIÊN DƯƠNG CHÂU            -->
-    <!-- ================================================= -->
-
-    <section class="product" id="com-chien">
-
+    <section class="product box" id="com-chien" aria-labelledby="title-com-chien" hidden>
         <div class="product-content">
-
             <div class="product-image">
-
-                <img
-                    src="../assets/images/com-chien.jpg"
-                    alt="Cơm Chiên Dương Châu"
-                >
-
+                <img src="../assets/images/com-chien.jpg" alt="Cơm Chiên Dương Châu" loading="lazy">
             </div>
-
-
             <div class="product-info">
-
-                <span class="category">
-                    Cơm
-                </span>
-
-                <h2>
-                    Cơm Chiên Dương Châu
-                </h2>
-
-                <div class="rating">
-                    ★★★★★ 4.8/5
-                </div>
-
-                <div class="price">
-                    32.000đ
-                </div>
-
-                <p class="description">
-
-                    Cơm chiên tơi hạt kết hợp trứng,
-                    xúc xích, rau củ và gia vị đặc trưng.
-
-                </p>
-
-
+                <span class="category">Cơm</span>
+                <h2 id="title-com-chien">Cơm Chiên Dương Châu</h2>
+                <div class="rating">★★★★☆ 4.6</div>
+                <div class="price">32.000 VNĐ</div>
+                <p class="description">Cơm chiên cùng trứng, xúc xích, rau củ và tôm.</p>
                 <div class="topping-box">
 
                     <h3>
@@ -908,32 +379,13 @@
                     </label>
 
                 </div>
-
-
                 <div class="quantity">
-
-                    <label>
-                        Số lượng:
-                    </label>
-
-                    <input
-                        type="number"
-                        value="1"
-                        min="1"
-                    >
-
+                    <label for="quantity-com-chien">Số lượng:</label>
+                    <input id="quantity-com-chien" type="number" value="1" min="1" step="1">
                 </div>
-
-
-                <button class="buy-button">
-                    Thêm vào giỏ hàng
-                </button>
-
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
             </div>
-
         </div>
-
-
         <div class="nutrition">
 
             <h3>
@@ -970,61 +422,20 @@
             </table>
 
         </div>
-
-
-        <a href="products.html" class="back">
-            ← Quay lại thực đơn
-        </a>
-
+        <a href="products.html#com" class="back">← Quay lại thực đơn</a>
     </section>
 
-
-
-    <!-- ================================================= -->
-    <!--                5. CƠM SƯỜN MẬT ONG               -->
-    <!-- ================================================= -->
-
-    <section class="product" id="com-suon">
-
+    <section class="product box" id="com-suon" aria-labelledby="title-com-suon" hidden>
         <div class="product-content">
-
             <div class="product-image">
-
-                <img
-                    src="../assets/images/com-suon.jpg"
-                    alt="Cơm Sườn Nướng Mật Ong"
-                >
-
+                <img src="../assets/images/com-suon.jpg" alt="Cơm Sườn Nướng Mật Ong" loading="lazy">
             </div>
-
-
             <div class="product-info">
-
-                <span class="category">
-                    Cơm
-                </span>
-
-                <h2>
-                    Cơm Sườn Nướng Mật Ong
-                </h2>
-
-                <div class="rating">
-                    ★★★★★ 4.9/5
-                </div>
-
-                <div class="price">
-                    38.000đ
-                </div>
-
-                <p class="description">
-
-                    Sườn heo được nướng vàng cùng
-                    sốt mật ong đậm đà, dùng với
-                    cơm nóng và rau xanh.
-
-                </p>
-
-
+                <span class="category">Cơm</span>
+                <h2 id="title-com-suon">Cơm Sườn Nướng Mật Ong</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">38.000 VNĐ</div>
+                <p class="description">Sườn nướng mềm thơm phủ sốt mật ong đậm đà.</p>
                 <div class="topping-box">
 
                     <h3>
@@ -1047,32 +458,13 @@
                     </label>
 
                 </div>
-
-
                 <div class="quantity">
-
-                    <label>
-                        Số lượng:
-                    </label>
-
-                    <input
-                        type="number"
-                        value="1"
-                        min="1"
-                    >
-
+                    <label for="quantity-com-suon">Số lượng:</label>
+                    <input id="quantity-com-suon" type="number" value="1" min="1" step="1">
                 </div>
-
-
-                <button class="buy-button">
-                    Thêm vào giỏ hàng
-                </button>
-
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
             </div>
-
         </div>
-
-
         <div class="nutrition">
 
             <h3>
@@ -1109,711 +501,593 @@
             </table>
 
         </div>
-
-
-        <a href="products.html" class="back">
-            ← Quay lại thực đơn
-        </a>
-
+        <a href="products.html#com" class="back">← Quay lại thực đơn</a>
     </section>
 
-
-
-    <!-- ================================================= -->
-    <!--                    6. BÒ LÚC LẮC                 -->
-    <!-- ================================================= -->
-
-    <section class="product" id="com-bo-luc-lac">
-
+    <section class="product box" id="bun-tron" aria-labelledby="title-bun-tron" hidden>
         <div class="product-content">
-
             <div class="product-image">
-
-                <img
-                    src="../assets/images/com-bo-luc-lac.jpg"
-                    alt="Cơm Bò Lúc Lắc"
-                >
-
+                <img src="../assets/images/bun-tron.jpg" alt="Bún Trộn Bắp Bò" loading="lazy">
             </div>
-
-
             <div class="product-info">
-
-                <span class="category">
-                    Cơm
-                </span>
-
-                <h2>
-                    Cơm Bò Lúc Lắc
-                </h2>
-
-                <div class="rating">
-                    ★★★★★ 4.9/5
-                </div>
-
-                <div class="price">
-                    42.000đ
-                </div>
-
-                <p class="description">
-
-                    Thịt bò mềm được áp chảo thơm
-                    cùng hành tây và sốt đặc biệt,
-                    ăn kèm cơm nóng.
-
-                </p>
-
-
-                <div class="topping-box">
-
-                    <h3>
-                        Chọn topping
-                    </h3>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Trứng ốp la +5.000đ
-                    </label>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm thịt bò +12.000đ
-                    </label>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm rau +3.000đ
-                    </label>
-
-                </div>
-
+                <span class="category">Bún</span>
+                <h2 id="title-bun-tron">Bún Trộn Bắp Bò</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">35.000 VNĐ</div>
+                <p class="description">Bún mềm kết hợp bắp bò, rau sống và nước trộn đậm đà.</p>
 
                 <div class="quantity">
-
-                    <label>
-                        Số lượng:
-                    </label>
-
-                    <input
-                        type="number"
-                        value="1"
-                        min="1"
-                    >
-
+                    <label for="quantity-bun-tron">Số lượng:</label>
+                    <input id="quantity-bun-tron" type="number" value="1" min="1" step="1">
                 </div>
-
-
-                <button class="buy-button">
-                    Thêm vào giỏ hàng
-                </button>
-
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
             </div>
-
         </div>
 
-
-        <div class="nutrition">
-
-            <h3>
-                Thành phần dinh dưỡng
-            </h3>
-
-            <table>
-
-                <tr>
-                    <th>Thành phần</th>
-                    <th>Giá trị</th>
-                </tr>
-
-                <tr>
-                    <td>Calories</td>
-                    <td>670 kcal</td>
-                </tr>
-
-                <tr>
-                    <td>Protein</td>
-                    <td>38 g</td>
-                </tr>
-
-                <tr>
-                    <td>Carbohydrate</td>
-                    <td>68 g</td>
-                </tr>
-
-                <tr>
-                    <td>Chất béo</td>
-                    <td>24 g</td>
-                </tr>
-
-            </table>
-
-        </div>
-
-
-        <a href="products.html" class="back">
-            ← Quay lại thực đơn
-        </a>
-
+        <a href="products.html#bun-pho-mi" class="back">← Quay lại thực đơn</a>
     </section>
 
-
-
-    <!-- ================================================= -->
-    <!--                    7. CÁ KHO TỘ                  -->
-    <!-- ================================================= -->
-
-    <section class="product" id="com-ca-kho">
-
+    <section class="product box" id="pho-bo" aria-labelledby="title-pho-bo" hidden>
         <div class="product-content">
-
             <div class="product-image">
-
-                <img
-                    src="../assets/images/com-ca-kho.jpg"
-                    alt="Cơm Cá Kho Tộ"
-                >
-
+                <img src="../assets/images/pho-bo.jpg" alt="Phở Bò Tái" loading="lazy">
             </div>
-
-
             <div class="product-info">
-
-                <span class="category">
-                    Cơm
-                </span>
-
-                <h2>
-                    Cơm Cá Kho Tộ
-                </h2>
-
-                <div class="rating">
-                    ★★★★★ 4.7/5
-                </div>
-
-                <div class="price">
-                    34.000đ
-                </div>
-
-                <p class="description">
-
-                    Cá kho đậm vị với nước sốt
-                    thơm ngon, dùng cùng cơm trắng
-                    nóng và rau xanh.
-
-                </p>
-
-
-                <div class="topping-box">
-
-                    <h3>
-                        Chọn topping
-                    </h3>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm cá +10.000đ
-                    </label>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Trứng ốp la +5.000đ
-                    </label>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm rau +3.000đ
-                    </label>
-
-                </div>
-
+                <span class="category">Phở</span>
+                <h2 id="title-pho-bo">Phở Bò Tái</h2>
+                <div class="rating">★★★★★ 4.9</div>
+                <div class="price">40.000 VNĐ</div>
+                <p class="description">Nước dùng trong thơm, bánh phở mềm và thịt bò tái.</p>
 
                 <div class="quantity">
-
-                    <label>
-                        Số lượng:
-                    </label>
-
-                    <input
-                        type="number"
-                        value="1"
-                        min="1"
-                    >
-
+                    <label for="quantity-pho-bo">Số lượng:</label>
+                    <input id="quantity-pho-bo" type="number" value="1" min="1" step="1">
                 </div>
-
-
-                <button class="buy-button">
-                    Thêm vào giỏ hàng
-                </button>
-
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
             </div>
-
         </div>
 
-
-        <div class="nutrition">
-
-            <h3>
-                Thành phần dinh dưỡng
-            </h3>
-
-            <table>
-
-                <tr>
-                    <th>Thành phần</th>
-                    <th>Giá trị</th>
-                </tr>
-
-                <tr>
-                    <td>Calories</td>
-                    <td>560 kcal</td>
-                </tr>
-
-                <tr>
-                    <td>Protein</td>
-                    <td>30 g</td>
-                </tr>
-
-                <tr>
-                    <td>Carbohydrate</td>
-                    <td>65 g</td>
-                </tr>
-
-                <tr>
-                    <td>Chất béo</td>
-                    <td>18 g</td>
-                </tr>
-
-            </table>
-
-        </div>
-
-
-        <a href="products.html" class="back">
-            ← Quay lại thực đơn
-        </a>
-
+        <a href="products.html#bun-pho-mi" class="back">← Quay lại thực đơn</a>
     </section>
 
-
-
-    <!-- ================================================= -->
-    <!--                    8. GÀ TERIYAKI                -->
-    <!-- ================================================= -->
-
-    <section class="product" id="com-ga-teriyaki">
-
+    <section class="product box" id="mi-xao" aria-labelledby="title-mi-xao" hidden>
         <div class="product-content">
-
             <div class="product-image">
-
-                <img
-                    src="../assets/images/com-ga-teriyaki.jpg"
-                    alt="Cơm Gà Teriyaki"
-                >
-
+                <img src="../assets/images/mi-xao.jpg" alt="Mì Xào Bò Rau Cải" loading="lazy">
             </div>
-
-
             <div class="product-info">
-
-                <span class="category">
-                    Cơm
-                </span>
-
-                <h2>
-                    Cơm Gà Teriyaki
-                </h2>
-
-                <div class="rating">
-                    ★★★★★ 4.8/5
-                </div>
-
-                <div class="price">
-                    39.000đ
-                </div>
-
-                <p class="description">
-
-                    Thịt gà mềm thơm phủ sốt Teriyaki
-                    đậm đà, kết hợp cùng cơm nóng
-                    và rau củ.
-
-                </p>
-
-
-                <div class="topping-box">
-
-                    <h3>
-                        Chọn topping
-                    </h3>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Trứng +5.000đ
-                    </label>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm gà +10.000đ
-                    </label>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm rau +3.000đ
-                    </label>
-
-                </div>
-
+                <span class="category">Mì</span>
+                <h2 id="title-mi-xao">Mì Xào Bò Rau Cải</h2>
+                <div class="rating">★★★★☆ 4.6</div>
+                <div class="price">32.000 VNĐ</div>
+                <p class="description">Mì xào dai mềm cùng thịt bò và rau cải tươi.</p>
 
                 <div class="quantity">
-
-                    <label>
-                        Số lượng:
-                    </label>
-
-                    <input
-                        type="number"
-                        value="1"
-                        min="1"
-                    >
-
+                    <label for="quantity-mi-xao">Số lượng:</label>
+                    <input id="quantity-mi-xao" type="number" value="1" min="1" step="1">
                 </div>
-
-
-                <button class="buy-button">
-                    Thêm vào giỏ hàng
-                </button>
-
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
             </div>
-
         </div>
 
-
-        <div class="nutrition">
-
-            <h3>
-                Thành phần dinh dưỡng
-            </h3>
-
-            <table>
-
-                <tr>
-                    <th>Thành phần</th>
-                    <th>Giá trị</th>
-                </tr>
-
-                <tr>
-                    <td>Calories</td>
-                    <td>600 kcal</td>
-                </tr>
-
-                <tr>
-                    <td>Protein</td>
-                    <td>34 g</td>
-                </tr>
-
-                <tr>
-                    <td>Carbohydrate</td>
-                    <td>70 g</td>
-                </tr>
-
-                <tr>
-                    <td>Chất béo</td>
-                    <td>17 g</td>
-                </tr>
-
-            </table>
-
-        </div>
-
-
-        <a href="products.html" class="back">
-            ← Quay lại thực đơn
-        </a>
-
+        <a href="products.html#bun-pho-mi" class="back">← Quay lại thực đơn</a>
     </section>
 
-
-
-    <!-- ================================================= -->
-    <!--                  9. THỊT KHO TRỨNG               -->
-    <!-- ================================================= -->
-
-    <section class="product" id="com-thit-kho">
-
+    <section class="product box" id="bun-bo-hue" aria-labelledby="title-bun-bo-hue" hidden>
         <div class="product-content">
-
             <div class="product-image">
-
-                <img
-                    src="../assets/images/com-thit-kho.jpg"
-                    alt="Cơm Thịt Kho Trứng"
-                >
-
+                <img src="../assets/images/bun-bo-hue.jpg" alt="Bún Bò Huế" loading="lazy">
             </div>
-
-
             <div class="product-info">
-
-                <span class="category">
-                    Cơm
-                </span>
-
-                <h2>
-                    Cơm Thịt Kho Trứng
-                </h2>
-
-                <div class="rating">
-                    ★★★★★ 4.8/5
-                </div>
-
-                <div class="price">
-                    33.000đ
-                </div>
-
-                <p class="description">
-
-                    Thịt kho mềm đậm đà kết hợp
-                    trứng kho thấm vị, dùng với
-                    cơm trắng nóng.
-
-                </p>
-
-
-                <div class="topping-box">
-
-                    <h3>
-                        Chọn topping
-                    </h3>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm trứng +5.000đ
-                    </label>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm thịt +10.000đ
-                    </label>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm rau +3.000đ
-                    </label>
-
-                </div>
-
+                <span class="category">Bún</span>
+                <h2 id="title-bun-bo-hue">Bún Bò Huế</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">38.000 VNĐ</div>
+                <p class="description">Nước dùng cay nhẹ, thơm mùi sả cùng thịt bò mềm.</p>
 
                 <div class="quantity">
-
-                    <label>
-                        Số lượng:
-                    </label>
-
-                    <input
-                        type="number"
-                        value="1"
-                        min="1"
-                    >
-
+                    <label for="quantity-bun-bo-hue">Số lượng:</label>
+                    <input id="quantity-bun-bo-hue" type="number" value="1" min="1" step="1">
                 </div>
-
-
-                <button class="buy-button">
-                    Thêm vào giỏ hàng
-                </button>
-
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
             </div>
-
         </div>
 
-
-        <div class="nutrition">
-
-            <h3>
-                Thành phần dinh dưỡng
-            </h3>
-
-            <table>
-
-                <tr>
-                    <th>Thành phần</th>
-                    <th>Giá trị</th>
-                </tr>
-
-                <tr>
-                    <td>Calories</td>
-                    <td>640 kcal</td>
-                </tr>
-
-                <tr>
-                    <td>Protein</td>
-                    <td>31 g</td>
-                </tr>
-
-                <tr>
-                    <td>Carbohydrate</td>
-                    <td>67 g</td>
-                </tr>
-
-                <tr>
-                    <td>Chất béo</td>
-                    <td>23 g</td>
-                </tr>
-
-            </table>
-
-        </div>
-
-
-        <a href="products.html" class="back">
-            ← Quay lại thực đơn
-        </a>
-
+        <a href="products.html#bun-pho-mi" class="back">← Quay lại thực đơn</a>
     </section>
 
-
-
-    <!-- ================================================= -->
-    <!--                    10. HEO QUAY                  -->
-    <!-- ================================================= -->
-
-    <section class="product" id="com-heo-quay">
-
+    <section class="product box" id="pho-ga" aria-labelledby="title-pho-ga" hidden>
         <div class="product-content">
-
             <div class="product-image">
-
-                <img
-                    src="../assets/images/com-heo-quay.jpg"
-                    alt="Cơm Heo Quay"
-                >
-
+                <img src="../assets/images/pho-ga.jpg" alt="Phở Gà" loading="lazy">
             </div>
-
-
             <div class="product-info">
-
-                <span class="category">
-                    Cơm
-                </span>
-
-                <h2>
-                    Cơm Heo Quay
-                </h2>
-
-                <div class="rating">
-                    ★★★★★ 4.8/5
-                </div>
-
-                <div class="price">
-                    40.000đ
-                </div>
-
-                <p class="description">
-
-                    Thịt heo quay với lớp da giòn,
-                    thịt mềm thơm, ăn cùng cơm trắng
-                    và nước sốt đặc biệt.
-
-                </p>
-
-
-                <div class="topping-box">
-
-                    <h3>
-                        Chọn topping
-                    </h3>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Trứng ốp la +5.000đ
-                    </label>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm heo quay +12.000đ
-                    </label>
-
-                    <label class="topping">
-                        <input type="checkbox">
-                        Thêm rau +3.000đ
-                    </label>
-
-                </div>
-
+                <span class="category">Phở</span>
+                <h2 id="title-pho-ga">Phở Gà</h2>
+                <div class="rating">★★★★☆ 4.7</div>
+                <div class="price">38.000 VNĐ</div>
+                <p class="description">Phở gà thanh nhẹ, thịt gà mềm và nước dùng thơm.</p>
 
                 <div class="quantity">
-
-                    <label>
-                        Số lượng:
-                    </label>
-
-                    <input
-                        type="number"
-                        value="1"
-                        min="1"
-                    >
-
+                    <label for="quantity-pho-ga">Số lượng:</label>
+                    <input id="quantity-pho-ga" type="number" value="1" min="1" step="1">
                 </div>
-
-
-                <button class="buy-button">
-                    Thêm vào giỏ hàng
-                </button>
-
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
             </div>
-
         </div>
 
-
-        <div class="nutrition">
-
-            <h3>
-                Thành phần dinh dưỡng
-            </h3>
-
-            <table>
-
-                <tr>
-                    <th>Thành phần</th>
-                    <th>Giá trị</th>
-                </tr>
-
-                <tr>
-                    <td>Calories</td>
-                    <td>690 kcal</td>
-                </tr>
-
-                <tr>
-                    <td>Protein</td>
-                    <td>32 g</td>
-                </tr>
-
-                <tr>
-                    <td>Carbohydrate</td>
-                    <td>65 g</td>
-                </tr>
-
-                <tr>
-                    <td>Chất béo</td>
-                    <td>27 g</td>
-                </tr>
-
-            </table>
-
-        </div>
-
-
-        <a href="products.html" class="back">
-            ← Quay lại thực đơn
-        </a>
-
+        <a href="products.html#bun-pho-mi" class="back">← Quay lại thực đơn</a>
     </section>
 
+    <section class="product box" id="tra-sua" aria-labelledby="title-tra-sua" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/tra-sua.jpg" alt="Trà Sữa Trân Châu Đen" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Trà sữa</span>
+                <h2 id="title-tra-sua">Trà Sữa Trân Châu Đen</h2>
+                <div class="rating">★★★★★ 4.9</div>
+                <div class="price">20.000 VNĐ</div>
+                <p class="description">Trà sữa thơm béo kết hợp trân châu đen dai mềm.</p>
 
-</div>
+                <div class="quantity">
+                    <label for="quantity-tra-sua">Số lượng:</label>
+                    <input id="quantity-tra-sua" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#do-uong" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="tra-dao" aria-labelledby="title-tra-dao" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/tra-dao.jpg" alt="Trà Đào Cam Sả" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Trà</span>
+                <h2 id="title-tra-dao">Trà Đào Cam Sả</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">25.000 VNĐ</div>
+                <p class="description">Vị trà thanh mát hòa quyện cùng đào, cam và sả.</p>
+
+                <div class="quantity">
+                    <label for="quantity-tra-dao">Số lượng:</label>
+                    <input id="quantity-tra-dao" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#do-uong" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="ca-phe" aria-labelledby="title-ca-phe" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/ca-phe.jpg" alt="Cà Phê Sữa Đá" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Cà phê</span>
+                <h2 id="title-ca-phe">Cà Phê Sữa Đá</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">22.000 VNĐ</div>
+                <p class="description">Cà phê đậm vị kết hợp sữa đặc ngọt béo và đá lạnh.</p>
+
+                <div class="quantity">
+                    <label for="quantity-ca-phe">Số lượng:</label>
+                    <input id="quantity-ca-phe" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#do-uong" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="ca-phe-den" aria-labelledby="title-ca-phe-den" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/ca-phe-den.jpg" alt="Cà Phê Đen Đá" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Cà phê</span>
+                <h2 id="title-ca-phe-den">Cà Phê Đen Đá</h2>
+                <div class="rating">★★★★☆ 4.6</div>
+                <div class="price">18.000 VNĐ</div>
+                <p class="description">Cà phê rang xay đậm đà dành cho người yêu vị nguyên bản.</p>
+
+                <div class="quantity">
+                    <label for="quantity-ca-phe-den">Số lượng:</label>
+                    <input id="quantity-ca-phe-den" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#do-uong" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="matcha" aria-labelledby="title-matcha" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/matcha.jpg" alt="Matcha Latte" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Matcha</span>
+                <h2 id="title-matcha">Matcha Latte</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">28.000 VNĐ</div>
+                <p class="description">Matcha thơm nhẹ kết hợp sữa tươi béo mịn.</p>
+
+                <div class="quantity">
+                    <label for="quantity-matcha">Số lượng:</label>
+                    <input id="quantity-matcha" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#do-uong" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="khoai-tay" aria-labelledby="title-khoai-tay" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/khoai-tay.jpg" alt="Khoai Tây Chiên" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Ăn vặt</span>
+                <h2 id="title-khoai-tay">Khoai Tây Chiên</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">25.000 VNĐ</div>
+                <p class="description">Khoai tây vàng giòn, dùng cùng sốt chấm đặc biệt.</p>
+
+                <div class="quantity">
+                    <label for="quantity-khoai-tay">Số lượng:</label>
+                    <input id="quantity-khoai-tay" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#an-vat" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="ga-ran" aria-labelledby="title-ga-ran" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/ga-ran.jpg" alt="Gà Rán Giòn" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Ăn vặt</span>
+                <h2 id="title-ga-ran">Gà Rán Giòn</h2>
+                <div class="rating">★★★★★ 4.9</div>
+                <div class="price">30.000 VNĐ</div>
+                <p class="description">Miếng gà giòn bên ngoài, mềm mọng bên trong.</p>
+
+                <div class="quantity">
+                    <label for="quantity-ga-ran">Số lượng:</label>
+                    <input id="quantity-ga-ran" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#an-vat" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="xuc-xich" aria-labelledby="title-xuc-xich" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/xuc-xich.jpg" alt="Xúc Xích Chiên" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Ăn vặt</span>
+                <h2 id="title-xuc-xich">Xúc Xích Chiên</h2>
+                <div class="rating">★★★★☆ 4.6</div>
+                <div class="price">20.000 VNĐ</div>
+                <p class="description">Xúc xích chiên vàng thơm, phù hợp cho bữa ăn nhẹ.</p>
+
+                <div class="quantity">
+                    <label for="quantity-xuc-xich">Số lượng:</label>
+                    <input id="quantity-xuc-xich" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#an-vat" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="ca-vien" aria-labelledby="title-ca-vien" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/ca-vien.jpg" alt="Cá Viên Chiên" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Ăn vặt</span>
+                <h2 id="title-ca-vien">Cá Viên Chiên</h2>
+                <div class="rating">★★★★☆ 4.7</div>
+                <div class="price">22.000 VNĐ</div>
+                <p class="description">Cá viên chiên nóng giòn cùng tương ớt và sốt đặc biệt.</p>
+
+                <div class="quantity">
+                    <label for="quantity-ca-vien">Số lượng:</label>
+                    <input id="quantity-ca-vien" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#an-vat" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="pho-mai-que" aria-labelledby="title-pho-mai-que" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/pho-mai-que.jpg" alt="Phô Mai Que" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Ăn vặt</span>
+                <h2 id="title-pho-mai-que">Phô Mai Que</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">25.000 VNĐ</div>
+                <p class="description">Lớp vỏ giòn rụm, bên trong là phô mai kéo sợi.</p>
+
+                <div class="quantity">
+                    <label for="quantity-pho-mai-que">Số lượng:</label>
+                    <input id="quantity-pho-mai-que" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#an-vat" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="combo" aria-labelledby="title-combo" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/combo.jpg" alt="Combo Sinh Viên" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Combo</span>
+                <h2 id="title-combo">Combo Sinh Viên</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">50.000 VNĐ</div>
+                <p class="description">Cơm, món ăn kèm và nước uống với mức giá tiết kiệm.</p>
+
+                <div class="quantity">
+                    <label for="quantity-combo">Số lượng:</label>
+                    <input id="quantity-combo" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#combo" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="combo-ga" aria-labelledby="title-combo-ga" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/combo-ga.jpg" alt="Combo Cơm Gà" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Combo</span>
+                <h2 id="title-combo-ga">Combo Cơm Gà</h2>
+                <div class="rating">★★★★★ 4.9</div>
+                <div class="price">55.000 VNĐ</div>
+                <p class="description">Cơm gà kết hợp đồ uống mát lạnh cho một bữa ăn hoàn chỉnh.</p>
+
+                <div class="quantity">
+                    <label for="quantity-combo-ga">Số lượng:</label>
+                    <input id="quantity-combo-ga" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#combo" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="combo-suon" aria-labelledby="title-combo-suon" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/combo-suon.jpg" alt="Combo Cơm Sườn" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Combo</span>
+                <h2 id="title-combo-suon">Combo Cơm Sườn</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">58.000 VNĐ</div>
+                <p class="description">Cơm sườn nướng thơm ngon cùng nước uống tùy chọn.</p>
+
+                <div class="quantity">
+                    <label for="quantity-combo-suon">Số lượng:</label>
+                    <input id="quantity-combo-suon" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#combo" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="combo-bun" aria-labelledby="title-combo-bun" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/combo-bun.jpg" alt="Combo Bún + Trà Đào" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Combo</span>
+                <h2 id="title-combo-bun">Combo Bún + Trà Đào</h2>
+                <div class="rating">★★★★☆ 4.7</div>
+                <div class="price">55.000 VNĐ</div>
+                <p class="description">Bún thịt nướng kết hợp trà đào cam sả mát lạnh.</p>
+
+                <div class="quantity">
+                    <label for="quantity-combo-bun">Số lượng:</label>
+                    <input id="quantity-combo-bun" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#combo" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="combo-mi" aria-labelledby="title-combo-mi" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/combo-mi.jpg" alt="Combo Mì Cay + Nước" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Combo</span>
+                <h2 id="title-combo-mi">Combo Mì Cay + Nước</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">60.000 VNĐ</div>
+                <p class="description">Mì cay hải sản cùng một loại nước uống tùy chọn.</p>
+
+                <div class="quantity">
+                    <label for="quantity-combo-mi">Số lượng:</label>
+                    <input id="quantity-combo-mi" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#combo" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="flan" aria-labelledby="title-flan" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/flan.jpg" alt="Bánh Flan Caramel" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Tráng miệng</span>
+                <h2 id="title-flan">Bánh Flan Caramel</h2>
+                <div class="rating">★★★★★ 4.9</div>
+                <div class="price">18.000 VNĐ</div>
+                <p class="description">Bánh flan mềm mịn kết hợp lớp caramel thơm ngọt.</p>
+
+                <div class="quantity">
+                    <label for="quantity-flan">Số lượng:</label>
+                    <input id="quantity-flan" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#trang-mieng" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="sua-chua" aria-labelledby="title-sua-chua" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/sua-chua.jpg" alt="Sữa Chua Trái Cây" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Tráng miệng</span>
+                <h2 id="title-sua-chua">Sữa Chua Trái Cây</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">20.000 VNĐ</div>
+                <p class="description">Sữa chua mát lạnh kết hợp nhiều loại trái cây tươi.</p>
+
+                <div class="quantity">
+                    <label for="quantity-sua-chua">Số lượng:</label>
+                    <input id="quantity-sua-chua" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#trang-mieng" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="khuc-bach" aria-labelledby="title-khuc-bach" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/khuc-bach.jpg" alt="Chè Khúc Bạch" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Chè</span>
+                <h2 id="title-khuc-bach">Chè Khúc Bạch</h2>
+                <div class="rating">★★★★☆ 4.7</div>
+                <div class="price">22.000 VNĐ</div>
+                <p class="description">Khúc bạch mềm mịn cùng nước vải thanh mát.</p>
+
+                <div class="quantity">
+                    <label for="quantity-khuc-bach">Số lượng:</label>
+                    <input id="quantity-khuc-bach" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#trang-mieng" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="che-thai" aria-labelledby="title-che-thai" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/che-thai.jpg" alt="Chè Thái Sầu Riêng" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Chè</span>
+                <h2 id="title-che-thai">Chè Thái Sầu Riêng</h2>
+                <div class="rating">★★★★★ 4.8</div>
+                <div class="price">28.000 VNĐ</div>
+                <p class="description">Chè Thái béo thơm kết hợp sầu riêng và trái cây.</p>
+
+                <div class="quantity">
+                    <label for="quantity-che-thai">Số lượng:</label>
+                    <input id="quantity-che-thai" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#trang-mieng" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section class="product box" id="tau-hu" aria-labelledby="title-tau-hu" hidden>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="../assets/images/tau-hu.jpg" alt="Tàu Hũ Trân Châu" loading="lazy">
+            </div>
+            <div class="product-info">
+                <span class="category">Tráng miệng</span>
+                <h2 id="title-tau-hu">Tàu Hũ Trân Châu</h2>
+                <div class="rating">★★★★☆ 4.7</div>
+                <div class="price">20.000 VNĐ</div>
+                <p class="description">Tàu hũ mềm mịn cùng trân châu dai và nước đường.</p>
+
+                <div class="quantity">
+                    <label for="quantity-tau-hu">Số lượng:</label>
+                    <input id="quantity-tau-hu" type="number" value="1" min="1" step="1">
+                </div>
+                <button type="button" class="buy-button btn btn-red">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <a href="products.html#trang-mieng" class="back">← Quay lại thực đơn</a>
+    </section>
+
+    <section id="product-not-found" class="box" hidden>
+        <p>Vui lòng quay lại thực đơn để chọn món ăn.</p>
+        <a href="products.html" class="btn">Xem thực đơn</a>
+    </section>
+    <noscript>
+        <p>Bạn cần bật JavaScript để xem thông tin món đã chọn.</p>
+        <a href="products.html">Quay lại thực đơn</a>
+    </noscript>
+</main>
 
 
 <!-- ================= FOOTER ================= -->
@@ -1821,7 +1095,7 @@
 <footer>
 
     <p>
-        © 2026 FINFood - Đồ ăn ngon mỗi ngày
+        © 2026 LumiFood - Đồ ăn ngon mỗi ngày
     </p>
 
 </footer>
