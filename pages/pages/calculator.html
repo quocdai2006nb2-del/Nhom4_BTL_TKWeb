@@ -2,343 +2,115 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LUMIfood - Quản Lý Tiền Ăn & Chia Bill</title>
+  <title>LUMIfood</title>
   <style>
-    :root {
-      --primary: #ff5722;
-      --primary-hover: #e64a19;
-      --bg-color: #f4f6f9;
-      --card-bg: #ffffff;
-      --text: #333333;
-      --text-muted: #666666;
-      --border: #e0e0e0;
-      --radius: 12px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
     body {
-      background-color: var(--bg-color);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      padding: 20px;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      color: #000;
     }
-
-    .container {
-      width: 100%;
-      max-width: 650px;
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      padding-bottom: 24px;
+    h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
     }
-
-    header {
-      background: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 24px 20px;
+    .box {
       margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
     }
-
-    header h1 {
-      font-size: 26px;
-      margin-bottom: 6px;
+    label {
+      display: inline-block;
+      width: 200px;
+      margin-top: 5px;
     }
-
-    header p {
-      font-size: 14px;
-      opacity: 0.9;
+    input {
+      padding: 4px;
+      margin-top: 5px;
     }
-
-    .section {
-      padding: 0 24px;
-      margin-bottom: 24px;
-    }
-
-    .section-title {
-      font-size: 18px;
-      color: var(--primary);
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 6px;
-      margin-bottom: 16px;
-    }
-
-    /* Form Styles */
-    .form-group {
-      margin-bottom: 16px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
-      font-size: 14px;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 15px;
-      outline: none;
-      transition: border 0.2s;
-    }
-
-    .form-group input:focus {
-      border-color: var(--primary);
-    }
-
-    .row {
-      display: flex;
-      gap: 12px;
-    }
-
-    .row .form-group {
-      flex: 1;
-    }
-
-    /* Progress & Result Box */
-    .result-card {
-      background: #fff8f5;
-      border: 1px solid #ffccbc;
-      border-radius: 8px;
-      padding: 16px;
-      margin: 16px 0;
-      text-align: center;
-    }
-
-    .result-card h3 {
-      color: var(--primary);
-      font-size: 22px;
-      margin-top: 4px;
-    }
-
-    .progress-container {
-      margin-top: 14px;
-      text-align: left;
-    }
-
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 12px;
-      background-color: #e0e0e0;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background-color: #4caf50;
-      transition: width 0.3s ease, background-color 0.3s ease;
-    }
-
-    /* Table Styles */
-    .member-table {
+    table {
       width: 100%;
       border-collapse: collapse;
-      margin: 16px 0;
+      margin-top: 10px;
     }
-
-    .member-table th, .member-table td {
-      padding: 10px;
-      border-bottom: 1px solid var(--border);
+    th, td {
+      border: 1px solid #ccc;
+      padding: 6px;
       text-align: left;
     }
-
-    .member-table th {
-      background: #f5f5f5;
-      font-size: 13px;
+    th {
+      background-color: #eee;
     }
-
-    .member-table input {
-      width: 100%;
-      padding: 6px 10px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-
-    /* Buttons */
-    .btn {
-      width: 100%;
-      padding: 12px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn:hover {
-      background: var(--primary-hover);
-    }
-
-    .btn-secondary {
-      background: #757575;
-      margin-top: 8px;
-    }
-
-    .btn-secondary:hover {
-      background: #616161;
-    }
-
-    .btn-small {
-      width: auto;
+    button {
       padding: 6px 12px;
-      font-size: 13px;
-    }
-
-    .btn-danger {
-      background: #e53935;
-    }
-
-    .btn-danger:hover {
-      background: #c62828;
-    }
-
-    .menu-box {
-      margin-top: 16px;
-      padding: 14px;
-      background: #f9f9f9;
-      border-radius: 6px;
-      border-left: 4px solid var(--primary);
-      display: none;
-    }
-
-    .menu-box h4 {
-      margin-bottom: 8px;
-    }
-
-    .menu-box ul {
-      list-style-type: square;
-      padding-left: 20px;
-      font-size: 14px;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 24px 0;
+      margin-top: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <h1>LUMIfood</h1>
-      <p>Quản Lý Chi Phí Ăn Uống & Chia Bill Tự Động</p>
-    </header>
+  <h1>LUMIfood</h1>
 
-    <!-- PHẦN 1: TÍNH HẠN MỨC TIỀN ĂN CÁ NHÂN -->
-    <div class="section">
-      <h2 class="section-title">1. Tính Hạn Mức Tiền Ăn Cá Nhân</h2>
-      
-      <div class="form-group">
-        <label for="initialBudget">Ngân sách tổng ban đầu (VNĐ):</label>
-        <input type="number" id="initialBudget" placeholder="Nhập ngân sách ban đầu..." oninput="calculateBudget()">
-      </div>
-      <div class="form-group">
-        <label for="currentBudget">Tổng tiền ăn còn lại (VNĐ):</label>
-        <input type="number" id="currentBudget" placeholder="Nhập tổng tiền ăn còn lại..." oninput="calculateBudget()">
-      </div>
-      <div class="row">
-        <div class="form-group">
-          <label for="daysLeft">Số ngày còn lại:</label>
-          <input type="number" id="daysLeft" placeholder="Ví dụ: 10" oninput="calculateBudget()">
-        </div>
-        <div class="form-group">
-          <label for="mealsPerDay">Số bữa / ngày:</label>
-          <input type="number" id="mealsPerDay" placeholder="Ví dụ: 3" oninput="calculateBudget()">
-        </div>
-      </div>
+  <!-- PHẦN 1 -->
+  <div class="box">
+    <h2>1. Tính Hạn Mức Tiền Ăn Cá Nhân</h2>
+    <div>
+      <label>Ngân sách ban đầu:</label>
+      <input type="number" id="initialBudget" oninput="calculateBudget()">
+    </div>
+    <div>
+      <label>Tổng tiền ăn còn lại:</label>
+      <input type="number" id="currentBudget" oninput="calculateBudget()">
+    </div>
+    <div>
+      <label>Số ngày còn lại:</label>
+      <input type="number" id="daysLeft" oninput="calculateBudget()">
+    </div>
+    <div>
+      <label>Số bữa / ngày:</label>
+      <input type="number" id="mealsPerDay" oninput="calculateBudget()">
+    </div>
+    
+    <p><b>Hạn mức tối đa 1 bữa:</b> <span id="maxPerMealDisplay">0</span> VNĐ</p>
+    <p><b>Quỹ tiền còn lại:</b> <span id="percentText">0%</span></p>
+    <progress id="progressBar" value="0" max="100" style="width: 100%;"></progress>
+    
+    <br>
+    <button onclick="saveAndSuggestMenu()">Gợi ý thực đơn hôm nay</button>
+    <div id="menuResult" style="margin-top: 10px;"></div>
+  </div>
 
-      <div class="result-card">
-        <div>Hạn mức tối đa cho 1 bữa:</div>
-        <h3 id="maxPerMealDisplay">0 VNĐ</h3>
-
-        <div class="progress-container">
-          <div class="progress-label">
-            <span>Quỹ tiền còn lại:</span>
-            <span id="percentText">0%</span>
-          </div>
-          <div class="progress-bar">
-            <div id="progressFill" class="progress-fill"></div>
-          </div>
-        </div>
-      </div>
-
-      <button class="btn" onclick="saveAndSuggestMenu()">Lưu Hạn Mức & Gợi Ý Thực Đơn</button>
-
-      <div id="menuBox" class="menu-box">
-        <h4>Gợi ý thực đơn hôm nay từ LUMIfood:</h4>
-        <ul id="menuList"></ul>
-      </div>
+  <!-- PHẦN 2 -->
+  <div class="box">
+    <h2>2. Công Cụ Chia Tiền Bill Nhóm (US06)</h2>
+    <div>
+      <label>Phí ship chung:</label>
+      <input type="number" id="shipFee" oninput="calculateSplitBill()">
+    </div>
+    <div>
+      <label>Voucher giảm giá:</label>
+      <input type="number" id="discountVoucher" oninput="calculateSplitBill()">
     </div>
 
-    <hr>
+    <button onclick="addMember()">Thêm thành viên</button>
 
-    <!-- PHẦN 2: CÔNG CỤ CHIA TIỀN BILL NHÓM (US06) -->
-    <div class="section">
-      <h2 class="section-title">2. Công Cụ Chia Tiền Bill Nhóm (US06)</h2>
-      
-      <div class="row">
-        <div class="form-group">
-          <label for="shipFee">Phí ship chung (VNĐ):</label>
-          <input type="number" id="shipFee" placeholder="Nhập phí ship..." oninput="calculateSplitBill()">
-        </div>
-        <div class="form-group">
-          <label for="discountVoucher">Voucher giảm giá (VNĐ):</label>
-          <input type="number" id="discountVoucher" placeholder="Nhập tiền voucher..." oninput="calculateSplitBill()">
-        </div>
-      </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Tên</th>
+          <th>Tiền món lẻ</th>
+          <th>Cần trả</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="memberList">
+      </tbody>
+    </table>
 
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-        <label style="font-weight: 600;">Danh sách thành viên:</label>
-        <button class="btn btn-small" onclick="addMember()">+ Thêm người</button>
-      </div>
-
-      <table class="member-table">
-        <thead>
-          <tr>
-            <th>Tên</th>
-            <th>Tiền món lẻ (VNĐ)</th>
-            <th>Cần trả (VNĐ)</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="memberList">
-          <!-- Rendered dynamically -->
-        </tbody>
-      </table>
-
-      <button class="btn btn-secondary" onclick="copySplitResult()">Sao chép kết quả chia bill</button>
-    </div>
+    <button onclick="copySplitResult()">Sao chép kết quả</button>
   </div>
 
   <script>
-    // --- PHẦN 1: TÍNH HẠN MỨC CÁ NHÂN ---
     function calculateBudget() {
       const initial = parseFloat(document.getElementById('initialBudget').value) || 0;
       const current = parseFloat(document.getElementById('currentBudget').value) || 0;
@@ -346,33 +118,20 @@
       const meals = parseFloat(document.getElementById('mealsPerDay').value) || 0;
 
       if (days <= 0 || meals <= 0 || current <= 0) {
-        document.getElementById('maxPerMealDisplay').innerText = '0 VNĐ';
-        document.getElementById('progressFill').style.width = '0%';
+        document.getElementById('maxPerMealDisplay').innerText = '0';
         document.getElementById('percentText').innerText = '0%';
+        document.getElementById('progressBar').value = 0;
         return;
       }
 
-      const totalMeals = days * meals;
-      const maxPerMeal = Math.floor(current / totalMeals);
-      
-      document.getElementById('maxPerMealDisplay').innerText = maxPerMeal.toLocaleString('vi-VN') + ' VNĐ';
+      const maxPerMeal = Math.floor(current / (days * meals));
+      document.getElementById('maxPerMealDisplay').innerText = maxPerMeal.toLocaleString('vi-VN');
 
       let percent = initial > 0 ? (current / initial) * 100 : 0;
       percent = Math.min(100, Math.max(0, percent));
       
-      const fill = document.getElementById('progressFill');
-      const percentText = document.getElementById('percentText');
-
-      fill.style.width = percent + '%';
-      percentText.innerText = percent.toFixed(1) + '%';
-
-      if (percent < 20) {
-        fill.style.backgroundColor = '#e53935';
-      } else if (percent < 50) {
-        fill.style.backgroundColor = '#fb8c00';
-      } else {
-        fill.style.backgroundColor = '#4caf50';
-      }
+      document.getElementById('percentText').innerText = percent.toFixed(1) + '%';
+      document.getElementById('progressBar').value = percent;
     }
 
     function saveAndSuggestMenu() {
@@ -381,23 +140,15 @@
       const meals = parseFloat(document.getElementById('mealsPerDay').value) || 0;
 
       if (days <= 0 || meals <= 0 || current <= 0) {
-        alert("Vui lòng nhập đầy đủ thông tin số tiền, số ngày và số bữa!");
+        alert("Nhập đủ thông tin đi bạn ơi!");
         return;
       }
 
       const maxPerMeal = Math.floor(current / (days * meals));
       localStorage.setItem('lumifood_max_per_meal', maxPerMeal);
-
-      const menuList = document.getElementById('menuList');
-      menuList.innerHTML = `
-        <li>Món gợi ý 1 - Hạn mức tối đa: ${maxPerMeal.toLocaleString('vi-VN')} VNĐ/bữa</li>
-        <li>Lựa chọn thực đơn phù hợp vừa lưu trong localStorage.</li>
-      `;
-
-      document.getElementById('menuBox').style.display = 'block';
+      document.getElementById('menuResult').innerText = "Đã lưu hạn mức " + maxPerMeal.toLocaleString('vi-VN') + " VNĐ vào localStorage!";
     }
 
-    // --- PHẦN 2: CHIA TIỀN BILL NHÓM ---
     let members = [];
 
     function renderMembers() {
@@ -407,10 +158,10 @@
       members.forEach((m, index) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td><input type="text" value="${m.name}" placeholder="Tên" onchange="updateMember(${index}, 'name', this.value)"></td>
-          <td><input type="number" value="${m.price || ''}" placeholder="Số tiền" onchange="updateMember(${index}, 'price', this.value)"></td>
-          <td><strong id="final-${index}">0 đ</strong></td>
-          <td><button class="btn btn-danger btn-small" onclick="removeMember(${index})">Xóa</button></td>
+          <td><input type="text" value="${m.name}" onchange="updateMember(${index}, 'name', this.value)"></td>
+          <td><input type="number" value="${m.price || ''}" onchange="updateMember(${index}, 'price', this.value)"></td>
+          <td><span id="final-${index}">0</span> đ</td>
+          <td><button onclick="removeMember(${index})">Xóa</button></td>
         `;
         tbody.appendChild(tr);
       });
@@ -419,7 +170,7 @@
     }
 
     function addMember() {
-      members.push({ id: Date.now(), name: '', price: 0, finalAmount: 0 });
+      members.push({ name: '', price: 0, finalAmount: 0 });
       renderMembers();
     }
 
@@ -441,43 +192,28 @@
       const shipFee = parseFloat(document.getElementById('shipFee').value) || 0;
       const discount = parseFloat(document.getElementById('discountVoucher').value) || 0;
       
-      const totalItemsPrice = members.reduce((sum, m) => sum + (parseFloat(m.price) || 0), 0);
+      const totalItemsPrice = members.reduce((sum, m) => sum + m.price, 0);
       const netExtra = shipFee - discount;
 
       members.forEach((m, index) => {
-        const itemPrice = parseFloat(m.price) || 0;
-        let finalAmount = itemPrice;
-
+        let finalAmount = m.price;
         if (totalItemsPrice > 0) {
-          const ratio = itemPrice / totalItemsPrice;
-          finalAmount = itemPrice + (netExtra * ratio);
+          finalAmount = m.price + (netExtra * (m.price / totalItemsPrice));
         }
-
-        const finalRounded = Math.round(finalAmount);
-        m.finalAmount = finalRounded;
-
-        const cell = document.getElementById(`final-${index}`);
-        if (cell) {
-          cell.innerText = finalRounded.toLocaleString('vi-VN') + ' đ';
+        m.finalAmount = Math.round(finalAmount);
+        const span = document.getElementById(`final-${index}`);
+        if (span) {
+          span.innerText = m.finalAmount.toLocaleString('vi-VN');
         }
       });
     }
 
     function copySplitResult() {
-      if (members.length === 0) {
-        alert("Chưa có thành viên nào trong danh sách!");
-        return;
-      }
-
-      let text = "📋 **BILL CHIA TIỀN LUMIFOOD** 📋\n";
+      let text = "Bill LUMIfood:\n";
       members.forEach(m => {
-        const name = m.name.trim() !== '' ? m.name : 'Vô danh';
-        text += `- ${name}: ${m.finalAmount.toLocaleString('vi-VN')} VNĐ\n`;
+        text += "- " + (m.name || "Ai đó") + ": " + m.finalAmount.toLocaleString('vi-VN') + " đ\n";
       });
-      
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Đã sao chép kết quả chia bill!");
-      });
+      navigator.clipboard.writeText(text).then(() => alert("Đã copy!"));
     }
   </script>
 </body>
