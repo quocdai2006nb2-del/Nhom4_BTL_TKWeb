@@ -1,220 +1,799 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>LUMIFood</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      color: #000;
-    }
-    h2 {
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-    }
-    .box {
-      margin-bottom: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
-    label {
-      display: inline-block;
-      width: 200px;
-      margin-top: 5px;
-    }
-    input {
-      padding: 4px;
-      margin-top: 5px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 6px;
-      text-align: left;
-    }
-    th {
-      background-color: #eee;
-    }
-    button {
-      padding: 6px 12px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ngân sách | LUMIFood</title>
+
+    <style>
+        /* ================= CÀI ĐẶT CHUNG ================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            width: 100%;
+            background-color: #ff7900;
+            padding: 28px 0;
+            color: white;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .logo {
+            margin-bottom: 22px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: white;
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 23px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #333;
+        }
+
+        nav ul li a.active {
+            font-weight: bold;
+        }
+
+        /* ================= NỘI DUNG CHÍNH ================= */
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #ff7900;
+            margin-bottom: 25px;
+            font-size: 30px;
+        }
+
+        .box {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #ff7900;
+            border-bottom: 2px solid #ff7900;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* ================= FORM NHẬP LIỆU ================= */
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ff7900;
+        }
+
+        /* ================= BUTTON ================= */
+
+        button {
+            background-color: #ff7900;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #e66d00;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            margin-top: 0;
+        }
+
+        .delete-btn:hover {
+            background-color: #b52a37;
+        }
+
+        /* ================= KẾT QUẢ NGÂN SÁCH ================= */
+
+        .result {
+            background-color: #fff5eb;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .result p {
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .result strong {
+            color: #e66d00;
+        }
+
+        progress {
+            width: 100%;
+            height: 18px;
+            accent-color: #ff7900;
+        }
+
+        #menuResult {
+            margin-top: 15px;
+            color: #d96b00;
+            font-weight: bold;
+        }
+
+        /* ================= BẢNG CHIA BILL ================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            min-width: 550px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ff7900;
+            color: white;
+        }
+
+        td input {
+            min-width: 100px;
+        }
+
+        .total {
+            background-color: #fff5eb;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background-color: #ff7900;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 30px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            .header-container {
+                padding: 0 20px;
+            }
+
+            .logo a {
+                font-size: 34px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav ul li a {
+                font-size: 17px;
+            }
+
+            .box {
+                padding: 15px;
+            }
+
+            .page-title {
+                font-size: 24px;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
 
-  <h1>LUMIFood</h1>
+<!-- ================= HEADER ================= -->
 
-  <!-- PHẦN 1 -->
-  <div class="box">
-    <h2>1. Tính Hạn Mức Tiền Ăn Cá Nhân</h2>
-    <div>
-      <label>Ngân sách ban đầu:</label>
-      <input type="number" id="initialBudget" oninput="calculateBudget()">
-    </div>
-    <div>
-      <label>Tổng tiền ăn còn lại:</label>
-      <input type="number" id="currentBudget" oninput="calculateBudget()">
-    </div>
-    <div>
-      <label>Số ngày còn lại:</label>
-      <input type="number" id="daysLeft" oninput="calculateBudget()">
-    </div>
-    <div>
-      <label>Số bữa / ngày:</label>
-      <input type="number" id="mealsPerDay" oninput="calculateBudget()">
-    </div>
-    
-    <p><b>Hạn mức tối đa 1 bữa:</b> <span id="maxPerMealDisplay">0</span> VNĐ</p>
-    <p><b>Quỹ tiền còn lại:</b> <span id="percentText">0%</span></p>
-    <progress id="progressBar" value="0" max="100" style="width: 100%;"></progress>
-    
-    <br>
-    <button onclick="saveAndSuggestMenu()">Gợi ý thực đơn hôm nay</button>
-    <div id="menuResult" style="margin-top: 10px;"></div>
-  </div>
+<header>
+    <div class="header-container">
 
-  <!-- PHẦN 2 -->
-  <div class="box">
-    <h2>2. Công Cụ Chia Tiền Bill Nhóm </h2>
-    <div>
-      <label>Phí ship chung:</label>
-      <input type="number" id="shipFee" oninput="calculateSplitBill()">
+        <div class="logo">
+            <a href="../index.html">LUMIFood</a>
+        </div>
+
+        <nav aria-label="Điều hướng chính">
+            <ul>
+                <li>
+                    <a href="../index.html">Trang chủ</a>
+                </li>
+
+                <li>
+                    <a href="products.html">Món ăn</a>
+                </li>
+
+                <li>
+                    <a href="about.html">Giới thiệu</a>
+                </li>
+
+                <li>
+                    <a href="calculator.html" class="active"
+                       aria-current="page">Ngân sách</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Đặt hàng</a>
+                </li>
+            </ul>
+        </nav>
+
     </div>
-    <div>
-      <label>Voucher giảm giá:</label>
-      <input type="number" id="discountVoucher" oninput="calculateSplitBill()">
+</header>
+
+<!-- ================= NỘI DUNG ================= -->
+
+<main class="container">
+
+    <h1 class="page-title">CÔNG CỤ QUẢN LÝ NGÂN SÁCH ĂN UỐNG</h1>
+
+
+    <!-- ================= PHẦN 1 ================= -->
+
+    <div class="box">
+
+        <h2>1. Tính hạn mức tiền ăn cá nhân</h2>
+
+        <div class="form-group">
+            <label for="initialBudget">Ngân sách ban đầu (VNĐ):</label>
+            <input type="number" id="initialBudget"
+                   min="0" placeholder="Nhập ngân sách ban đầu"
+                   oninput="calculateBudget()">
+        </div>
+
+        <div class="form-group">
+            <label for="currentBudget">Tổng tiền ăn còn lại (VNĐ):</label>
+            <input type="number" id="currentBudget"
+                   min="0" placeholder="Nhập số tiền còn lại"
+                   oninput="calculateBudget()">
+        </div>
+
+        <div class="form-group">
+            <label for="daysLeft">Số ngày còn lại:</label>
+            <input type="number" id="daysLeft"
+                   min="1" placeholder="Nhập số ngày"
+                   oninput="calculateBudget()">
+        </div>
+
+        <div class="form-group">
+            <label for="mealsPerDay">Số bữa ăn mỗi ngày:</label>
+            <input type="number" id="mealsPerDay"
+                   min="1" placeholder="Nhập số bữa ăn"
+                   oninput="calculateBudget()">
+        </div>
+
+        <!-- KẾT QUẢ -->
+
+        <div class="result">
+
+            <p>
+                <strong>Hạn mức tối đa 1 bữa:</strong>
+                <span id="maxPerMealDisplay">0</span> VNĐ
+            </p>
+
+            <p>
+                <strong>Quỹ tiền còn lại:</strong>
+                <span id="percentText">0%</span>
+            </p>
+
+            <progress id="progressBar"
+                      value="0" max="100">
+            </progress>
+
+        </div>
+
+        <button onclick="saveAndSuggestMenu()">
+            Gợi ý thực đơn hôm nay
+        </button>
+
+        <div id="menuResult"></div>
+
     </div>
 
-    <button onclick="addMember()">Thêm thành viên</button>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Tên</th>
-          <th>Tiền món lẻ</th>
-          <th>Cần trả</th>
-          <th>Thao tác</th>
-        </tr>
-      </thead>
-      <tbody id="memberList">
-      </tbody>
-    </table>
+    <!-- ================= PHẦN 2 ================= -->
 
-    <button onclick="copySplitResult()">Sao chép kết quả</button>
-  </div>
+    <div class="box">
 
-  <script>
+        <h2>2. Công cụ chia tiền bill nhóm</h2>
+
+        <div class="form-group">
+            <label for="shipFee">Phí ship chung (VNĐ):</label>
+            <input type="number" id="shipFee"
+                   min="0" value="0"
+                   oninput="calculateSplitBill()">
+        </div>
+
+        <div class="form-group">
+            <label for="discountVoucher">Voucher giảm giá (VNĐ):</label>
+            <input type="number" id="discountVoucher"
+                   min="0" value="0"
+                   oninput="calculateSplitBill()">
+        </div>
+
+        <button onclick="addMember()">
+            + Thêm thành viên
+        </button>
+
+
+        <!-- BẢNG THÀNH VIÊN -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên thành viên</th>
+                        <th>Tiền món lẻ (VNĐ)</th>
+                        <th>Cần trả (VNĐ)</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody id="memberList">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="total">
+            Tổng tiền bill:
+            <span id="totalBill">0</span> VNĐ
+        </div>
+
+        <button onclick="copySplitResult()">
+            Sao chép kết quả
+        </button>
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+    <p>© 2026 LUMIFood - Quản lý ngân sách ăn uống thông minh</p>
+</footer>
+
+<script>
+
+    // ================= TÍNH NGÂN SÁCH CÁ NHÂN =================
+
     function calculateBudget() {
-      const initial = parseFloat(document.getElementById('initialBudget').value) || 0;
-      const current = parseFloat(document.getElementById('currentBudget').value) || 0;
-      const days = parseFloat(document.getElementById('daysLeft').value) || 0;
-      const meals = parseFloat(document.getElementById('mealsPerDay').value) || 0;
 
-      if (days <= 0 || meals <= 0 || current <= 0) {
-        document.getElementById('maxPerMealDisplay').innerText = '0';
-        document.getElementById('percentText').innerText = '0%';
-        document.getElementById('progressBar').value = 0;
-        return;
-      }
+        const initial = Number(
+            document.getElementById("initialBudget").value
+        );
 
-      const maxPerMeal = Math.floor(current / (days * meals));
-      document.getElementById('maxPerMealDisplay').innerText = maxPerMeal.toLocaleString('vi-VN');
+        const current = Number(
+            document.getElementById("currentBudget").value
+        );
 
-      let percent = initial > 0 ? (current / initial) * 100 : 0;
-      percent = Math.min(100, Math.max(0, percent));
-      
-      document.getElementById('percentText').innerText = percent.toFixed(1) + '%';
-      document.getElementById('progressBar').value = percent;
+        const days = Number(
+            document.getElementById("daysLeft").value
+        );
+
+        const meals = Number(
+            document.getElementById("mealsPerDay").value
+        );
+
+        if (
+            initial <= 0 ||
+            current < 0 ||
+            current > initial ||
+            days <= 0 ||
+            meals <= 0
+        ) {
+            document.getElementById("maxPerMealDisplay").innerText = "0";
+            document.getElementById("percentText").innerText = "0%";
+            document.getElementById("progressBar").value = 0;
+            return;
+        }
+
+        const maxPerMeal = Math.floor(
+            current / (days * meals)
+        );
+
+        document.getElementById("maxPerMealDisplay").innerText =
+            maxPerMeal.toLocaleString("vi-VN");
+
+        const percent = (current / initial) * 100;
+
+        document.getElementById("percentText").innerText =
+            percent.toFixed(1) + "%";
+
+        document.getElementById("progressBar").value = percent;
+
     }
+
+
+    // ================= GỢI Ý THỰC ĐƠN =================
 
     function saveAndSuggestMenu() {
-      const current = parseFloat(document.getElementById('currentBudget').value) || 0;
-      const days = parseFloat(document.getElementById('daysLeft').value) || 0;
-      const meals = parseFloat(document.getElementById('mealsPerDay').value) || 0;
 
-      if (days <= 0 || meals <= 0 || current <= 0) {
-        alert("Nhập đủ thông tin đi bạn ơi!");
-        return;
-      }
+        const initial = Number(
+            document.getElementById("initialBudget").value
+        );
 
-      const maxPerMeal = Math.floor(current / (days * meals));
-      localStorage.setItem('lumifood_max_per_meal', maxPerMeal);
-      document.getElementById('menuResult').innerText = "Đã lưu hạn mức " + maxPerMeal.toLocaleString('vi-VN') + " VNĐ vào localStorage!";
+        const current = Number(
+            document.getElementById("currentBudget").value
+        );
+
+        const days = Number(
+            document.getElementById("daysLeft").value
+        );
+
+        const meals = Number(
+            document.getElementById("mealsPerDay").value
+        );
+
+        if (
+            initial <= 0 ||
+            current < 0 ||
+            current > initial ||
+            days <= 0 ||
+            meals <= 0
+        ) {
+            alert("Vui lòng nhập đầy đủ thông tin hợp lệ!");
+            return;
+        }
+
+        if (current === 0) {
+            alert("Ngân sách còn lại bằng 0, bạn cần bổ sung ngân sách!");
+            return;
+        }
+
+        const maxPerMeal = Math.floor(
+            current / (days * meals)
+        );
+
+        localStorage.setItem(
+            "lumifood_max_per_meal",
+            maxPerMeal
+        );
+
+        let suggestion = "";
+
+        if (maxPerMeal < 20000) {
+            suggestion = "Bạn có thể chọn cơm tự nấu, trứng, rau và các món ăn tiết kiệm.";
+        }
+        else if (maxPerMeal < 40000) {
+            suggestion = "Bạn có thể chọn cơm bình dân, bún, phở hoặc bánh mì.";
+        }
+        else if (maxPerMeal < 70000) {
+            suggestion = "Bạn có thể chọn cơm gà, cơm rang, bún bò hoặc mì trộn.";
+        }
+        else {
+            suggestion = "Bạn có thể lựa chọn nhiều món ăn đa dạng như cơm sườn, gà, lẩu hoặc đồ ăn theo sở thích.";
+        }
+
+        document.getElementById("menuResult").innerText =
+            "Hạn mức của bạn là " +
+            maxPerMeal.toLocaleString("vi-VN") +
+            " VNĐ/bữa. Gợi ý: " + suggestion;
+
     }
+
+
+    // ================= CHIA BILL NHÓM =================
 
     let members = [];
 
-    function renderMembers() {
-      const tbody = document.getElementById('memberList');
-      tbody.innerHTML = '';
 
-      members.forEach((m, index) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td><input type="text" value="${m.name}" onchange="updateMember(${index}, 'name', this.value)"></td>
-          <td><input type="number" value="${m.price || ''}" onchange="updateMember(${index}, 'price', this.value)"></td>
-          <td><span id="final-${index}">0</span> đ</td>
-          <td><button onclick="removeMember(${index})">Xóa</button></td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      calculateSplitBill();
-    }
+    // THÊM THÀNH VIÊN
 
     function addMember() {
-      members.push({ name: '', price: 0, finalAmount: 0 });
-      renderMembers();
+
+        members.push({
+            name: "",
+            price: 0,
+            finalAmount: 0
+        });
+
+        renderMembers();
+
     }
 
-    function removeMember(index) {
-      members.splice(index, 1);
-      renderMembers();
+
+    // HIỂN THỊ DANH SÁCH THÀNH VIÊN
+
+    function renderMembers() {
+
+        const tbody = document.getElementById("memberList");
+
+        tbody.innerHTML = "";
+
+        members.forEach((member, index) => {
+
+            const tr = document.createElement("tr");
+
+            // STT
+            const td1 = document.createElement("td");
+            td1.innerText = index + 1;
+
+            // Tên
+            const td2 = document.createElement("td");
+            const nameInput = document.createElement("input");
+
+            nameInput.type = "text";
+            nameInput.placeholder = "Nhập tên";
+            nameInput.value = member.name;
+
+            nameInput.oninput = function () {
+                updateMember(index, "name", this.value);
+            };
+
+            td2.appendChild(nameInput);
+
+            // Tiền món
+            const td3 = document.createElement("td");
+            const priceInput = document.createElement("input");
+
+            priceInput.type = "number";
+            priceInput.min = "0";
+            priceInput.placeholder = "Nhập tiền món";
+            priceInput.value = member.price || "";
+
+            priceInput.oninput = function () {
+                updateMember(index, "price", this.value);
+            };
+
+            td3.appendChild(priceInput);
+
+            // Tiền cần trả
+            const td4 = document.createElement("td");
+
+            td4.id = "final-" + index;
+            td4.innerText = "0";
+
+            // Nút xóa
+            const td5 = document.createElement("td");
+            const deleteButton = document.createElement("button");
+
+            deleteButton.innerText = "Xóa";
+            deleteButton.className = "delete-btn";
+
+            deleteButton.onclick = function () {
+                removeMember(index);
+            };
+
+            td5.appendChild(deleteButton);
+
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            tr.appendChild(td5);
+
+            tbody.appendChild(tr);
+
+        });
+
+        calculateSplitBill();
+
     }
+
+
+    // CẬP NHẬT THÔNG TIN THÀNH VIÊN
 
     function updateMember(index, field, value) {
-      if (field === 'price') {
-        members[index].price = parseFloat(value) || 0;
-      } else {
-        members[index].name = value;
-      }
-      calculateSplitBill();
+
+        if (field === "price") {
+
+            members[index].price = Math.max(0, Number(value) || 0);
+
+        } else {
+
+            members[index].name = value;
+
+        }
+
+        calculateSplitBill();
+
     }
+
+
+    // XÓA THÀNH VIÊN
+
+    function removeMember(index) {
+
+        members.splice(index, 1);
+
+        renderMembers();
+
+    }
+
+
+    // TÍNH TIỀN CHIA BILL
 
     function calculateSplitBill() {
-      const shipFee = parseFloat(document.getElementById('shipFee').value) || 0;
-      const discount = parseFloat(document.getElementById('discountVoucher').value) || 0;
-      
-      const totalItemsPrice = members.reduce((sum, m) => sum + m.price, 0);
-      const netExtra = shipFee - discount;
 
-      members.forEach((m, index) => {
-        let finalAmount = m.price;
-        if (totalItemsPrice > 0) {
-          finalAmount = m.price + (netExtra * (m.price / totalItemsPrice));
-        }
-        m.finalAmount = Math.round(finalAmount);
-        const span = document.getElementById(`final-${index}`);
-        if (span) {
-          span.innerText = m.finalAmount.toLocaleString('vi-VN');
-        }
-      });
+        const shipFee = Math.max(
+            0,
+            Number(document.getElementById("shipFee").value) || 0
+        );
+
+        const discount = Math.max(
+            0,
+            Number(document.getElementById("discountVoucher").value) || 0
+        );
+
+        const totalItemsPrice = members.reduce(
+            (sum, member) => sum + member.price,
+            0
+        );
+
+        const netExtra = shipFee - discount;
+
+        let totalBill = 0;
+
+        members.forEach((member, index) => {
+
+            let finalAmount = member.price;
+
+            if (totalItemsPrice > 0) {
+
+                finalAmount = member.price +
+                    (netExtra * (member.price / totalItemsPrice));
+
+            }
+
+            member.finalAmount = Math.max(
+                0,
+                Math.round(finalAmount)
+            );
+
+            totalBill += member.finalAmount;
+
+            const span = document.getElementById("final-" + index);
+
+            if (span) {
+
+                span.innerText =
+                    member.finalAmount.toLocaleString("vi-VN");
+
+            }
+
+        });
+
+        document.getElementById("totalBill").innerText =
+            totalBill.toLocaleString("vi-VN");
+
     }
 
-    function copySplitResult() {
-      let text = "Bill LUMIfood:\n";
-      members.forEach(m => {
-        text += "- " + (m.name || "Ai đó") + ": " + m.finalAmount.toLocaleString('vi-VN') + " đ\n";
-      });
-      navigator.clipboard.writeText(text).then(() => alert("Đã copy!"));
+
+    // ================= SAO CHÉP KẾT QUẢ =================
+
+    async function copySplitResult() {
+
+        if (members.length === 0) {
+
+            alert("Bạn chưa thêm thành viên nào!");
+            return;
+
+        }
+
+        let text = "BILL LUMIFOOD\n";
+        text += "----------------------\n";
+
+        members.forEach(member => {
+
+            text +=
+                (member.name || "Chưa đặt tên") +
+                ": " +
+                member.finalAmount.toLocaleString("vi-VN") +
+                " VNĐ\n";
+
+        });
+
+        text += "----------------------\n";
+
+        text += "Tổng tiền: " +
+            members.reduce(
+                (sum, member) => sum + member.finalAmount,
+                0
+            ).toLocaleString("vi-VN") + " VNĐ";
+
+        try {
+
+            await navigator.clipboard.writeText(text);
+
+            alert("Đã sao chép kết quả thành công!");
+
+        } catch (error) {
+
+            alert("Không thể sao chép. Hãy mở trang bằng localhost hoặc HTTPS.");
+
+        }
+
     }
-  </script>
+
+</script>
+
 </body>
 </html>
