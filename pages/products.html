@@ -7,6 +7,7 @@
     <title>Thực đơn | LumiFood</title>
 
     <link rel="stylesheet" href="../assets/css/main.css">
+    <script src="../assets/js/products.js" defer></script>
 </head>
 
 <body class="products-page">
@@ -65,7 +66,7 @@
             Tìm kiếm món ăn
         </div>
 
-        <div class="filter-row">
+        <form class="filter-row" id="menu-filters" role="search">
 
             <input
                 type="text"
@@ -73,28 +74,28 @@
                 placeholder="Nhập tên món ăn..."
             >
 
-            <select class="filter-select" aria-label="Danh mục món ăn">
-                <option>Tất cả danh mục</option>
-                <option>Cơm</option>
-                <option>Bún / Phở / Mì</option>
-                <option>Đồ uống</option>
-                <option>Ăn vặt</option>
-                <option>Combo</option>
-                <option>Tráng miệng</option>
+            <select class="filter-select" id="category-filter" aria-label="Danh mục món ăn">
+                <option value="">Tất cả danh mục</option>
+                <option value="com">Cơm</option>
+                <option value="bun-pho-mi">Bún / Phở / Mì</option>
+                <option value="do-uong">Đồ uống</option>
+                <option value="an-vat">Ăn vặt</option>
+                <option value="combo">Combo</option>
+                <option value="trang-mieng">Tráng miệng</option>
             </select>
 
-            <select class="filter-select" aria-label="Sắp xếp món ăn">
-                <option>Sắp xếp theo</option>
-                <option>Giá thấp đến cao</option>
-                <option>Giá cao đến thấp</option>
-                <option>Món bán chạy</option>
+            <select class="filter-select" id="sort-filter" aria-label="Sắp xếp món ăn">
+                <option value="">Sắp xếp theo</option>
+                <option value="price-asc">Giá thấp đến cao</option>
+                <option value="price-desc">Giá cao đến thấp</option>
+                <option value="best-selling">Món bán chạy</option>
             </select>
 
-            <button class="filter-button btn btn-red">
+            <button type="submit" class="filter-button btn btn-red">
                 Tìm kiếm
             </button>
 
-        </div>
+        </form>
 
     </section>
 
@@ -103,6 +104,7 @@
 
     <div class="category-menu">
 
+        <a href="#all" aria-current="true">Tất cả</a>
         <a href="#com">Cơm</a>
         <a href="#bun-pho-mi">Bún / Phở / Mì</a>
         <a href="#do-uong">Đồ uống</a>
@@ -111,6 +113,8 @@
         <a href="#trang-mieng">Tráng miệng</a>
 
     </div>
+
+    <p id="menu-results" role="status" aria-live="polite"></p>
 
 
     <!-- ================================================= -->
@@ -155,7 +159,7 @@
 
                     <div class="product-bottom">
                         <span class="price">45.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">
+                        <a href="product_detail.html?id=com-tam" class="detail-button btn">
                             Chi tiết
                         </a>
                     </div>
@@ -188,7 +192,7 @@
 
                     <div class="product-bottom">
                         <span class="price">35.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=com-ga" class="detail-button btn">Chi tiết</a>
                     </div>
 
                 </div>
@@ -218,7 +222,7 @@
 
                     <div class="product-bottom">
                         <span class="price">35.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=com-rang" class="detail-button btn">Chi tiết</a>
                     </div>
 
                 </div>
@@ -248,7 +252,7 @@
 
                     <div class="product-bottom">
                         <span class="price">30.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=com-chien" class="detail-button btn">Chi tiết</a>
                     </div>
 
                 </div>
@@ -279,7 +283,7 @@
 
                     <div class="product-bottom">
                         <span class="price">40.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=com-suon" class="detail-button btn">Chi tiết</a>
                     </div>
 
                 </div>
@@ -324,7 +328,7 @@
 
                     <div class="product-bottom">
                         <span class="price">35.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=bun-tron" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -343,7 +347,7 @@
 
                     <div class="product-bottom">
                         <span class="price">40.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=pho-bo" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -362,7 +366,7 @@
 
                     <div class="product-bottom">
                         <span class="price">35.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=mi-xao" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -381,7 +385,7 @@
 
                     <div class="product-bottom">
                         <span class="price">40.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=bun-bo-hue" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -400,7 +404,7 @@
 
                     <div class="product-bottom">
                         <span class="price">35.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=pho-ga" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -443,7 +447,7 @@
 
                     <div class="product-bottom">
                         <span class="price">25.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=tra-sua" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -462,7 +466,7 @@
 
                     <div class="product-bottom">
                         <span class="price">25.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=tra-dao" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -481,7 +485,7 @@
 
                     <div class="product-bottom">
                         <span class="price">20.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=ca-phe" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -500,7 +504,7 @@
 
                     <div class="product-bottom">
                         <span class="price">18.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=ca-phe-den" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -520,7 +524,7 @@
 
                     <div class="product-bottom">
                         <span class="price">25.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=matcha" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -563,7 +567,7 @@
 
                     <div class="product-bottom">
                         <span class="price">25.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=khoai-tay" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -582,7 +586,7 @@
 
                     <div class="product-bottom">
                         <span class="price">30.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=ga-ran" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -601,7 +605,7 @@
 
                     <div class="product-bottom">
                         <span class="price">20.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=xuc-xich" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -620,7 +624,7 @@
 
                     <div class="product-bottom">
                         <span class="price">25.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=ca-vien" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -639,7 +643,7 @@
 
                     <div class="product-bottom">
                         <span class="price">25.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=pho-mai-que" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -682,7 +686,7 @@
 
                     <div class="product-bottom">
                         <span class="price">50.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=combo" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -701,7 +705,7 @@
 
                     <div class="product-bottom">
                         <span class="price">55.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=combo-ga" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -720,7 +724,7 @@
 
                     <div class="product-bottom">
                         <span class="price">58.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=combo-suon" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -739,7 +743,7 @@
 
                     <div class="product-bottom">
                         <span class="price">55.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=combo-bun" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -759,7 +763,7 @@
 
                     <div class="product-bottom">
                         <span class="price">60.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=combo-mi" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -802,7 +806,7 @@
 
                     <div class="product-bottom">
                         <span class="price">18.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=flan" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -821,7 +825,7 @@
 
                     <div class="product-bottom">
                         <span class="price">20.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=sua-chua" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -840,7 +844,7 @@
 
                     <div class="product-bottom">
                         <span class="price">22.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=khuc-bach" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -860,7 +864,7 @@
 
                     <div class="product-bottom">
                         <span class="price">28.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=che-thai" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -879,7 +883,7 @@
 
                     <div class="product-bottom">
                         <span class="price">20.000 VNĐ</span>
-                        <a href="product_detail.html" class="detail-button btn">Chi tiết</a>
+                        <a href="product_detail.html?id=tau-hu" class="detail-button btn">Chi tiết</a>
                     </div>
                 </div>
             </article>
@@ -926,7 +930,7 @@
             <ul>
                 <li>📞 0963554772</li>
                 <li><a href="contact.html">Liên hệ LumiFood</a></li>
-                <li>📍 chùa Bộc, Hà Nội, Việt Nam</li>
+                <li>📍 Chùa Bộc, Hà Nội, Việt Nam</li>
             </ul>
         </div>
 
