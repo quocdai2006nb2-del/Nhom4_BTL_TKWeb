@@ -277,45 +277,6 @@
             color: #5C6079;
         }
 
-        /* Sứ mệnh & Tầm nhìn */
-        .mission-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 50px;
-        }
-
-        .mission-card {
-            padding: 32px;
-            border-radius: 20px;
-            color: #FFFFFF;
-        }
-
-        .mission-orange {
-            background-color: #FF6B35;
-        }
-
-        .mission-dark {
-            background-color: #2B2D42;
-        }
-
-        .mission-card span {
-            font-size: 12px;
-            text-transform: uppercase;
-            font-weight: bold;
-            opacity: 0.9;
-        }
-
-        .mission-card h3 {
-            font-size: 24px;
-            margin: 10px 0 14px;
-        }
-
-        .mission-card p {
-            margin: 0;
-            opacity: 0.92;
-        }
-
         /* Bảng so sánh */
         .compare-table {
             width: 100%;
@@ -437,171 +398,9 @@
             color: #5C6079;
         }
 
-        /* Đội ngũ 5 thành viên */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 18px;
-        }
-
-        .member-card {
-            background-color: #FFFFFF;
-            border: 1px solid #FFE4D4;
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .member-card img {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-        }
-
-        .member-info {
-            padding: 16px;
-        }
-
-        .member-msv {
-            display: inline-block;
-            background-color: #FFF5EB;
-            color: #FF6B35;
-            font-size: 11px;
-            font-weight: bold;
-            padding: 3px 8px;
-            border-radius: 8px;
-            margin-bottom: 6px;
-        }
-
-        .member-role {
-            display: block;
-            font-size: 12px;
-            font-weight: bold;
-            color: #FF6B35;
-            text-transform: uppercase;
-        }
-
-        .member-info h3 {
-            font-size: 17px;
-            margin: 4px 0 8px;
-        }
-
-        .member-info p {
-            font-size: 13px;
-            color: #5C6079;
-            margin: 0;
-        }
-
-        .member-tag {
-            margin: 0 16px 16px;
-            text-align: center;
-            background-color: #F8FAFC;
-            padding: 6px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #2B2D42;
-        }
-
-        /* Hoạt động cộng đồng */
-        .csr-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .csr-card {
-            display: flex;
-            background-color: #FFFDF9;
-            border: 1px solid #FFE4D4;
-            border-radius: 18px;
-            overflow: hidden;
-        }
-
-        .csr-card img {
-            width: 190px;
-            object-fit: cover;
-        }
-
-        .csr-body {
-            padding: 22px;
-        }
-
-        .csr-badge {
-            display: inline-block;
-            background-color: #FFE8DC;
-            color: #FF6B35;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 4px 10px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-        }
-
-        .csr-body h3 {
-            font-size: 18px;
-            margin: 0 0 10px;
-        }
-
-        .csr-body p {
-            font-size: 14px;
-            color: #5C6079;
-            margin: 0;
-        }
-
-        /* Banner cuối trang */
-        .cta-banner {
-            background-color: #FF6B35;
-            color: #FFFFFF;
-            padding: 44px;
-            border-radius: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .cta-banner h2 {
-            font-size: 30px;
-            margin: 0 0 10px;
-        }
-
-        .cta-banner p {
-            margin: 0;
-            max-width: 600px;
-        }
-
-        .cta-actions {
-            display: flex;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .btn-white {
-            background-color: #FFFFFF;
-            color: #FF6B35;
-            padding: 14px 22px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .btn-dark {
-            background-color: #2B2D42;
-            color: #FFFFFF;
-            padding: 14px 22px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
         @media (max-width: 992px) {
             .hero-grid,
-            .story-grid,
-            .mission-grid,
-            .csr-grid {
+            .story-grid {
                 grid-template-columns: 1fr;
             }
             .values-grid,
@@ -609,31 +408,16 @@
             .timeline-tabs {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
             .review-grid {
                 grid-template-columns: 1fr;
-            }
-            .cta-banner {
-                flex-direction: column;
-                text-align: center;
             }
         }
 
         @media (max-width: 600px) {
             .values-grid,
             .stats-bar,
-            .timeline-tabs,
-            .team-grid {
+            .timeline-tabs {
                 grid-template-columns: 1fr;
-            }
-            .csr-card {
-                flex-direction: column;
-            }
-            .csr-card img {
-                width: 100%;
-                height: 180px;
             }
         }
     </style>
@@ -756,29 +540,9 @@
         </div>
     </section>
 
-    <!-- SỨ MỆNH, TẦM NHÌN & SO SÁNH -->
+    <!-- SO SÁNH ĐIỂM KHÁC BIỆT -->
     <section class="about-section">
         <div class="container">
-            <div class="mission-grid">
-                <div class="mission-card mission-orange">
-                    <span>Sứ mệnh của LumiFood</span>
-                    <h3>Xóa bỏ nỗi lo "cơm bụi" kém chất lượng của sinh viên</h3>
-                    <p>
-                        Cam kết mang đến những bữa ăn tươi mới mỗi ngày, minh bạch nguồn gốc, cân bằng dinh dưỡng với chi phí
-                        hợp lý nhất để mọi sinh viên đều có nền tảng sức khỏe tốt nhất cho hành trình học tập.
-                    </p>
-                </div>
-
-                <div class="mission-card mission-dark">
-                    <span>Tầm nhìn đến năm 2028</span>
-                    <h3>Trở thành hệ sinh thái ẩm thực học đường số 1 Việt Nam</h3>
-                    <p>
-                        Xây dựng mạng lưới bếp trung tâm chuẩn vệ sinh an toàn thực phẩm kết nối trực tiếp với các khu đô thị đại học,
-                        tích hợp đặt món thông minh theo lịch học của từng sinh viên.
-                    </p>
-                </div>
-            </div>
-
             <div class="section-title">
                 <span class="section-tag">Tại sao chọn LumiFood?</span>
                 <h2>Khác biệt nằm ở sự tử tế trong từng hộp cơm</h2>
@@ -908,131 +672,6 @@
                         <strong>Lê Thảo Linh</strong>
                         <span>Sinh viên K64 - ĐH Kinh Tế Quốc Dân</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ĐỘI NGŨ DỰ ÁN -->
-    <section class="about-section bg-cream">
-        <div class="container">
-            <div class="section-title">
-                <span class="section-tag">Đội ngũ phát triển dự án</span>
-                <h2>Thành viên nhóm LumiFood</h2>
-                <p>Đội ngũ 5 sinh viên thực hiện bài tập lớn Thiết kế Web, cùng nhau xây dựng hệ sinh thái LumiFood toàn diện.</p>
-            </div>
-
-            <div class="team-grid">
-                <article class="member-card">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=500&q=80" alt="Trịnh Quốc Đại">
-                        <div class="member-info">
-                            <span class="member-msv">MSV: 27A4043282</span>
-                            <span class="member-role">Product Owner / Lead</span>
-                            <h3>Trịnh Quốc Đại</h3>
-                            <p>Quản lý Git, Deploy hệ thống, phát triển Trang chủ (index.html) và Design System (main.css).</p>
-                        </div>
-                    </div>
-                    <div class="member-tag">Trưởng nhóm</div>
-                </article>
-
-                <article class="member-card">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" alt="Đoàn Thị Minh Ánh">
-                        <div class="member-info">
-                            <span class="member-msv">MSV: 27A4043271</span>
-                            <span class="member-role">Dev Thực đơn & Data</span>
-                            <h3>Đoàn Thị Minh Ánh</h3>
-                            <p>Xây dựng Trang Thực đơn (products.html), Chi tiết món, dữ liệu products.json và main.js.</p>
-                        </div>
-                    </div>
-                    <div class="member-tag">Thực đơn & Dữ liệu</div>
-                </article>
-
-                <article class="member-card">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80" alt="Nguyễn Thị Thảo Ly">
-                        <div class="member-info">
-                            <span class="member-msv">MSV: 27A4043313</span>
-                            <span class="member-role">Dev Đặt hàng & Form</span>
-                            <h3>Nguyễn Thị Thảo Ly</h3>
-                            <p>Phát triển Trang Đặt hàng (contact.html), xử lý Form Validation và Modal Mã QR qua validation.js.</p>
-                        </div>
-                    </div>
-                    <div class="member-tag">Đặt hàng & Form</div>
-                </article>
-
-                <article class="member-card">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" alt="Nguyễn Thị Kim Huệ">
-                        <div class="member-info">
-                            <span class="member-msv">MSV: 27A4043296</span>
-                            <span class="member-role">Dev Logic Chi Tiêu</span>
-                            <h3>Nguyễn Thị Kim Huệ</h3>
-                            <p>Xây dựng Tính năng Tính ngân sách & Chia ship (calculator.html) với localStorage trong calculator.js.</p>
-                        </div>
-                    </div>
-                    <div class="member-tag">Logic Tài chính</div>
-                </article>
-
-                <article class="member-card">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Nguyễn Quốc Khánh">
-                        <div class="member-info">
-                            <span class="member-msv">MSV: 27A4043304</span>
-                            <span class="member-role">UI/UX & Quality Control</span>
-                            <h3>Nguyễn Quốc Khánh</h3>
-                            <p>Thiết kế Trang Giới thiệu (about.html), Wireframe, Báo cáo PDF, AI_USAGE.md và kiểm định UI/UX.</p>
-                        </div>
-                    </div>
-                    <div class="member-tag">UI/UX & Kiểm định</div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- HOẠT ĐỘNG CỘNG ĐỒNG -->
-    <section id="cong-dong" class="about-section bg-white">
-        <div class="container">
-            <div class="section-title">
-                <span class="section-tag">Lan tỏa giá trị tích cực</span>
-                <h2>Hoạt động cộng đồng cùng LumiFood</h2>
-                <p>Mỗi suất cơm bạn đặt không chỉ nuôi dưỡng sức khỏe của bạn mà còn góp phần sẻ chia với cộng đồng sinh viên khó khăn.</p>
-            </div>
-
-            <div class="csr-grid">
-                <div class="csr-card">
-                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80" alt="Tủ cơm 0 đồng">
-                    <div class="csr-body">
-                        <span class="csr-badge">Quỹ sẻ chia</span>
-                        <h3>Tủ cơm 0 đồng & Tiếp sức mùa thi</h3>
-                        <p>Trích 1.000đ từ mỗi đơn hàng để duy trì 50 suất cơm miễn phí mỗi tuần dành cho các bạn sinh viên có hoàn cảnh khó khăn và tặng 1.000 suất ăn tiếp sức sĩ tử mùa thi Đại học.</p>
-                    </div>
-                </div>
-
-                <div class="csr-card">
-                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Sống xanh học đường">
-                    <div class="csr-body">
-                        <span class="csr-badge">Sống xanh học đường</span>
-                        <h3>Đổi 10 tem xanh lấy 1 cây sen đá hoặc 1 bữa cơm</h3>
-                        <p>Khuyến khích sinh viên mang hộp cá nhân khi đến lấy cơm trực tiếp tại bếp hoặc thu gom nắp hộp sạch để tái chế, giảm thiểu hơn 12.000 túi nilon mỗi học kỳ.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CALL TO ACTION -->
-    <section class="about-section">
-        <div class="container">
-            <div class="cta-banner">
-                <div>
-                    <h2>Đói bụng rồi? Để LumiFood lo bữa trưa nay cho bạn!</h2>
-                    <p>Đặt trước 10h30 sáng để nhận ưu đãi Tặng kèm 1 ly trà tắc mật ong hoặc đăng ký Gói Cơm Tuần tiết kiệm tới 15%.</p>
-                </div>
-                <div class="cta-actions">
-                    <a href="products.html#com" class="btn-white">Chọn Suất Lẻ (Từ 25K)</a>
-                    <a href="contact.html" class="btn-dark">Đặt Hàng & Gói Tuần</a>
                 </div>
             </div>
         </div>
