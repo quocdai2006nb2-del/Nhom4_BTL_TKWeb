@@ -1,966 +1,1128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Về LumiFood - Bữa Cơm Nhà Dinh Dưỡng Giá Sinh Viên</title>
-</head>
-<body>
-    <!-- Google Fonts: Plus Jakarta Sans & Inter cho cảm giác trẻ trung, hiện đại, dễ đọc -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <title>Giới thiệu | LumiFood</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        .about-page {
+            background-color: #FFFDF9;
+            color: #2B2D42;
+            line-height: 1.6;
+        }
 
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        .about-section {
+            padding: 50px 0;
+        }
 
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    lumi: {
-                        orange: '#FF6B35',
-                        orangeHover: '#E85A26',
-                        yellow: '#F7B801',
-                        cream: '#FFFDF9',
-                        creamDark: '#FFF5EB',
-                        dark: '#2B2D42',
-                        muted: '#5C6079',
-                        green: '#2EC4B6'
-                    }
-                },
-                fontFamily: {
-                    sans: ['Inter', 'sans-serif'],
-                    heading: ['Plus Jakarta Sans', 'sans-serif'],
-                }
+        .bg-cream {
+            background-color: #FFF5EB;
+        }
+
+        .bg-white {
+            background-color: #FFFFFF;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 36px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: #FF6B35;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            margin: 0 0 10px;
+            color: #2B2D42;
+        }
+
+        .section-title p {
+            color: #5C6079;
+            margin: 0;
+        }
+
+        /* Hero */
+        .about-hero {
+            padding: 50px 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: #FFE8DC;
+            color: #FF6B35;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            line-height: 1.25;
+            margin: 0 0 16px;
+        }
+
+        .hero-text h1 span {
+            color: #FF6B35;
+        }
+
+        .hero-text p {
+            color: #5C6079;
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .btn-primary {
+            background-color: #FF6B35;
+            color: #FFFFFF;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #E85A26;
+        }
+
+        .btn-outline {
+            background-color: #FFFFFF;
+            color: #2B2D42;
+            border: 1px solid #FFD6C2;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            border-color: #FF6B35;
+            color: #FF6B35;
+        }
+
+        .hero-highlights {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            font-weight: 500;
+            color: #2B2D42;
+        }
+
+        .hero-image-box {
+            position: relative;
+        }
+
+        .hero-image-box img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .rating-card {
+            background-color: #FFFFFF;
+            padding: 14px 18px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            margin-top: -30px;
+            margin-left: 20px;
+            position: relative;
+            display: inline-block;
+            border: 1px solid #FFE8DC;
+        }
+
+        .rating-card strong {
+            display: block;
+            font-size: 15px;
+            color: #2B2D42;
+        }
+
+        .rating-card span {
+            font-size: 12px;
+            color: #5C6079;
+        }
+
+        /* Câu chuyện & Timeline */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .story-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .story-images img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .story-content h2 {
+            font-size: 28px;
+            margin: 0 0 16px;
+        }
+
+        .story-content p {
+            color: #5C6079;
+            margin-bottom: 14px;
+        }
+
+        .timeline-box {
+            background-color: #FFF5EB;
+            padding: 32px;
+            border-radius: 20px;
+            border: 1px solid #FFE4D4;
+        }
+
+        .timeline-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .tab-btn {
+            background-color: #FFFFFF;
+            border: 1px solid #FFD6C2;
+            padding: 14px;
+            border-radius: 12px;
+            text-align: left;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .tab-btn small {
+            display: block;
+            color: #FF6B35;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .tab-btn strong {
+            font-size: 15px;
+            color: #2B2D42;
+        }
+
+        .tab-btn.active {
+            background-color: #FF6B35;
+            border-color: #FF6B35;
+        }
+
+        .tab-btn.active small,
+        .tab-btn.active strong {
+            color: #FFFFFF;
+        }
+
+        .timeline-detail {
+            background-color: #FFFFFF;
+            padding: 24px;
+            border-radius: 14px;
+            border: 1px solid #FFE4D4;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background-color: #FEF3C7;
+            color: #92400E;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-detail h4 {
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+
+        .timeline-detail p {
+            margin: 0;
+            color: #5C6079;
+        }
+
+        /* Sứ mệnh & Tầm nhìn */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .mission-card {
+            padding: 32px;
+            border-radius: 20px;
+            color: #FFFFFF;
+        }
+
+        .mission-orange {
+            background-color: #FF6B35;
+        }
+
+        .mission-dark {
+            background-color: #2B2D42;
+        }
+
+        .mission-card span {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        .mission-card h3 {
+            font-size: 24px;
+            margin: 10px 0 14px;
+        }
+
+        .mission-card p {
+            margin: 0;
+            opacity: 0.92;
+        }
+
+        /* Bảng so sánh */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .compare-table th,
+        .compare-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #F3E8E2;
+        }
+
+        .compare-table th {
+            background-color: #FFF5EB;
+            font-size: 15px;
+        }
+
+        .compare-table .highlight-col {
+            background-color: #FFF9F5;
+            font-weight: 600;
+        }
+
+        /* 4 Giá trị cốt lõi */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .value-card {
+            background-color: #FFFFFF;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #FFE4D4;
+        }
+
+        .value-card h3 {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: #FF6B35;
+        }
+
+        .value-card p {
+            font-size: 14px;
+            color: #5C6079;
+            margin: 0;
+        }
+
+        /* Thống kê & Đánh giá */
+        .stats-bar {
+            background-color: #2B2D42;
+            color: #FFFFFF;
+            padding: 36px 24px;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .stat-item strong {
+            display: block;
+            font-size: 34px;
+            color: #FF6B35;
+            margin-bottom: 6px;
+        }
+
+        .stat-item span {
+            font-size: 14px;
+            color: #CBD5E1;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .review-card {
+            background-color: #FFFDF9;
+            border: 1px solid #FFE4D4;
+            padding: 24px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .review-stars {
+            color: #F7B801;
+            margin-bottom: 12px;
+        }
+
+        .review-card p {
+            font-style: italic;
+            font-size: 14px;
+            color: #2B2D42;
+            margin-bottom: 18px;
+        }
+
+        .reviewer {
+            border-top: 1px solid #F3E8E2;
+            padding-top: 12px;
+        }
+
+        .reviewer strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .reviewer span {
+            font-size: 12px;
+            color: #5C6079;
+        }
+
+        /* Đội ngũ 5 thành viên */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+        }
+
+        .member-card {
+            background-color: #FFFFFF;
+            border: 1px solid #FFE4D4;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .member-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 16px;
+        }
+
+        .member-msv {
+            display: inline-block;
+            background-color: #FFF5EB;
+            color: #FF6B35;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+        }
+
+        .member-role {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            color: #FF6B35;
+            text-transform: uppercase;
+        }
+
+        .member-info h3 {
+            font-size: 17px;
+            margin: 4px 0 8px;
+        }
+
+        .member-info p {
+            font-size: 13px;
+            color: #5C6079;
+            margin: 0;
+        }
+
+        .member-tag {
+            margin: 0 16px 16px;
+            text-align: center;
+            background-color: #F8FAFC;
+            padding: 6px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #2B2D42;
+        }
+
+        /* Hoạt động cộng đồng */
+        .csr-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .csr-card {
+            display: flex;
+            background-color: #FFFDF9;
+            border: 1px solid #FFE4D4;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .csr-card img {
+            width: 190px;
+            object-fit: cover;
+        }
+
+        .csr-body {
+            padding: 22px;
+        }
+
+        .csr-badge {
+            display: inline-block;
+            background-color: #FFE8DC;
+            color: #FF6B35;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .csr-body h3 {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        .csr-body p {
+            font-size: 14px;
+            color: #5C6079;
+            margin: 0;
+        }
+
+        /* Banner cuối trang */
+        .cta-banner {
+            background-color: #FF6B35;
+            color: #FFFFFF;
+            padding: 44px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .cta-banner h2 {
+            font-size: 30px;
+            margin: 0 0 10px;
+        }
+
+        .cta-banner p {
+            margin: 0;
+            max-width: 600px;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .btn-white {
+            background-color: #FFFFFF;
+            color: #FF6B35;
+            padding: 14px 22px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-dark {
+            background-color: #2B2D42;
+            color: #FFFFFF;
+            padding: 14px 22px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid,
+            .story-grid,
+            .mission-grid,
+            .csr-grid {
+                grid-template-columns: 1fr;
+            }
+            .values-grid,
+            .stats-bar,
+            .timeline-tabs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-banner {
+                flex-direction: column;
+                text-align: center;
             }
         }
-    }
-</script>
-<style>
-    /* Custom scrollbar & subtle animations */
-    body {
-        background-color: #FFFDF9;
-        color: #2B2D42;
-        overflow-x: hidden;
-    }
-    .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .blob-shape {
-        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-        animation: morph 8s ease-in-out infinite;
-    }
-    @keyframes morph {
-        0%, 100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
-        50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; }
-    }
-</style>
 
+        @media (max-width: 600px) {
+            .values-grid,
+            .stats-bar,
+            .timeline-tabs,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .csr-card {
+                flex-direction: column;
+            }
+            .csr-card img {
+                width: 100%;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
 
-<!-- =====================================================================
-     1. HEADER & NAVIGATION (Đồng bộ hoàn toàn với các trang của nhóm)
-====================================================================== -->
-<header class="sticky top-0 z-50 bg-lumi-cream/95 backdrop-blur-md border-b border-orange-100 transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-            <!-- Logo LumiFood dẫn về trang chủ của nhóm -->
-            <a href="../index.html" class="flex items-center gap-2.5 group">
-                <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-lumi-orange to-lumi-yellow flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-bowl-rice text-xl"></i>
-                </div>
-                <div>
-                    <span class="font-heading font-extrabold text-2xl tracking-tight text-lumi-dark">Lumi<span class="text-lumi-orange">Food</span></span>
-                    <span class="block text-[10px] font-semibold uppercase tracking-widest text-lumi-muted -mt-1">Cơm Nhà Sinh Viên</span>
-                </div>
-            </a>
+<body class="about-page">
 
-            <!-- Desktop Menu (Liên kết chuẩn xác các trang trong thư mục) -->
-            <nav class="hidden md:flex items-center space-x-6 font-medium text-sm">
-                <a href="../index.html" class="text-lumi-muted hover:text-lumi-orange transition-colors">Trang chủ</a>
-                <a href="products.html" class="text-lumi-muted hover:text-lumi-orange transition-colors">Thực đơn</a>
-                <a href="calculator.html" class="text-lumi-muted hover:text-lumi-orange transition-colors">Tính ngân sách</a>
-                <a href="contact.html" class="text-lumi-muted hover:text-lumi-orange transition-colors">Đặt hàng</a>
-                <a href="thanhtoan.html" class="text-lumi-muted hover:text-lumi-orange transition-colors">Thanh toán</a>
-                <a href="about.html" class="text-lumi-orange font-semibold relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-lumi-orange after:rounded-full" aria-current="page">Giới thiệu</a>
-            </nav>
+<!-- ================= HEADER ================= -->
 
-            <!-- CTA Button & Mobile Menu Toggle -->
-            <div class="flex items-center gap-3">
-                <button onclick="openOrderModal()" class="bg-lumi-orange hover:bg-lumi-orangeHover text-white font-heading font-bold text-sm px-5 py-2.5 rounded-full shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 transform hover:-translate-y-0.5 transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-utensils"></i>
-                    <span>Đặt Cơm Ngay</span>
-                </button>
-                <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-xl text-lumi-dark hover:bg-orange-100 focus:outline-none" aria-label="Mở menu">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
+<header>
+    <div class="logo">
+        <h1><a href="../index.html">LumiFood</a></h1>
     </div>
-
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-orange-100 px-4 pt-2 pb-5 space-y-2 shadow-lg">
-        <a href="../index.html" class="block px-4 py-2.5 rounded-xl text-lumi-muted hover:bg-orange-50 hover:text-lumi-orange font-medium">Trang chủ</a>
-        <a href="products.html" class="block px-4 py-2.5 rounded-xl text-lumi-muted hover:bg-orange-50 hover:text-lumi-orange font-medium">Thực đơn</a>
-        <a href="calculator.html" class="block px-4 py-2.5 rounded-xl text-lumi-muted hover:bg-orange-50 hover:text-lumi-orange font-medium">Tính ngân sách</a>
-        <a href="contact.html" class="block px-4 py-2.5 rounded-xl text-lumi-muted hover:bg-orange-50 hover:text-lumi-orange font-medium">Đặt hàng</a>
-        <a href="thanhtoan.html" class="block px-4 py-2.5 rounded-xl text-lumi-muted hover:bg-orange-50 hover:text-lumi-orange font-medium">Thanh toán</a>
-        <a href="about.html" class="block px-4 py-2.5 rounded-xl bg-orange-50 text-lumi-orange font-semibold">Giới thiệu</a>
-    </div>
+    <nav aria-label="Điều hướng chính">
+        <ul>
+            <li><a href="../index.html">Trang chủ</a></li>
+            <li><a href="products.html">Thực đơn</a></li>
+            <li><a href="calculator.html">Tính ngân sách</a></li>
+            <li><a href="contact.html">Đặt hàng</a></li>
+            <li><a href="about.html" class="active" aria-current="page">Giới thiệu</a></li>
+        </ul>
+    </nav>
 </header>
 
-<main id="top">
-    <!-- =====================================================================
-         2. HERO SECTION
-    ====================================================================== -->
-    <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-28 overflow-hidden">
-        <div class="absolute top-10 right-0 -z-10 w-96 h-96 bg-lumi-yellow/15 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -z-10 w-80 h-80 bg-lumi-orange/10 rounded-full blur-3xl"></div>
+<!-- ================= MAIN ================= -->
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100/80 border border-orange-200 text-lumi-orange text-xs sm:text-sm font-semibold">
-                        <span class="w-2 h-2 rounded-full bg-lumi-orange animate-ping"></span>
-                        Dự án ẩm thực dành riêng cho cộng đồng Sinh viên
-                    </div>
+<main>
 
-                    <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-[52px] text-lumi-dark leading-[1.18]">
-                        Bữa cơm nhà nóng hổi, trọn dinh dưỡng với <span class="text-transparent bg-clip-text bg-gradient-to-r from-lumi-orange to-lumi-yellow">mức giá của sinh viên.</span>
-                    </h1>
-
-                    <p class="text-base sm:text-lg text-lumi-muted leading-relaxed max-w-2xl">
-                        LumiFood không chỉ giao một hộp cơm, chúng tôi gói ghém sự chăm chút như bữa cơm mẹ nấu để bạn đủ sức chạy deadline, ôn thi và chinh phục giảng đường mỗi ngày.
-                    </p>
-
-                    <div class="flex flex-wrap items-center gap-4 pt-2">
-                        <a href="products.html" class="bg-lumi-orange hover:bg-lumi-orangeHover text-white font-heading font-bold px-7 py-4 rounded-2xl shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 transform hover:-translate-y-0.5 transition-all flex items-center gap-2.5 text-base">
-                            <span>Khám phá thực đơn hôm nay</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                        <a href="#cau-chuyen" class="px-6 py-4 rounded-2xl bg-white border-2 border-orange-100 hover:border-lumi-orange text-lumi-dark font-heading font-bold text-base transition-colors flex items-center gap-2">
-                            <i class="fa-solid fa-book-open text-lumi-orange"></i>
-                            <span>Đọc câu chuyện của tụi mình</span>
-                        </a>
-                    </div>
-
-                    <div class="pt-4 flex flex-wrap items-center gap-6 text-sm text-lumi-muted font-medium">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-circle-check text-lumi-green text-lg"></i>
-                            <span>Chỉ từ 25.000đ/suất</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-circle-check text-lumi-green text-lg"></i>
-                            <span>Freeship KTX & Giảng đường</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-circle-check text-lumi-green text-lg"></i>
-                            <span>100% Hộp bã mía sạch</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-5 relative">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <div class="absolute -inset-3 bg-gradient-to-tr from-lumi-orange to-lumi-yellow opacity-20 blob-shape"></div>
-                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80" 
-                             onerror="this.src='https://placehold.co/800x700/FF6B35/FFFFFF?text=LumiFood+Bua+Com+Nha'"
-                             alt="Suất cơm dinh dưỡng LumiFood dành cho sinh viên" 
-                             class="relative rounded-3xl shadow-2xl object-cover w-full h-[380px] sm:h-[450px] border-4 border-white">
-                        
-                        <div class="absolute -bottom-5 -left-4 sm:-left-6 bg-white p-4 rounded-2xl shadow-xl border border-orange-50 flex items-center gap-3.5 max-w-xs">
-                            <div class="w-12 h-12 rounded-xl bg-amber-100 text-lumi-yellow flex items-center justify-center text-2xl shrink-0">
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div>
-                                <p class="font-heading font-extrabold text-lumi-dark text-base">4.9/5.0 Đánh giá</p>
-                                <p class="text-xs text-lumi-muted">Từ hơn 2.500+ sinh viên các trường ĐH</p>
-                            </div>
-                        </div>
-
-                        <div class="hidden sm:flex absolute -top-5 -right-5 bg-white px-4 py-3 rounded-2xl shadow-xl border border-orange-50 items-center gap-2.5">
-                            <span class="w-3 h-3 rounded-full bg-green-500"></span>
-                            <span class="text-xs font-bold text-lumi-dark">Bếp đang đỏ lửa mỗi 9:00 sáng</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =====================================================================
-         3. CÂU CHUYỆN KHỞI NGUỒN & TIMELINE
-    ====================================================================== -->
-    <section id="cau-chuyen" class="py-20 bg-white border-y border-orange-100/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20 reveal">
-                <div class="lg:col-span-5 order-2 lg:order-1">
-                    <div class="grid grid-cols-2 gap-4">
-                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80" alt="Chuẩn bị nguyên liệu" class="rounded-3xl object-cover h-64 w-full shadow-md mt-6">
-                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Khay cơm" class="rounded-3xl object-cover h-64 w-full shadow-md">
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 order-1 lg:order-2 space-y-5">
-                    <span class="text-lumi-orange font-heading font-bold text-sm uppercase tracking-wider">Câu chuyện khởi nguồn</span>
-                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-lumi-dark leading-tight">
-                        Bắt đầu từ những ngày cuối tháng cạn ví và nỗi ám ảnh "trưa nay ăn gì?"
-                    </h2>
-                    <div class="space-y-4 text-lumi-muted leading-relaxed text-base">
-                        <p>Là một nhóm sinh viên năm 3 từng trải qua cảnh <strong class="text-lumi-dark">"đầu tháng ăn sang, cuối tháng úp mì tôm"</strong>, tụi mình quá hiểu cảm giác đứng giữa cổng trường lúc 12 giờ trưa nắng gắt: cơm quán bụi lo ngại dầu chiên lại, còn đặt app giao đồ ăn thì phí ship đắt đỏ.</p>
-                        <p>Tháng 9/2025, <strong class="text-lumi-orange">LumiFood</strong> ra đời từ căn bếp nhỏ gần khu ký túc xá. Tụi mình tự đi chợ đầu mối lúc 5h sáng, lên thực đơn cân bằng calo và tự tay giao từng hộp cơm nóng hổi đến tận tay các bạn sinh viên.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Interactive Timeline -->
-            <div class="bg-lumi-creamDark/70 rounded-3xl p-6 sm:p-10 border border-orange-100 reveal">
-                <div class="text-center max-w-2xl mx-auto mb-10">
-                    <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-lumi-dark">Hành trình lớn lên cùng sinh viên</h3>
-                    <p class="text-sm sm:text-base text-lumi-muted mt-2">Nhấp vào từng cột mốc để xem cách LumiFood vượt qua những thử thách đầu tiên</p>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8" id="timelineTabs">
-                    <button onclick="selectTimeline(0)" class="timeline-btn active text-left p-4 rounded-2xl bg-lumi-orange text-white shadow-lg transition-all">
-                        <span class="text-xs font-bold uppercase opacity-80 block">Giai đoạn 1</span>
-                        <span class="font-heading font-bold text-base sm:text-lg">Ý tưởng nhen nhóm</span>
-                    </button>
-                    <button onclick="selectTimeline(1)" class="timeline-btn text-left p-4 rounded-2xl bg-white text-lumi-dark hover:bg-orange-50 border border-orange-100 transition-all">
-                        <span class="text-xs font-bold uppercase text-lumi-orange block">Giai đoạn 2</span>
-                        <span class="font-heading font-bold text-base sm:text-lg">Bếp thử nghiệm 25m²</span>
-                    </button>
-                    <button onclick="selectTimeline(2)" class="timeline-btn text-left p-4 rounded-2xl bg-white text-lumi-dark hover:bg-orange-50 border border-orange-100 transition-all">
-                        <span class="text-xs font-bold uppercase text-lumi-orange block">Giai đoạn 3</span>
-                        <span class="font-heading font-bold text-base sm:text-lg">Cột mốc 1.000+ suất</span>
-                    </button>
-                    <button onclick="selectTimeline(3)" class="timeline-btn text-left p-4 rounded-2xl bg-white text-lumi-dark hover:bg-orange-50 border border-orange-100 transition-all">
-                        <span class="text-xs font-bold uppercase text-lumi-orange block">Hiện tại</span>
-                        <span class="font-heading font-bold text-base sm:text-lg">Phủ sóng 5 cụm ĐH</span>
-                    </button>
-                </div>
-
-                <div id="timelineContent" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-orange-100 flex flex-col md:flex-row items-center gap-6 transition-all">
-                    <div class="w-16 h-16 rounded-2xl bg-orange-100 text-lumi-orange flex items-center justify-center text-3xl shrink-0" id="tlIcon">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <div>
-                        <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <span id="tlDate" class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">Tháng 08/2025</span>
-                            <h4 id="tlTitle" class="font-heading font-extrabold text-xl text-lumi-dark">Khảo sát 500 sinh viên & Phác thảo thực đơn 25K</h4>
-                        </div>
-                        <p id="tlDesc" class="text-lumi-muted text-sm sm:text-base leading-relaxed">
-                            Nhóm thực hiện khảo sát thói quen ăn uống của 500 bạn sinh viên tại ký túc xá. Kết quả cho thấy 82% sinh viên phải bỏ bữa sáng hoặc ăn qua loa bữa trưa vì giá cả leo thang. Tụi mình bắt tay tính toán bài toán tối ưu chi phí nguyên liệu tận gốc để giữ mức giá 25.000đ mà vẫn đủ đạm và rau xanh.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =====================================================================
-         4. SỨ MỆNH, TẦM NHÌN & ĐIỂM KHÁC BIỆT
-    ====================================================================== -->
-    <section id="khac-biet" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 reveal">
-                <div class="bg-gradient-to-br from-lumi-orange to-orange-500 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
-                    <i class="fa-solid fa-bullseye absolute -bottom-6 -right-6 text-9xl text-white/10"></i>
-                    <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-heart-pulse"></i>
-                    </div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-orange-100">Sứ mệnh của LumiFood</span>
-                    <h3 class="font-heading font-extrabold text-2xl sm:text-3xl mt-2 mb-4">Xóa bỏ nỗi lo "cơm bụi" kém chất lượng của sinh viên</h3>
-                    <p class="text-orange-50 leading-relaxed text-sm sm:text-base">
-                        Cam kết mang đến những bữa ăn tươi mới mỗi ngày, minh bạch nguồn gốc, cân bằng dinh dưỡng với chi phí hợp lý nhất để mọi sinh viên đều có nền tảng sức khỏe tốt nhất cho hành trình học tập.
-                    </p>
-                </div>
-
-                <div class="bg-lumi-dark text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
-                    <i class="fa-solid fa-rocket absolute -bottom-6 -right-6 text-9xl text-white/5"></i>
-                    <div class="w-12 h-12 rounded-2xl bg-lumi-yellow/20 text-lumi-yellow flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-compass"></i>
-                    </div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-lumi-yellow">Tầm nhìn đến năm 2028</span>
-                    <h3 class="font-heading font-extrabold text-2xl sm:text-3xl mt-2 mb-4">Trở thành hệ sinh thái ẩm thực học đường số 1 Việt Nam</h3>
-                    <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
-                        Xây dựng mạng lưới bếp trung tâm chuẩn vệ sinh an toàn thực phẩm kết nối trực tiếp với các khu đô thị đại học, tích hợp đặt món thông minh theo lịch học của từng sinh viên.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Bảng so sánh điểm khác biệt -->
-            <div class="reveal">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="text-lumi-orange font-heading font-bold text-sm uppercase tracking-wider">Tại sao chọn LumiFood?</span>
-                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-lumi-dark mt-2">Khác biệt nằm ở sự tử tế trong từng hộp cơm</h2>
-                    <p class="text-lumi-muted mt-3">Không dùng những lời quảng cáo hoa mỹ, đây là cách LumiFood giải quyết nỗi đau ăn uống hàng ngày của bạn:</p>
-                </div>
-
-                <div class="overflow-x-auto bg-white rounded-3xl shadow-lg border border-orange-100">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-lumi-creamDark border-b border-orange-100">
-                                <th class="py-5 px-6 font-heading font-bold text-lumi-dark text-sm sm:text-base">Tiêu chí</th>
-                                <th class="py-5 px-6 font-heading font-extrabold text-lumi-orange text-sm sm:text-base bg-orange-50/70">
-                                    <i class="fa-solid fa-crown mr-1.5"></i> Bếp LumiFood
-                                </th>
-                                <th class="py-5 px-6 font-heading font-semibold text-lumi-muted text-sm sm:text-base">Cơm quán vỉa hè / App thông thường</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-orange-50 text-sm sm:text-base">
-                            <tr class="hover:bg-orange-50/30 transition-colors">
-                                <td class="py-4 px-6 font-semibold text-lumi-dark">Mức giá & Phí ship</td>
-                                <td class="py-4 px-6 font-bold text-lumi-dark bg-orange-50/40">25.000đ – 35.000đ (Freeship KTX & cổng trường)</td>
-                                <td class="py-4 px-6 text-lumi-muted">35.000đ – 55.000đ (Chưa tính 15k-20k phí giao hàng)</td>
-                            </tr>
-                            <tr class="hover:bg-orange-50/30 transition-colors">
-                                <td class="py-4 px-6 font-semibold text-lumi-dark">Chất lượng dầu ăn & Nguyên liệu</td>
-                                <td class="py-4 px-6 font-medium text-lumi-dark bg-orange-50/40"><i class="fa-solid fa-check text-lumi-green mr-1.5"></i> Nhập tươi 5h sáng, 100% không dùng dầu chiên lại</td>
-                                <td class="py-4 px-6 text-lumi-muted">Khó kiểm soát nguồn gốc, thường dùng dầu chiên nhiều lần</td>
-                            </tr>
-                            <tr class="hover:bg-orange-50/30 transition-colors">
-                                <td class="py-4 px-6 font-semibold text-lumi-dark">Độ đa dạng thực đơn</td>
-                                <td class="py-4 px-6 font-medium text-lumi-dark bg-orange-50/40"><i class="fa-solid fa-check text-lumi-green mr-1.5"></i> Đổi mới 21 món mỗi tuần, cân đối rau - đạm - canh</td>
-                                <td class="py-4 px-6 text-lumi-muted">Quanh đi quẩn lại vài món quen thuộc, ít rau xanh</td>
-                            </tr>
-                            <tr class="hover:bg-orange-50/30 transition-colors">
-                                <td class="py-4 px-6 font-semibold text-lumi-dark">Bao bì đóng gói</td>
-                                <td class="py-4 px-6 font-medium text-lumi-dark bg-orange-50/40"><i class="fa-solid fa-check text-lumi-green mr-1.5"></i> Hộp bã mía phân hủy sinh học, giữ nhiệt 60 phút</td>
-                                <td class="py-4 px-6 text-lumi-muted">Hộp xốp mỏng dễ biến dạng, độc hại khi đựng đồ nóng</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =====================================================================
-         5. GIÁ TRỊ CỐT LÕI
-    ====================================================================== -->
-    <section class="py-20 bg-lumi-creamDark/60 border-y border-orange-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-            <div class="text-center max-w-2xl mx-auto mb-14">
-                <span class="text-lumi-orange font-heading font-bold text-sm uppercase tracking-wider">Kim chỉ nam hoạt động</span>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-lumi-dark mt-2">4 Giá trị cốt lõi của LumiFood</h2>
-                <p class="text-lumi-muted mt-3">Mỗi nguyên tắc đều được tụi mình cụ thể hóa bằng hành động đo lường được mỗi ngày.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-7 rounded-3xl shadow-sm hover:shadow-xl border border-orange-100 transition-all hover:-translate-y-1.5 group">
-                    <div class="w-14 h-14 rounded-2xl bg-orange-100 text-lumi-orange group-hover:bg-lumi-orange group-hover:text-white flex items-center justify-center text-2xl mb-5 transition-colors">
-                        <i class="fa-solid fa-user-graduate"></i>
-                    </div>
-                    <h3 class="font-heading font-extrabold text-xl text-lumi-dark mb-3">1. Sinh viên là trọng tâm</h3>
-                    <p class="text-sm text-lumi-muted leading-relaxed">
-                        Mọi mức giá đều được tính toán dựa trên ngân sách của sinh viên. Hỗ trợ "Gói cơm tuần tiết kiệm" giảm thêm 15% cho những ngày cuối tháng.
-                    </p>
-                </div>
-
-                <div class="bg-white p-7 rounded-3xl shadow-sm hover:shadow-xl border border-orange-100 transition-all hover:-translate-y-1.5 group">
-                    <div class="w-14 h-14 rounded-2xl bg-amber-100 text-lumi-yellow group-hover:bg-lumi-yellow group-hover:text-white flex items-center justify-center text-2xl mb-5 transition-colors">
-                        <i class="fa-solid fa-shield-heart"></i>
-                    </div>
-                    <h3 class="font-heading font-extrabold text-xl text-lumi-dark mb-3">2. Sạch từ tâm, ngon từ chất</h3>
-                    <p class="text-sm text-lumi-muted leading-relaxed">
-                        Công khai hóa đơn nhập thịt, rau sạch mỗi sáng trên Fanpage. Tuyệt đối nói không với phẩm màu và dầu ăn tái sử dụng dù làm giảm biên lợi nhuận.
-                    </p>
-                </div>
-
-                <div class="bg-white p-7 rounded-3xl shadow-sm hover:shadow-xl border border-orange-100 transition-all hover:-translate-y-1.5 group">
-                    <div class="w-14 h-14 rounded-2xl bg-teal-100 text-lumi-green group-hover:bg-lumi-green group-hover:text-white flex items-center justify-center text-2xl mb-5 transition-colors">
-                        <i class="fa-solid fa-stopwatch"></i>
-                    </div>
-                    <h3 class="font-heading font-extrabold text-xl text-lumi-dark mb-3">3. Tốc độ & Đúng giờ</h3>
-                    <p class="text-sm text-lumi-muted leading-relaxed">
-                        Hiểu rằng ca học chiều bắt đầu lúc 12h30, đội ngũ shipper sinh viên cam kết giao cơm trong 15 phút để bạn kịp ăn trưa và nghỉ ngơi.
-                    </p>
-                </div>
-
-                <div class="bg-white p-7 rounded-3xl shadow-sm hover:shadow-xl border border-orange-100 transition-all hover:-translate-y-1.5 group">
-                    <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center text-2xl mb-5 transition-colors">
-                        <i class="fa-solid fa-seedling"></i>
-                    </div>
-                    <h3 class="font-heading font-extrabold text-xl text-lumi-dark mb-3">4. Trách nhiệm cộng đồng</h3>
-                    <p class="text-sm text-lumi-muted leading-relaxed">
-                        Sử dụng 100% hộp bã mía bảo vệ môi trường và trích 1.000đ trên mỗi suất cơm bán ra vào quỹ "Tủ cơm 0 đồng tiếp sức mùa thi".
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =====================================================================
-         6. CON SỐ THỐNG KÊ & ĐÁNH GIÁ THỰC TẾ
-    ====================================================================== -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-lumi-dark rounded-3xl p-8 sm:p-12 text-white shadow-2xl mb-20 reveal" id="statsSection">
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    <div class="space-y-2">
-                        <div class="font-heading font-extrabold text-4xl sm:text-5xl text-lumi-orange">
-                            <span class="counter" data-target="15000">0</span>+
-                        </div>
-                        <p class="text-sm sm:text-base text-slate-300 font-medium">Suất cơm nóng đã giao</p>
-                    </div>
-                    <div class="space-y-2">
-                        <div class="font-heading font-extrabold text-4xl sm:text-5xl text-lumi-yellow">
-                            <span class="counter" data-target="98">0</span>%
-                        </div>
-                        <p class="text-sm sm:text-base text-slate-300 font-medium">Sinh viên quay lại đặt tuần</p>
-                    </div>
-                    <div class="space-y-2">
-                        <div class="font-heading font-extrabold text-4xl sm:text-5xl text-lumi-green">
-                            <span class="counter" data-target="25">0</span>K
-                        </div>
-                        <p class="text-sm sm:text-base text-slate-300 font-medium">Mức giá khởi điểm trọn bữa</p>
-                    </div>
-                    <div class="space-y-2">
-                        <div class="font-heading font-extrabold text-4xl sm:text-5xl text-white">
-                            <span class="counter" data-target="15">0</span> Phút
-                        </div>
-                        <p class="text-sm sm:text-base text-slate-300 font-medium">Giao siêu tốc tận cổng KTX</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="reveal">
-                <div class="text-center max-w-2xl mx-auto mb-12">
-                    <span class="text-lumi-orange font-heading font-bold text-sm uppercase tracking-wider">Feedback chân thực</span>
-                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-lumi-dark mt-2">Sinh viên các trường nói gì về LumiFood?</h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-lumi-cream p-7 rounded-3xl border border-orange-100 flex flex-col justify-between">
-                        <div>
-                            <div class="flex text-lumi-yellow text-sm mb-4">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <p class="text-lumi-dark text-sm sm:text-base italic leading-relaxed mb-6">
-                                "Mình đặt gói cơm tuần 28K của LumiFood suốt 2 tháng nay. Gà kho gừng với thịt rim tiêu nêm nếm vừa vặn y như cơm mẹ nấu ở quê, không bị ngấy dầu mỡ như cơm quán ngoài cổng trường."
-                            </p>
-                        </div>
-                        <div class="flex items-center gap-3 pt-4 border-t border-orange-100">
-                            <div class="w-11 h-11 rounded-full bg-orange-200 text-lumi-orange font-heading font-bold flex items-center justify-center">MA</div>
-                            <div>
-                                <h4 class="font-heading font-bold text-sm text-lumi-dark">Nguyễn Minh Anh</h4>
-                                <p class="text-xs text-lumi-muted">Sinh viên K27 - Học viện Ngân Hàng</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-lumi-cream p-7 rounded-3xl border border-orange-100 flex flex-col justify-between">
-                        <div>
-                            <div class="flex text-lumi-yellow text-sm mb-4">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <p class="text-lumi-dark text-sm sm:text-base italic leading-relaxed mb-6">
-                                "Dân Bách Khoa tụi mình ăn khỏe nên lúc đầu sợ suất 25K-30K bị ít. Ai dè LumiFood cho thêm cơm và canh miễn phí nếu note trước, hộp bã mía cầm rất chắc tay và sạch sẽ."
-                            </p>
-                        </div>
-                        <div class="flex items-center gap-3 pt-4 border-t border-orange-100">
-                            <div class="w-11 h-11 rounded-full bg-teal-200 text-teal-800 font-heading font-bold flex items-center justify-center">QH</div>
-                            <div>
-                                <h4 class="font-heading font-bold text-sm text-lumi-dark">Trần Quốc Huy</h4>
-                                <p class="text-xs text-lumi-muted">Sinh viên K67 - ĐH Bách Khoa Hà Nội</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-lumi-cream p-7 rounded-3xl border border-orange-100 flex flex-col justify-between">
-                        <div>
-                            <div class="flex text-lumi-yellow text-sm mb-4">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <p class="text-lumi-dark text-sm sm:text-base italic leading-relaxed mb-6">
-                                "Điểm cộng lớn nhất là giao cực kỳ đúng giờ. Tan tiết 5 lúc 11h45 xuống sảnh KTX là đã thấy bạn shipper LumiFood đứng chờ sẵn, cơm vẫn còn bốc khói nghi ngút!"
-                            </p>
-                        </div>
-                        <div class="flex items-center gap-3 pt-4 border-t border-orange-100">
-                            <div class="w-11 h-11 rounded-full bg-amber-200 text-amber-800 font-heading font-bold flex items-center justify-center">TL</div>
-                            <div>
-                                <h4 class="font-heading font-bold text-sm text-lumi-dark">Lê Thảo Linh</h4>
-                                <p class="text-xs text-lumi-muted">Sinh viên K64 - ĐH Kinh Tế Quốc Dân</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =====================================================================
-         7. ĐỘI NGŨ DỰ ÁN (Cập nhật chuẩn 5 thành viên của nhóm)
-    ====================================================================== -->
-    <section class="py-20 bg-lumi-creamDark/50 border-t border-orange-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-            <div class="text-center max-w-2xl mx-auto mb-14">
-                <span class="text-lumi-orange font-heading font-bold text-sm uppercase tracking-wider">Đội ngũ phát triển dự án</span>
-                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-lumi-dark mt-2">Thành viên nhóm LumiFood</h2>
-                <p class="text-lumi-muted mt-3">Đội ngũ 5 sinh viên thực hiện bài tập lớn Thiết kế Web, cùng nhau xây dựng hệ sinh thái LumiFood toàn diện.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <!-- Thành viên 1: Trịnh Quốc Đại -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-orange-100 transition-all group flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 overflow-hidden bg-orange-100 relative">
-                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=500&q=80" 
-                                 onerror="this.src='https://placehold.co/400x400/FF6B35/FFFFFF?text=Trinh+Quoc+Dai'"
-                                 alt="Trịnh Quốc Đại" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-3 right-3 bg-lumi-orange text-white text-[10px] font-bold px-2.5 py-1 rounded-full">MSV: 27A4043282</span>
-                        </div>
-                        <div class="p-5">
-                            <span class="text-xs font-bold uppercase tracking-wider text-lumi-orange block mb-1">Product Owner / Lead</span>
-                            <h3 class="font-heading font-extrabold text-lg text-lumi-dark mb-2">Trịnh Quốc Đại</h3>
-                            <p class="text-xs text-lumi-muted leading-relaxed">
-                                Quản lý Git, Deploy hệ thống, phát triển Trang chủ (<code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">index.html</code>) và Design System (<code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">main.css</code>).
-                            </p>
-                        </div>
-                    </div>
-                    <div class="px-5 pb-5 pt-0">
-                        <span class="inline-block w-full text-center py-1.5 rounded-xl bg-orange-50 text-lumi-orange text-xs font-bold">Trưởng nhóm</span>
-                    </div>
-                </div>
-
-                <!-- Thành viên 2: Đoàn Thị Minh Ánh -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-orange-100 transition-all group flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 overflow-hidden bg-amber-100 relative">
-                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" 
-                                 onerror="this.src='https://placehold.co/400x400/F7B801/2B2D42?text=Doan+Thi+Minh+Anh'"
-                                 alt="Đoàn Thị Minh Ánh" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-3 right-3 bg-lumi-yellow text-lumi-dark text-[10px] font-bold px-2.5 py-1 rounded-full">MSV: 27A4043271</span>
-                        </div>
-                        <div class="p-5">
-                            <span class="text-xs font-bold uppercase tracking-wider text-lumi-orange block mb-1">Dev Thực đơn & Data</span>
-                            <h3 class="font-heading font-extrabold text-lg text-lumi-dark mb-2">Đoàn Thị Minh Ánh</h3>
-                            <p class="text-xs text-lumi-muted leading-relaxed">
-                                Xây dựng Trang Thực đơn (<code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">products.html</code>), Chi tiết món, cơ sở dữ liệu <code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">products.json</code> và <code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">main.js</code>.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="px-5 pb-5 pt-0">
-                        <span class="inline-block w-full text-center py-1.5 rounded-xl bg-amber-50 text-amber-700 text-xs font-bold">Thực đơn & Dữ liệu</span>
-                    </div>
-                </div>
-
-                <!-- Thành viên 3: Nguyễn Thị Thảo Ly -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-orange-100 transition-all group flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 overflow-hidden bg-teal-100 relative">
-                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80" 
-                                 onerror="this.src='https://placehold.co/400x400/2EC4B6/FFFFFF?text=Nguyen+Thi+Thao+Ly'"
-                                 alt="Nguyễn Thị Thảo Ly" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-3 right-3 bg-lumi-green text-white text-[10px] font-bold px-2.5 py-1 rounded-full">MSV: 27A4043313</span>
-                        </div>
-                        <div class="p-5">
-                            <span class="text-xs font-bold uppercase tracking-wider text-lumi-orange block mb-1">Dev Đặt hàng & Form</span>
-                            <h3 class="font-heading font-extrabold text-lg text-lumi-dark mb-2">Nguyễn Thị Thảo Ly</h3>
-                            <p class="text-xs text-lumi-muted leading-relaxed">
-                                Phát triển Trang Đặt hàng (<code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">contact.html</code>), xử lý Form Validation và Modal Mã QR thanh toán qua tập lệnh <code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">validation.js</code>.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="px-5 pb-5 pt-0">
-                        <span class="inline-block w-full text-center py-1.5 rounded-xl bg-teal-50 text-teal-700 text-xs font-bold">Đặt hàng & Form</span>
-                    </div>
-                </div>
-
-                <!-- Thành viên 4: Nguyễn Thị Kim Huệ -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-orange-100 transition-all group flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 overflow-hidden bg-purple-100 relative">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" 
-                                 onerror="this.src='https://placehold.co/400x400/9333EA/FFFFFF?text=Nguyen+Thi+Kim+Hue'"
-                                 alt="Nguyễn Thị Kim Huệ" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-3 right-3 bg-purple-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">MSV: 27A4043296</span>
-                        </div>
-                        <div class="p-5">
-                            <span class="text-xs font-bold uppercase tracking-wider text-lumi-orange block mb-1">Dev Logic Chi Tiêu</span>
-                            <h3 class="font-heading font-extrabold text-lg text-lumi-dark mb-2">Nguyễn Thị Kim Huệ</h3>
-                            <p class="text-xs text-lumi-muted leading-relaxed">
-                                Xây dựng Tính năng Tính ngân sách & Chia ship (<code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">calculator.html</code>), lập trình lưu trữ dữ liệu với <code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">localStorage</code> trong <code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">calculator.js</code>.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="px-5 pb-5 pt-0">
-                        <span class="inline-block w-full text-center py-1.5 rounded-xl bg-purple-50 text-purple-700 text-xs font-bold">Logic Tài chính</span>
-                    </div>
-                </div>
-
-                <!-- Thành viên 5: Nguyễn Quốc Khánh -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-orange-100 transition-all group flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 overflow-hidden bg-slate-100 relative">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" 
-                                 onerror="this.src='https://placehold.co/400x400/2B2D42/FFFFFF?text=Nguyen+Quoc+Khanh'"
-                                 alt="Nguyễn Quốc Khánh" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-3 right-3 bg-lumi-dark text-white text-[10px] font-bold px-2.5 py-1 rounded-full">MSV: 27A4043304</span>
-                        </div>
-                        <div class="p-5">
-                            <span class="text-xs font-bold uppercase tracking-wider text-lumi-orange block mb-1">UI/UX & Quality Control</span>
-                            <h3 class="font-heading font-extrabold text-lg text-lumi-dark mb-2">Nguyễn Quốc Khánh</h3>
-                            <p class="text-xs text-lumi-muted leading-relaxed">
-                                Chịu trách nhiệm thiết kế Trang Giới thiệu (<code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">about.html</code>), Wireframe, Báo cáo PDF, tài liệu <code class="bg-orange-50 text-lumi-orange px-1 py-0.5 rounded">AI_USAGE.md</code> và kiểm định chất lượng UI/UX.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="px-5 pb-5 pt-0">
-                        <span class="inline-block w-full text-center py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">UI/UX & Kiểm định</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =====================================================================
-         8. HOẠT ĐỘNG CỘNG ĐỒNG (CSR)
-    ====================================================================== -->
-    <section id="cong-dong" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-                <div>
-                    <span class="text-lumi-green font-heading font-bold text-sm uppercase tracking-wider">Lan tỏa giá trị tích cực</span>
-                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-lumi-dark mt-2">Hoạt động cộng đồng cùng LumiFood</h2>
-                </div>
-                <p class="text-lumi-muted text-sm sm:text-base max-w-md">
-                    Mỗi suất cơm bạn đặt không chỉ nuôi dưỡng sức khỏe của bạn mà còn góp phần sẻ chia với cộng đồng sinh viên khó khăn.
+    <!-- HERO -->
+    <section class="about-hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="hero-badge">Dự án ẩm thực dành riêng cho cộng đồng Sinh viên</span>
+                <h1>Bữa cơm nhà nóng hổi, trọn dinh dưỡng với <span>mức giá của sinh viên.</span></h1>
+                <p>
+                    LumiFood không chỉ giao một hộp cơm, chúng tôi gói ghém sự chăm chút như bữa cơm mẹ nấu
+                    để bạn đủ sức chạy deadline, ôn thi và chinh phục giảng đường mỗi ngày.
                 </p>
+                <div class="hero-buttons">
+                    <a href="products.html" class="btn-primary">Khám phá thực đơn hôm nay</a>
+                    <a href="#cau-chuyen" class="btn-outline">Đọc câu chuyện của tụi mình</a>
+                </div>
+                <div class="hero-highlights">
+                    <span>✔ Chỉ từ 25.000đ/suất</span>
+                    <span>✔ Freeship KTX & Giảng đường</span>
+                    <span>✔ 100% Hộp bã mía sạch</span>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="rounded-3xl overflow-hidden border border-orange-100 bg-lumi-cream shadow-sm flex flex-col sm:flex-row">
-                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80" alt="Tủ cơm 0 đồng" class="w-full sm:w-48 h-56 sm:h-auto object-cover shrink-0">
-                    <div class="p-6 sm:p-7 flex flex-col justify-center">
-                        <span class="inline-block w-fit px-3 py-1 rounded-full bg-orange-100 text-lumi-orange text-xs font-bold mb-3">Quỹ sẻ chia</span>
-                        <h3 class="font-heading font-extrabold text-xl text-lumi-dark mb-2">Tủ cơm 0 đồng & Tiếp sức mùa thi</h3>
-                        <p class="text-sm text-lumi-muted leading-relaxed">
-                            Trích 1.000đ từ mỗi đơn hàng để duy trì 50 suất cơm miễn phí mỗi tuần dành cho các bạn sinh viên có hoàn cảnh khó khăn và tặng 1.000 suất ăn tiếp sức sĩ tử mùa thi Đại học.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="rounded-3xl overflow-hidden border border-teal-100 bg-teal-50/40 shadow-sm flex flex-col sm:flex-row">
-                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Đổi vỏ hộp lấy cây xanh" class="w-full sm:w-48 h-56 sm:h-auto object-cover shrink-0">
-                    <div class="p-6 sm:p-7 flex flex-col justify-center">
-                        <span class="inline-block w-fit px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold mb-3">Sống xanh học đường</span>
-                        <h3 class="font-heading font-extrabold text-xl text-lumi-dark mb-2">Đổi 10 tem xanh lấy 1 cây sen đá hoặc 1 bữa cơm</h3>
-                        <p class="text-sm text-lumi-muted leading-relaxed">
-                            Khuyến khích sinh viên mang hộp cá nhân khi đến lấy cơm trực tiếp tại bếp hoặc thu gom nắp hộp sạch để tái chế, giảm thiểu hơn 12.000 túi nilon mỗi học kỳ.
-                        </p>
-                    </div>
+            <div class="hero-image-box">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80"
+                     alt="Suất cơm dinh dưỡng LumiFood dành cho sinh viên">
+                <div class="rating-card">
+                    <strong>★ 4.9/5.0 Đánh giá</strong>
+                    <span>Từ hơn 2.500+ sinh viên các trường ĐH</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- =====================================================================
-         9. CALL-TO-ACTION BANNER CUỐI TRANG
-    ====================================================================== -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto rounded-[2.5rem] bg-gradient-to-r from-lumi-orange via-orange-500 to-lumi-yellow p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden reveal">
-            <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-white/15"></div>
-            <div class="absolute -bottom-24 -left-16 w-64 h-64 rounded-full bg-black/10"></div>
+    <!-- CÂU CHUYỆN KHỞI NGUỒN & HÀNH TRÌNH -->
+    <section id="cau-chuyen" class="about-section bg-white">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-images">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80" alt="Chuẩn bị nguyên liệu">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Khay cơm LumiFood">
+                </div>
 
-            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
-                <div class="max-w-2xl space-y-4">
-                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-tight">
-                        Đói bụng rồi? Để LumiFood lo bữa trưa nay cho bạn!
-                    </h2>
-                    <p class="text-orange-50 text-base sm:text-lg">
-                        Đặt trước 10h30 sáng để nhận ưu đãi <strong class="underline decoration-2">Tặng kèm 1 ly trà tắc mật ong</strong> hoặc đăng ký Gói Cơm Tuần tiết kiệm tới 15%.
+                <div class="story-content">
+                    <span class="section-tag">Câu chuyện khởi nguồn</span>
+                    <h2>Bắt đầu từ những ngày cuối tháng cạn ví và nỗi ám ảnh "trưa nay ăn gì?"</h2>
+                    <p>
+                        Là một nhóm sinh viên năm 3 từng trải qua cảnh <strong>"đầu tháng ăn sang, cuối tháng úp mì tôm"</strong>,
+                        tụi mình quá hiểu cảm giác đứng giữa cổng trường lúc 12 giờ trưa nắng gắt: cơm quán bụi lo ngại dầu chiên lại,
+                        còn đặt app giao đồ ăn thì phí ship đắt đỏ.
+                    </p>
+                    <p>
+                        Tháng 9/2025, <strong>LumiFood</strong> ra đời từ căn bếp nhỏ gần khu ký túc xá. Tụi mình tự đi chợ đầu mối lúc 5h sáng,
+                        lên thực đơn cân bằng calo và tự tay giao từng hộp cơm nóng hổi đến tận tay các bạn sinh viên.
                     </p>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-4 shrink-0">
-                    <button onclick="openOrderModal()" class="bg-white text-lumi-orange hover:bg-lumi-cream font-heading font-extrabold px-8 py-4 rounded-2xl shadow-xl transform hover:-translate-y-1 transition-all text-base flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-bowl-food"></i>
-                        <span>Đặt Suất Lẻ (Từ 25K)</span>
+            </div>
+
+            <div class="timeline-box">
+                <div class="section-title">
+                    <h2>Hành trình lớn lên cùng sinh viên</h2>
+                    <p>Nhấp vào từng cột mốc để xem cách LumiFood vượt qua những thử thách đầu tiên</p>
+                </div>
+
+                <div class="timeline-tabs">
+                    <button type="button" class="tab-btn active" onclick="chonMocThoiGian(0)">
+                        <small>Giai đoạn 1</small>
+                        <strong>Ý tưởng nhen nhóm</strong>
                     </button>
-                    <a href="contact.html" class="bg-lumi-dark/90 hover:bg-lumi-dark text-white font-heading font-bold px-7 py-4 rounded-2xl shadow-xl transform hover:-translate-y-1 transition-all text-base flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-calendar-check text-lumi-yellow"></i>
-                        <span>Đăng ký Gói Tuần</span>
-                    </a>
+                    <button type="button" class="tab-btn" onclick="chonMocThoiGian(1)">
+                        <small>Giai đoạn 2</small>
+                        <strong>Bếp thử nghiệm 25m²</strong>
+                    </button>
+                    <button type="button" class="tab-btn" onclick="chonMocThoiGian(2)">
+                        <small>Giai đoạn 3</small>
+                        <strong>Cột mốc 1.000+ suất</strong>
+                    </button>
+                    <button type="button" class="tab-btn" onclick="chonMocThoiGian(3)">
+                        <small>Hiện tại</small>
+                        <strong>Phủ sóng 5 cụm ĐH</strong>
+                    </button>
+                </div>
+
+                <div class="timeline-detail">
+                    <span class="timeline-date" id="tl-date">Tháng 08/2025</span>
+                    <h4 id="tl-title">Khảo sát 500 sinh viên & Phác thảo thực đơn 25K</h4>
+                    <p id="tl-desc">
+                        Nhóm thực hiện khảo sát thói quen ăn uống của 500 bạn sinh viên tại ký túc xá. Kết quả cho thấy 82% sinh viên
+                        phải bỏ bữa sáng hoặc ăn qua loa bữa trưa vì giá cả leo thang. Tụi mình bắt tay tính toán bài toán tối ưu chi phí
+                        nguyên liệu tận gốc để giữ mức giá 25.000đ mà vẫn đủ đạm và rau xanh.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- SỨ MỆNH, TẦM NHÌN & SO SÁNH -->
+    <section class="about-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-card mission-orange">
+                    <span>Sứ mệnh của LumiFood</span>
+                    <h3>Xóa bỏ nỗi lo "cơm bụi" kém chất lượng của sinh viên</h3>
+                    <p>
+                        Cam kết mang đến những bữa ăn tươi mới mỗi ngày, minh bạch nguồn gốc, cân bằng dinh dưỡng với chi phí
+                        hợp lý nhất để mọi sinh viên đều có nền tảng sức khỏe tốt nhất cho hành trình học tập.
+                    </p>
+                </div>
+
+                <div class="mission-card mission-dark">
+                    <span>Tầm nhìn đến năm 2028</span>
+                    <h3>Trở thành hệ sinh thái ẩm thực học đường số 1 Việt Nam</h3>
+                    <p>
+                        Xây dựng mạng lưới bếp trung tâm chuẩn vệ sinh an toàn thực phẩm kết nối trực tiếp với các khu đô thị đại học,
+                        tích hợp đặt món thông minh theo lịch học của từng sinh viên.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <span class="section-tag">Tại sao chọn LumiFood?</span>
+                <h2>Khác biệt nằm ở sự tử tế trong từng hộp cơm</h2>
+                <p>Không dùng những lời quảng cáo hoa mỹ, đây là cách LumiFood giải quyết nỗi đau ăn uống hàng ngày của bạn:</p>
+            </div>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>Tiêu chí</th>
+                        <th class="highlight-col">Bếp LumiFood</th>
+                        <th>Cơm quán vỉa hè / App thông thường</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Mức giá & Phí ship</strong></td>
+                        <td class="highlight-col">25.000đ – 35.000đ (Freeship KTX & cổng trường)</td>
+                        <td>35.000đ – 55.000đ (Chưa tính 15k-20k phí giao hàng)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chất lượng dầu ăn & Nguyên liệu</strong></td>
+                        <td class="highlight-col">✔ Nhập tươi 5h sáng, 100% không dùng dầu chiên lại</td>
+                        <td>Khó kiểm soát nguồn gốc, thường dùng dầu chiên nhiều lần</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Độ đa dạng thực đơn</strong></td>
+                        <td class="highlight-col">✔ Đổi mới 21 món mỗi tuần, cân đối rau - đạm - canh</td>
+                        <td>Quanh đi quẩn lại vài món quen thuộc, ít rau xanh</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bao bì đóng gói</strong></td>
+                        <td class="highlight-col">✔ Hộp bã mía phân hủy sinh học, giữ nhiệt 60 phút</td>
+                        <td>Hộp xốp mỏng dễ biến dạng, độc hại khi đựng đồ nóng</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- GIÁ TRỊ CỐT LÕI -->
+    <section class="about-section bg-cream">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-tag">Kim chỉ nam hoạt động</span>
+                <h2>4 Giá trị cốt lõi của LumiFood</h2>
+                <p>Mỗi nguyên tắc đều được tụi mình cụ thể hóa bằng hành động đo lường được mỗi ngày.</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>1. Sinh viên là trọng tâm</h3>
+                    <p>Mọi mức giá đều được tính toán dựa trên ngân sách của sinh viên. Hỗ trợ "Gói cơm tuần tiết kiệm" giảm thêm 15% cho những ngày cuối tháng.</p>
+                </div>
+                <div class="value-card">
+                    <h3>2. Sạch từ tâm, ngon từ chất</h3>
+                    <p>Công khai hóa đơn nhập thịt, rau sạch mỗi sáng trên Fanpage. Tuyệt đối nói không với phẩm màu và dầu ăn tái sử dụng dù làm giảm biên lợi nhuận.</p>
+                </div>
+                <div class="value-card">
+                    <h3>3. Tốc độ & Đúng giờ</h3>
+                    <p>Hiểu rằng ca học chiều bắt đầu lúc 12h30, đội ngũ shipper sinh viên cam kết giao cơm trong 15 phút để bạn kịp ăn trưa và nghỉ ngơi.</p>
+                </div>
+                <div class="value-card">
+                    <h3>4. Trách nhiệm cộng đồng</h3>
+                    <p>Sử dụng 100% hộp bã mía bảo vệ môi trường và trích 1.000đ trên mỗi suất cơm bán ra vào quỹ "Tủ cơm 0 đồng tiếp sức mùa thi".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THỐNG KÊ & ĐÁNH GIÁ -->
+    <section class="about-section bg-white">
+        <div class="container">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <strong>15.000+</strong>
+                    <span>Suất cơm nóng đã giao</span>
+                </div>
+                <div class="stat-item">
+                    <strong>98%</strong>
+                    <span>Sinh viên quay lại đặt tuần</span>
+                </div>
+                <div class="stat-item">
+                    <strong>25K</strong>
+                    <span>Mức giá khởi điểm trọn bữa</span>
+                </div>
+                <div class="stat-item">
+                    <strong>15 Phút</strong>
+                    <span>Giao siêu tốc tận cổng KTX</span>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <span class="section-tag">Feedback chân thực</span>
+                <h2>Sinh viên các trường nói gì về LumiFood?</h2>
+            </div>
+
+            <div class="review-grid">
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">★★★★★</div>
+                        <p>"Mình đặt gói cơm tuần 28K của LumiFood suốt 2 tháng nay. Gà kho gừng với thịt rim tiêu nêm nếm vừa vặn y như cơm mẹ nấu ở quê, không bị ngấy dầu mỡ như cơm quán ngoài cổng trường."</p>
+                    </div>
+                    <div class="reviewer">
+                        <strong>Nguyễn Minh Anh</strong>
+                        <span>Sinh viên K27 - Học viện Ngân Hàng</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">★★★★★</div>
+                        <p>"Dân Bách Khoa tụi mình ăn khỏe nên lúc đầu sợ suất 25K-30K bị ít. Ai dè LumiFood cho thêm cơm và canh miễn phí nếu note trước, hộp bã mía cầm rất chắc tay và sạch sẽ."</p>
+                    </div>
+                    <div class="reviewer">
+                        <strong>Trần Quốc Huy</strong>
+                        <span>Sinh viên K67 - ĐH Bách Khoa Hà Nội</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">★★★★★</div>
+                        <p>"Điểm cộng lớn nhất là giao cực kỳ đúng giờ. Tan tiết 5 lúc 11h45 xuống sảnh KTX là đã thấy bạn shipper LumiFood đứng chờ sẵn, cơm vẫn còn bốc khói nghi ngút!"</p>
+                    </div>
+                    <div class="reviewer">
+                        <strong>Lê Thảo Linh</strong>
+                        <span>Sinh viên K64 - ĐH Kinh Tế Quốc Dân</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ĐỘI NGŨ DỰ ÁN -->
+    <section class="about-section bg-cream">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-tag">Đội ngũ phát triển dự án</span>
+                <h2>Thành viên nhóm LumiFood</h2>
+                <p>Đội ngũ 5 sinh viên thực hiện bài tập lớn Thiết kế Web, cùng nhau xây dựng hệ sinh thái LumiFood toàn diện.</p>
+            </div>
+
+            <div class="team-grid">
+                <article class="member-card">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=500&q=80" alt="Trịnh Quốc Đại">
+                        <div class="member-info">
+                            <span class="member-msv">MSV: 27A4043282</span>
+                            <span class="member-role">Product Owner / Lead</span>
+                            <h3>Trịnh Quốc Đại</h3>
+                            <p>Quản lý Git, Deploy hệ thống, phát triển Trang chủ (index.html) và Design System (main.css).</p>
+                        </div>
+                    </div>
+                    <div class="member-tag">Trưởng nhóm</div>
+                </article>
+
+                <article class="member-card">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" alt="Đoàn Thị Minh Ánh">
+                        <div class="member-info">
+                            <span class="member-msv">MSV: 27A4043271</span>
+                            <span class="member-role">Dev Thực đơn & Data</span>
+                            <h3>Đoàn Thị Minh Ánh</h3>
+                            <p>Xây dựng Trang Thực đơn (products.html), Chi tiết món, dữ liệu products.json và main.js.</p>
+                        </div>
+                    </div>
+                    <div class="member-tag">Thực đơn & Dữ liệu</div>
+                </article>
+
+                <article class="member-card">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80" alt="Nguyễn Thị Thảo Ly">
+                        <div class="member-info">
+                            <span class="member-msv">MSV: 27A4043313</span>
+                            <span class="member-role">Dev Đặt hàng & Form</span>
+                            <h3>Nguyễn Thị Thảo Ly</h3>
+                            <p>Phát triển Trang Đặt hàng (contact.html), xử lý Form Validation và Modal Mã QR qua validation.js.</p>
+                        </div>
+                    </div>
+                    <div class="member-tag">Đặt hàng & Form</div>
+                </article>
+
+                <article class="member-card">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" alt="Nguyễn Thị Kim Huệ">
+                        <div class="member-info">
+                            <span class="member-msv">MSV: 27A4043296</span>
+                            <span class="member-role">Dev Logic Chi Tiêu</span>
+                            <h3>Nguyễn Thị Kim Huệ</h3>
+                            <p>Xây dựng Tính năng Tính ngân sách & Chia ship (calculator.html) với localStorage trong calculator.js.</p>
+                        </div>
+                    </div>
+                    <div class="member-tag">Logic Tài chính</div>
+                </article>
+
+                <article class="member-card">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Nguyễn Quốc Khánh">
+                        <div class="member-info">
+                            <span class="member-msv">MSV: 27A4043304</span>
+                            <span class="member-role">UI/UX & Quality Control</span>
+                            <h3>Nguyễn Quốc Khánh</h3>
+                            <p>Thiết kế Trang Giới thiệu (about.html), Wireframe, Báo cáo PDF, AI_USAGE.md và kiểm định UI/UX.</p>
+                        </div>
+                    </div>
+                    <div class="member-tag">UI/UX & Kiểm định</div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOẠT ĐỘNG CỘNG ĐỒNG -->
+    <section id="cong-dong" class="about-section bg-white">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-tag">Lan tỏa giá trị tích cực</span>
+                <h2>Hoạt động cộng đồng cùng LumiFood</h2>
+                <p>Mỗi suất cơm bạn đặt không chỉ nuôi dưỡng sức khỏe của bạn mà còn góp phần sẻ chia với cộng đồng sinh viên khó khăn.</p>
+            </div>
+
+            <div class="csr-grid">
+                <div class="csr-card">
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80" alt="Tủ cơm 0 đồng">
+                    <div class="csr-body">
+                        <span class="csr-badge">Quỹ sẻ chia</span>
+                        <h3>Tủ cơm 0 đồng & Tiếp sức mùa thi</h3>
+                        <p>Trích 1.000đ từ mỗi đơn hàng để duy trì 50 suất cơm miễn phí mỗi tuần dành cho các bạn sinh viên có hoàn cảnh khó khăn và tặng 1.000 suất ăn tiếp sức sĩ tử mùa thi Đại học.</p>
+                    </div>
+                </div>
+
+                <div class="csr-card">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Sống xanh học đường">
+                    <div class="csr-body">
+                        <span class="csr-badge">Sống xanh học đường</span>
+                        <h3>Đổi 10 tem xanh lấy 1 cây sen đá hoặc 1 bữa cơm</h3>
+                        <p>Khuyến khích sinh viên mang hộp cá nhân khi đến lấy cơm trực tiếp tại bếp hoặc thu gom nắp hộp sạch để tái chế, giảm thiểu hơn 12.000 túi nilon mỗi học kỳ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="about-section">
+        <div class="container">
+            <div class="cta-banner">
+                <div>
+                    <h2>Đói bụng rồi? Để LumiFood lo bữa trưa nay cho bạn!</h2>
+                    <p>Đặt trước 10h30 sáng để nhận ưu đãi Tặng kèm 1 ly trà tắc mật ong hoặc đăng ký Gói Cơm Tuần tiết kiệm tới 15%.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="products.html#com" class="btn-white">Chọn Suất Lẻ (Từ 25K)</a>
+                    <a href="contact.html" class="btn-dark">Đặt Hàng & Gói Tuần</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </main>
 
-<!-- =====================================================================
-     10. FOOTER (Liên kết chuẩn xác các trang nội bộ của nhóm)
-====================================================================== -->
-<footer class="bg-lumi-dark text-slate-300 pt-16 pb-10 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
-            <div class="space-y-4">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-lumi-orange flex items-center justify-center text-white">
-                        <i class="fa-solid fa-bowl-rice"></i>
-                    </div>
-                    <span class="font-heading font-extrabold text-2xl text-white">Lumi<span class="text-lumi-orange">Food</span></span>
-                </div>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    Dự án bữa ăn dinh dưỡng giá sinh viên. Nấu bằng sự tử tế, giao bằng sự tận tâm để mỗi ngày đến giảng đường của bạn luôn tràn đầy năng lượng.
-                </p>
-                <div class="flex gap-3 pt-2">
-                    <a href="#" aria-label="Facebook LumiFood" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-lumi-orange text-white flex items-center justify-center transition-colors">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-                    <a href="#" aria-label="TikTok LumiFood" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-lumi-orange text-white flex items-center justify-center transition-colors">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
-                    <a href="#" aria-label="Instagram LumiFood" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-lumi-orange text-white flex items-center justify-center transition-colors">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
+<!-- ================= FOOTER ================= -->
 
-            <div>
-                <h4 class="font-heading font-bold text-white text-base mb-4">Khám phá LumiFood</h4>
-                <ul class="space-y-2.5 text-sm">
-                    <li><a href="#cau-chuyen" class="hover:text-lumi-orange transition-colors">Câu chuyện khởi nguồn</a></li>
-                    <li><a href="products.html" class="hover:text-lumi-orange transition-colors">Thực đơn món ăn</a></li>
-                    <li><a href="calculator.html" class="hover:text-lumi-orange transition-colors">Tính hạn mức ngân sách</a></li>
-                    <li><a href="thanhtoan.html" class="hover:text-lumi-orange transition-colors">Thanh toán đơn hàng</a></li>
-                </ul>
-            </div>
+<footer>
 
-            <div>
-                <h4 class="font-heading font-bold text-white text-base mb-4">Thông tin Bếp trung tâm</h4>
-                <ul class="space-y-3 text-sm text-slate-400">
-                    <li class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-location-dot text-lumi-orange mt-1"></i>
-                        <span>Ngõ 12 Chùa Bộc (Gần KTX Học viện Ngân Hàng), Đống Đa, Hà Nội</span>
-                    </li>
-                    <li class="flex items-center gap-2.5">
-                        <i class="fa-solid fa-clock text-lumi-orange"></i>
-                        <span>Giờ hoạt động: 08:00 – 20:30 (Thứ 2 – Thứ 7)</span>
-                    </li>
-                    <li class="flex items-center gap-2.5">
-                        <i class="fa-solid fa-phone text-lumi-orange"></i>
-                        <span>Hotline / Zalo đặt cơm: <strong class="text-white">0988.123.456</strong></span>
-                    </li>
-                    <li class="flex items-center gap-2.5">
-                        <i class="fa-solid fa-envelope text-lumi-orange"></i>
-                        <span>support@lumifood.vn</span>
-                    </li>
-                </ul>
-            </div>
+    <div class="footer-content">
 
-            <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-700/80 space-y-3">
-                <span class="inline-block px-2.5 py-1 rounded-md bg-lumi-green/20 text-lumi-green text-xs font-bold">Chứng nhận VSATTP</span>
-                <h4 class="font-heading font-bold text-white text-sm">Tham quan bếp bất cứ lúc nào!</h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                    LumiFood luôn mở cửa chào đón các bạn sinh viên đến trực tiếp bếp để kiểm chứng quy trình sơ chế và đóng gói.
-                </p>
-            </div>
+        <div>
+            <h3>LumiFood</h3>
+
+            <p>
+                LumiFood mang đến những món ăn ngon,
+                đa dạng và phù hợp với nhu cầu của
+                học sinh, sinh viên và người trẻ.
+            </p>
         </div>
 
-        <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-            <p>© 2026 Dự án Bài tập lớn LumiFood (IS19A) - Học viện Ngân hàng. All rights reserved.</p>
-            <p>Nấu ăn bằng cả trái tim • Phục vụ cộng đồng sinh viên Việt Nam</p>
+
+        <div>
+            <h3>Danh mục</h3>
+
+            <ul>
+                <li>Cơm</li>
+                <li>Bún / Phở / Mì</li>
+                <li>Đồ uống</li>
+                <li>Ăn vặt</li>
+            </ul>
         </div>
+
+
+        <div>
+            <h3>Liên hệ</h3>
+
+            <ul>
+                <li>📞 0963554772</li>
+                <li><a href="contact.html">Liên hệ LumiFood</a></li>
+                <li>📍 Chùa Bộc, Hà Nội, Việt Nam</li>
+            </ul>
+        </div>
+
     </div>
+
+
+    <div class="copyright">
+        © 2026 LumiFood. All rights reserved.
+    </div>
+
 </footer>
 
-<!-- =====================================================================
-     MODAL ĐẶT CƠM NHANH
-====================================================================== -->
-<div id="orderModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative animate-[fadeIn_0.25s_ease-out]">
-        <button onclick="closeOrderModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-orange-100 text-lumi-dark flex items-center justify-center transition-colors">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <div id="orderFormContainer">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-11 h-11 rounded-2xl bg-orange-100 text-lumi-orange flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-bowl-rice"></i>
-                </div>
-                <div>
-                    <h3 class="font-heading font-extrabold text-xl text-lumi-dark">Đặt Cơm LumiFood</h3>
-                    <p class="text-xs text-lumi-muted">Freeship tận cổng KTX & Giảng đường</p>
-                </div>
-            </div>
-
-            <form onsubmit="submitOrder(event)" class="space-y-4 mt-4">
-                <div>
-                    <label class="block text-xs font-bold text-lumi-dark uppercase mb-1.5">Chọn combo hôm nay</label>
-                    <select id="mealSelect" class="w-full px-4 py-3 rounded-xl border border-orange-200 bg-lumi-cream text-sm font-medium focus:outline-none focus:border-lumi-orange">
-                        <option value="Suất Gà Kho Gừng + Canh Cải (25.000đ)">Suất Gà Kho Gừng + Canh Cải (25.000đ)</option>
-                        <option value="Suất Thịt Rim Tiêu + Trứng Chiên (28.000đ)">Suất Thịt Rim Tiêu + Trứng Chiên (28.000đ)</option>
-                        <option value="Suất Cá Thu Sốt Cà + Rau Luộc (32.000đ)">Suất Cá Thu Sốt Cà + Rau Luộc (32.000đ)</option>
-                        <option value="Gói Cơm Tuần Tiết Kiệm 15% (135.000đ/6 bữa)">Gói Cơm Tuần Tiết Kiệm 15% (135.000đ/6 bữa)</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-lumi-dark uppercase mb-1.5">Tên & Số điện thoại / Zalo</label>
-                    <input type="text" required placeholder="VD: Minh Anh - 0987xxx123" class="w-full px-4 py-3 rounded-xl border border-orange-200 text-sm focus:outline-none focus:border-lumi-orange">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-lumi-dark uppercase mb-1.5">Địa điểm nhận cơm (KTX / Cổng trường)</label>
-                    <input type="text" required placeholder="VD: Sảnh KTX B2 - Học viện Ngân Hàng" class="w-full px-4 py-3 rounded-xl border border-orange-200 text-sm focus:outline-none focus:border-lumi-orange">
-                </div>
-
-                <button type="submit" class="w-full bg-lumi-orange hover:bg-lumi-orangeHover text-white font-heading font-bold py-3.5 rounded-xl shadow-lg shadow-orange-500/30 transition-all mt-2">
-                    Xác nhận đặt cơm ngay
-                </button>
-            </form>
-        </div>
-
-        <div id="orderSuccessContainer" class="hidden text-center py-6 space-y-4">
-            <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-3xl mx-auto">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <h4 class="font-heading font-extrabold text-2xl text-lumi-dark">Bếp đã nhận đơn của bạn!</h4>
-            <p class="text-sm text-lumi-muted leading-relaxed">
-                LumiFood đang chuẩn bị phần cơm nóng hổi và sẽ giao đến bạn đúng giờ nghỉ trưa. Cảm ơn bạn đã đồng hành cùng tụi mình!
-            </p>
-            <button onclick="closeOrderModal()" class="px-6 py-2.5 rounded-xl bg-lumi-dark text-white font-heading font-bold text-sm">
-                Đóng cửa sổ
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- =====================================================================
-     JAVASCRIPT
-====================================================================== -->
 <script>
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    const timelineData = [
+    const danhSachMoc = [
         {
-            icon: 'fa-solid fa-lightbulb',
-            date: 'Tháng 08/2025',
-            title: 'Khảo sát 500 sinh viên & Phác thảo thực đơn 25K',
-            desc: 'Nhóm thực hiện khảo sát thói quen ăn uống của 500 bạn sinh viên tại ký túc xá. Kết quả cho thấy 82% sinh viên phải bỏ bữa sáng hoặc ăn qua loa bữa trưa vì giá cả leo thang. Tụi mình bắt tay tính toán bài toán tối ưu chi phí nguyên liệu tận gốc để giữ mức giá 25.000đ mà vẫn đủ đạm và rau xanh.'
+            date: "Tháng 08/2025",
+            title: "Khảo sát 500 sinh viên & Phác thảo thực đơn 25K",
+            desc: "Nhóm thực hiện khảo sát thói quen ăn uống của 500 bạn sinh viên tại ký túc xá. Kết quả cho thấy 82% sinh viên phải bỏ bữa sáng hoặc ăn qua loa bữa trưa vì giá cả leo thang. Tụi mình bắt tay tính toán bài toán tối ưu chi phí nguyên liệu tận gốc để giữ mức giá 25.000đ mà vẫn đủ đạm và rau xanh."
         },
         {
-            icon: 'fa-solid fa-fire-burner',
-            date: 'Tháng 10/2025',
-            title: 'Căn bếp thử nghiệm 25m² & Những mẻ cơm đầu tiên',
-            desc: 'Những ngày đầu tự đi chợ đầu mối lúc 5h sáng, cả nhóm loay hoay cân đối định lượng sao cho cơm không bị nguội khi giao. 30 suất cơm đầu tiên được bạn bè trong lớp ủng hộ và góp ý nhiệt tình từng chút gia vị.'
+            date: "Tháng 10/2025",
+            title: "Căn bếp thử nghiệm 25m² & Những mẻ cơm đầu tiên",
+            desc: "Những ngày đầu tự đi chợ đầu mối lúc 5h sáng, cả nhóm loay hoay cân đối định lượng sao cho cơm không bị nguội khi giao. 30 suất cơm đầu tiên được bạn bè trong lớp ủng hộ và góp ý nhiệt tình từng chút gia vị."
         },
         {
-            icon: 'fa-solid fa-trophy',
-            date: 'Tháng 02/2026',
-            title: 'Cán mốc 1.000+ suất ăn & Chuyển sang 100% hộp bã mía',
-            desc: 'Tiếng lành đồn xa qua các hội nhóm sinh viên, số lượng đơn đặt tăng gấp 5 lần. LumiFood chính thức thay thế toàn bộ bao bì sang hộp bã mía phân hủy sinh học và ra mắt tính năng đặt Gói Cơm Tuần trên website.'
+            date: "Tháng 02/2026",
+            title: "Cán mốc 1.000+ suất ăn & Chuyển sang 100% hộp bã mía",
+            desc: "Tiếng lành đồn xa qua các hội nhóm sinh viên, số lượng đơn đặt tăng gấp 5 lần. LumiFood chính thức thay thế toàn bộ bao bì sang hộp bã mía phân hủy sinh học và ra mắt tính năng đặt Gói Cơm Tuần trên website."
         },
         {
-            icon: 'fa-solid fa-map-location-dot',
-            date: 'Hiện tại (2026)',
-            title: 'Phủ sóng 5 cụm trường Đại học & Quỹ Tủ cơm 0 đồng',
-            desc: 'LumiFood hiện phục vụ hơn 300 suất cơm mỗi ngày quanh khu vực Đống Đa - Cầu Giấy - Bách Kinh Xây, đồng thời duy trì đều đặn quỹ cơm miễn phí tiếp sức sinh viên khó khăn.'
+            date: "Hiện tại (2026)",
+            title: "Phủ sóng 5 cụm trường Đại học & Quỹ Tủ cơm 0 đồng",
+            desc: "LumiFood hiện phục vụ hơn 300 suất cơm mỗi ngày quanh khu vực Đống Đa - Cầu Giấy - Bách Kinh Xây, đồng thời duy trì đều đặn quỹ cơm miễn phí tiếp sức sinh viên khó khăn."
         }
     ];
 
-    function selectTimeline(index) {
-        const buttons = document.querySelectorAll('.timeline-btn');
-        buttons.forEach((btn, i) => {
-            if (i === index) {
-                btn.className = 'timeline-btn active text-left p-4 rounded-2xl bg-lumi-orange text-white shadow-lg transition-all';
-                btn.querySelector('span:first-child').className = 'text-xs font-bold uppercase opacity-80 block';
-            } else {
-                btn.className = 'timeline-btn text-left p-4 rounded-2xl bg-white text-lumi-dark hover:bg-orange-50 border border-orange-100 transition-all';
-                btn.querySelector('span:first-child').className = 'text-xs font-bold uppercase text-lumi-orange block';
-            }
-        });
+    function chonMocThoiGian(index) {
+        const buttons = document.querySelectorAll(".tab-btn");
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove("active");
+        }
+        buttons[index].classList.add("active");
 
-        const item = timelineData[index];
-        document.getElementById('tlIcon').innerHTML = `<i class="${item.icon}"></i>`;
-        document.getElementById('tlDate').textContent = item.date;
-        document.getElementById('tlTitle').textContent = item.title;
-        document.getElementById('tlDesc').textContent = item.desc;
+        document.getElementById("tl-date").textContent = danhSachMoc[index].date;
+        document.getElementById("tl-title").textContent = danhSachMoc[index].title;
+        document.getElementById("tl-desc").textContent = danhSachMoc[index].desc;
     }
-
-    const revealElements = document.querySelectorAll('.reveal');
-    let countersStarted = false;
-
-    function startCounters() {
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            const duration = 1600;
-            const stepTime = 20;
-            const steps = duration / stepTime;
-            const increment = target / steps;
-            let current = 0;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    counter.textContent = target.toLocaleString('vi-VN');
-                    clearInterval(timer);
-                } else {
-                    counter.textContent = Math.floor(current).toLocaleString('vi-VN');
-                }
-            }, stepTime);
-        });
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                if (entry.target.id === 'statsSection' && !countersStarted) {
-                    countersStarted = true;
-                    startCounters();
-                }
-            }
-        });
-    }, { threshold: 0.15 });
-
-    revealElements.forEach(el => observer.observe(el));
-
-    const orderModal = document.getElementById('orderModal');
-    const orderFormContainer = document.getElementById('orderFormContainer');
-    const orderSuccessContainer = document.getElementById('orderSuccessContainer');
-    const mealSelect = document.getElementById('mealSelect');
-
-    function openOrderModal() {
-        orderFormContainer.classList.remove('hidden');
-        orderSuccessContainer.classList.add('hidden');
-        orderModal.classList.remove('hidden');
-        orderModal.classList.add('flex');
-    }
-
-    function closeOrderModal() {
-        orderModal.classList.add('hidden');
-        orderModal.classList.remove('flex');
-    }
-
-    function submitOrder(e) {
-        e.preventDefault();
-        orderFormContainer.classList.add('hidden');
-        orderSuccessContainer.classList.remove('hidden');
-    }
-
-    orderModal.addEventListener('click', (e) => {
-        if (e.target === orderModal) closeOrderModal();
-    });
 </script>
 
 </body>
